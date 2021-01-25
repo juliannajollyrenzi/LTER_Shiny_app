@@ -7,6 +7,100 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-require(tidyverse)
+require(tidyverse) # data wrangling
+require(here) # relative file paths
+
 ```
 
+## Other (non-coral) Benthic Invertebrates
+
+In this script we wrangle the data into a similar format that can be used in the app. We'll start with the invertebrate data to get summarized values for each year.
+
+These data can be found at: http://mcrlter.msi.ucsb.edu/cgi-bin/showDataset.cgi?docid=knb-lter-mcr.7 with the abstract "The data presented here are the abundances of the major invertebrate herbivores and corallivores on Moorea coral reefs. Abundances are estimated in 4 fixed quadrats along 5 permanent transects at each of 4 habitats at 2 sites on each of the 3 shores of Moorea each year. Counts are made in one-meter-squared quadrats." The dataset ranges from 2005-2020 and spans LTER 1, LTER 2, LTER 3, LTER 4, LTER 5, and LTER 6.
+
+Acanthaster/Culcita/Linckia are inconsistent and in laster years are noted when they're 1m away. In 2005-2006 the "No invertebrate observed" notation was used for no invertebrates, but in 2007 onwards they are listed as the species name with a count of 0. 2005-2006 was spread over two years because it took two years to get the base data everywhere but from then on it's one survey/year.
+
+```{r, message=FALSE, warning=FALSE}
+# read in the data 
+
+inverts <- read_csv(here("untouched_data", "MCR_LTER_Annual_Survey_Herbiv_Invert_20201026.csv")) %>% 
+  filter(Year != "2005-2006") %>% # filter out 2005-2006 because it was done over two years and had a different notation scheme
+  filter(!is.na(Taxonomy)) # filter out weird NA row that happened when we used read_csv()
+
+# summarize to get yearly values by species
+taxon_summ <- inverts %>% 
+  group_by(Year, Taxonomy) %>% 
+  summarize(Total_abund = sum(Count), 
+            N = n(), 
+            Mean_abund_per_m2 = sum(Count)/480) %>% # 5 transects * 4 quadrats/transect * 4 habitats (2 depths for outer, fringing, and backreef/lagoon) * 6 LTER sites each year = 480 quadrats total
+  filter(Taxonomy != "No invertebrate observed") %>% # get rid of empty lines
+  filter(!str_detect(Taxonomy, "(1m away)")) # remove these so only have what we observed in the 1m^2 quadrats
+
+# could also summarize by site
+site_summ <- inverts %>% 
+  group_by(Year, Taxonomy, Site) %>% 
+  summarize(Total_abund = sum(Count), 
+            N = n(), 
+            Mean_abund_per_m2 = sum(Count)/80) %>% # 5 transects * 4 quadrats/transect * 4 habitats (2 depths for outer, fringing, and backreef/lagoon) = 80 quadrats total
+  filter(Taxonomy != "No invertebrate observed") %>% # get rid of empty lines
+  filter(!str_detect(Taxonomy, "(1m away)")) # remove these so only have what we observed in the 1m^2 quadrats
+
+# can also do by habitat
+habit_summ <- inverts %>% 
+  group_by(Year, Taxonomy, Habitat) %>% 
+  summarize(Total_abund = sum(Count), 
+            N = n(), 
+            Mean_abund_per_m2 = sum(Count)/120) %>% # 5 transects * 4 quadrats/transect * * 6 LTER sites= 80 quadrats total
+  filter(Taxonomy != "No invertebrate observed") %>% # get rid of empty lines
+  filter(!str_detect(Taxonomy, "(1m away)")) # remove these so only have what we observed in the 1m^2 quadrats
+
+```
+
+Now explore potential plots
+
+```{r, message=FALSE, warning=FALSE}
+# taxonomy over time
+taxon_summ %>% 
+  ggplot(aes(x = Year, y = Mean_abund_per_m2, group = Taxonomy)) +
+  geom_line(aes(colour = Taxonomy)) + 
+  scale_color_manual(values = c("#A6CEE3", "#1F78B4", "#B2DF8A",
+                                "#33A02C", "#FB9A99", "#E31A1C",
+                                "#FDBF6F", "#FF7F00", "#CAB2D6",
+                                "#6A3D9A", "#FFFF99", "#B15928",
+                                "#666666", "#E7298A")) +
+  theme_bw() +
+  ylab("Average abundance per m^2") + 
+  xlab("Survey year")
+```
+Break it up by habitat then by site
+```{r, nessage=FALSE, warning=FALSE}
+habit_summ %>% 
+  ggplot(aes(x = Year, y = Mean_abund_per_m2, group = Taxonomy)) +
+  geom_line(aes(colour = Taxonomy)) + 
+  scale_color_manual(values = c("#A6CEE3", "#1F78B4", "#B2DF8A",
+                                "#33A02C", "#FB9A99", "#E31A1C",
+                                "#FDBF6F", "#FF7F00", "#CAB2D6",
+                                "#6A3D9A", "#FFFF99", "#B15928",
+                                "#666666", "#E7298A")) +
+  theme_bw() +
+  ylab("Average abundance per m^2") + 
+  xlab("Survey year") +
+  facet_wrap(~Habitat)
+
+```
+```{r, nessage=FALSE, warning=FALSE}
+site_summ %>% 
+  ggplot(aes(x = Year, y = Mean_abund_per_m2, group = Taxonomy)) +
+  geom_line(aes(colour = Taxonomy)) + 
+  scale_color_manual(values = c("#A6CEE3", "#1F78B4", "#B2DF8A",
+                                "#33A02C", "#FB9A99", "#E31A1C",
+                                "#FDBF6F", "#FF7F00", "#CAB2D6",
+                                "#6A3D9A", "#FFFF99", "#B15928",
+                                "#666666", "#E7298A")) +
+  theme_bw() +
+  ylab("Average abundance per m^2") + 
+  xlab("Survey year") +
+  facet_wrap(~Site)
+```
+
+## Now loot at fishes
