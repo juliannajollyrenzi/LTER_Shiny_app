@@ -3,12 +3,15 @@ title: "Wrangle LTER data"
 author: "Julianna Renzi"
 date: "1/22/2021"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 require(tidyverse) # data wrangling
 require(here) # relative file paths
+require(gghighlight) # highlight certain lines on graphs
 
 ```
 
@@ -69,7 +72,7 @@ taxon_summ %>%
                                 "#6A3D9A", "#FFFF99", "#B15928",
                                 "#666666", "#E7298A")) +
   theme_bw() +
-  ylab("Average abundance per m^2") + 
+  ylab(expression(paste("Average abundance per ", m^2))) + 
   xlab("Survey year")
 ```
 Break it up by habitat then by site
@@ -82,12 +85,14 @@ habit_summ %>%
                                 "#FDBF6F", "#FF7F00", "#CAB2D6",
                                 "#6A3D9A", "#FFFF99", "#B15928",
                                 "#666666", "#E7298A")) +
-  theme_bw() +
+  theme_minimal() +
   ylab("Average abundance per m^2") + 
   xlab("Survey year") +
-  facet_wrap(~Habitat)
+  facet_wrap(~Habitat) + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
 ```
+
 ```{r, nessage=FALSE, warning=FALSE}
 site_summ %>% 
   ggplot(aes(x = Year, y = Mean_abund_per_m2, group = Taxonomy)) +
@@ -97,10 +102,152 @@ site_summ %>%
                                 "#FDBF6F", "#FF7F00", "#CAB2D6",
                                 "#6A3D9A", "#FFFF99", "#B15928",
                                 "#666666", "#E7298A")) +
-  theme_bw() +
+  theme_minimal() +
   ylab("Average abundance per m^2") + 
+  xlab("Survey year") +
+  facet_wrap(~Site) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+## Now look at benthos
+
+These data were taken from: http://mcrlter.msi.ucsb.edu/cgi-bin/showDataset.cgi?docid=knb-lter-mcr.8.
+
+The abstract online is: "The sampling described here quantifies the relative abundances of corals (aggregate abundance) and the other major benthic components including algal turfs, macroalgae, crustose corallines, and other sessile invertebrates. Abundance is estimated yearly at each of 6 sites (2 per shore) around the island. At each site, and in each of 4 habitats (fringing reef, backreef, forereef 10-m depth, forereef 17-m depth), 5 permanent 10-m long transects have been established and abundance estimates are made at fixed positions along each transect (n=10, 0.25 m2 quadrats per transect) allowing a repeated measures statistical analysis for the detection of temporal trends... ...The original design was established to support a nested, factorial ANOVA experimental approach, but the sampling strategy is amenable to many other designs to meet the users needs. In the factorial construct, shore (north, southeast, or southwest) is treated as a fixed factor, site (LTER 1-6) as a random factor nested within shore, and time as a repeated measures factor based on individual quadrats that are relocated. In the case of the outer reef, depth (10 or 17 m) also was used as a fixed factor to contrast the effects of time and shore between depths"
+
+```{r, message = FALSE, warning=FALSE}
+benthos <- read_csv(here("untouched_data", "MCR_LTER_Annual_Survey_Benthic_Cover_20201221.csv")) %>% 
+  filter(!is.na(Year)) # filter out NAs
+
+# see there are a ~85 species (likely too many to plot on one graph clearly)
+spp_list <- as.data.frame(benthos %>% select(Taxonomy_Substrate_Functional_Group) %>% unique)
+# can write it to a CSV to assign groupings (below)
+# write.csv(spp_list, file = "Benthic_species_key.csv")
+
+# summarize the data by taxonomy
+benth_taxon <- benthos %>% 
+  group_by(Year, Taxonomy_Substrate_Functional_Group) %>% 
+  summarize(Total_percent = sum(Percent_Cover), 
+            Mean_perc_cov = sum(Percent_Cover)/1200, # 1200 because it's 6 sites * 4 gabitats * 5 transects * 10 0.25 m^2 quadrats 
+            N = n())
+
+# by habitat
+benth_habit <- benthos %>% 
+  group_by(Year, Taxonomy_Substrate_Functional_Group, Habitat) %>% 
+  summarize(Total_percent = sum(Percent_Cover), 
+            Mean_perc_cov = sum(Percent_Cover)/300, # 1200 because it's 6 sites * 5 transects * 10 0.25 m^2 quadrats 
+            N = n())
+
+# by site
+benth_site <- benthos %>% 
+  group_by(Year, Taxonomy_Substrate_Functional_Group, Site) %>% 
+  summarize(Total_percent = sum(Percent_Cover), 
+            Mean_perc_cov = sum(Percent_Cover)/200, # 1200 because it's 4 gabitats * 5 transects * 10 0.25 m^2 quadrats 
+            N = n())
+```
+
+```{r}
+# try plotting with gghighlight
+benth_taxon %>% 
+  ggplot(aes(x = Year, y = Mean_perc_cov, group = Taxonomy_Substrate_Functional_Group)) +
+  geom_line(aes(colour = Taxonomy_Substrate_Functional_Group)) +
+  theme_bw() +
+  scale_color_brewer(palette = "Dark2") +
+  gghighlight(max(Mean_perc_cov) > 12) +
+  ylab("Mean percent cover (%)") + 
+  xlab("Survey year") 
+
+# by site
+benth_site %>% 
+  ggplot(aes(x = Year, y = Mean_perc_cov, group = Taxonomy_Substrate_Functional_Group)) +
+  geom_line(aes(color = Taxonomy_Substrate_Functional_Group)) + 
+  theme_bw() +
+  gghighlight(max(Mean_perc_cov) > 13) +
+  scale_color_brewer(palette = "Dark2") +
+  ylab("Mean percent cover (%)") + 
+  xlab("Survey year") + 
+  facet_wrap(~Site)
+
+# by habitat
+benth_habit %>% 
+  ggplot(aes(x = Year, y = Mean_perc_cov, group = Taxonomy_Substrate_Functional_Group)) +
+  geom_line(aes(colour = Taxonomy_Substrate_Functional_Group)) + 
+  facet_wrap(~Habitat) +
+  theme_bw() +
+  scale_color_brewer(palette = "Dark2") +
+  gghighlight(max(Mean_perc_cov) > 13) +
+  ylab("Mean percent cover (%)") + 
+  xlab("Survey year") 
+
+
+
+```
+
+Simplify benthos using a key we classified in Excel
+
+```{r}
+benthic_spp_key <- read_csv("Benthic_species_key.csv")
+benthos_grouped <- benthos %>% 
+  full_join(benthic_spp_key, by = "Taxonomy_Substrate_Functional_Group")
+```
+
+Now look by habitat 
+
+```{r}
+# now can summarize in the same way
+# by habitat
+benth_habit_group <- benthos_grouped %>% 
+  group_by(Year, Spp_grouping, Habitat) %>% 
+  summarize(Total_percent = sum(Percent_Cover), 
+            Mean_perc_cov = sum(Percent_Cover)/300, # 300 because it's 6 sites *  5 transects * 10 0.25 m^2 quadrats 
+            N = n())
+
+# then plot
+benth_habit_group %>% 
+  filter(Spp_grouping == "Crustose_corallines" |
+         Spp_grouping == "Hard_coral" |
+         Spp_grouping == "Macroalgae" |
+         Spp_grouping == "Turf") %>% 
+  ggplot(aes(x = Year, y = Mean_perc_cov, group = Spp_grouping)) +
+  geom_line(aes(colour = Spp_grouping)) +
+  scale_color_brewer(palette = "Dark2") +
+  theme_minimal() +
+  ylab("Mean percent cover (%)") + 
+  xlab("Survey year") +
+  facet_wrap(~Habitat)
+
+```
+
+Now look by LTER site
+
+```{r}
+benth_site_group <- benthos_grouped %>% 
+  group_by(Year, Spp_grouping, Site) %>% 
+  summarize(Total_percent = sum(Percent_Cover), 
+            Mean_perc_cov = sum(Percent_Cover)/200, # 200 because it's 4 habitats * 5 transects * 10 0.25 m^2 quadrats 
+            N = n())
+
+# then plot
+benth_site_group %>% 
+  filter(Spp_grouping == "Crustose_corallines" |
+         Spp_grouping == "Hard_coral" |
+         Spp_grouping == "Macroalgae" |
+         Spp_grouping == "Turf") %>% 
+  ggplot(aes(x = Year, y = Mean_perc_cov, group = Spp_grouping)) +
+  geom_line(aes(colour = Spp_grouping)) +
+  scale_color_brewer(palette = "Dark2") +
+  theme_minimal() +
+  ylab("Mean percent cover (%)") + 
   xlab("Survey year") +
   facet_wrap(~Site)
 ```
 
-## Now loot at fishes
+
+Macroalgal diversity through time
+
+```{r}
+#benth_site_group
+```
+
+
+
