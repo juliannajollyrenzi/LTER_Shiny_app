@@ -16,12 +16,30 @@ invert_habitat <- read_csv(here("cleaned_data",
 invert_site <- read_csv(here("cleaned_data", 
                                 "inverts_by_site.csv"))
 
+# put text blocks here so they don't clog up the ui code
+about.txt <- "The Mo'orea Long Term Ecological Research (LTER) site is a reserach site that was established by the U.S. National Science Foundation to gain understanding of long term dynamics in coral reef ecosystems. 
+The Mo'orea LTER is part of a network of LTERs across the world that take repeated measurements each year to observe ecological changes over time. 
+In Mo'orea, researchers have been observing a diverse suite of corals, non-coral invertebrates, fishes, and algae for nearly two decades, in addition to measuring changes in physical water properties such as temperature, salinity, and nutrient concentrations."
+
+where.txt <- "Mo'orea is a tropical island in French Polynesia. Mo'orea is a part of the Society Islands, which is a volcanic island group in the Pacific that includes Tahiti, Bora Bora, and Tetiaroa.
+Mo'orea is surrounded by coral reefs, which can be divided into different habitats based on their proximity to land (Figure 2, bottom). 
+Coral reefs directly bordering the island are termed fringing reefs, which are usually separated from backreefs by deeper water. 
+After the backreef (moving away from land) the coral forms a peak where waves break, termed the reef crest. 
+Over the reef crest the water gets deeper. The corals on the ocean-side of the reef crest makeup the forereef (or 'outer' reef). 
+The Mo'orea LTER collects data in all of these habitats, including at two different depths on the forereef (fringing, backreef, forereef/outer 10m, and forereef/outer 17m).
+Researchers regularly survey all of four these habitats at six different sites around the island: LTER 1 and 2 (northern shore), LTER 3 and 4 (southeastern shore), and LTER 5 and 6 (southwestern shore)."
+
+data.txt <- "We use data that are freely available on the Mo'orea LTER website (http://mcrlter.msi.ucsb.edu/data/topic/; downloaded Jan 2021). 
+We focus on three core datasets: annual surveys of benthic organisms (i.e. species that live on the bottom, such as algae and sponges) [2]; 
+annual surveys of non-coral invertebrates, such as sea urchins and snails [3]; and annual surveys of hard corals [4].
+We create interactive visualizations of each of these time series, which we hope will inspire questions for further research and make the Mo'orea LTER data more accessible."
 
 ## Create theme----
 mcr_theme <- bs_theme(
     bootswatch = "journal",
     base_font = font_google("Helvetica"),
-    heading_font = font_google("Helvetica")
+    heading_font = font_google("Helvetica"),
+    headings_color = "#fd5d5e"
 )
 
 ## User interface----
@@ -30,16 +48,27 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                 navbarPage("Mo'orea Coral Reef LTER",
                            tabPanel("Background information",
                                     mainPanel(
-                                        h1("The Mo'orea Long Term Ecological Research Site (LTER)"),
                                         h2("What is the Mo'orea LTER?"),
-                                        p("It is..."),
-                                        h2("Where is the Mo'orea LTER?"),
-                                        p("Mo'orea is..."),
+                                        p(about.txt),
+                                        img(src = "Gump_station.jpg"),
+                                        em("Figure 1: Photo of the UC Berkeley Gump Research Station, home of the Mo'orea LTER. Photo credit: MCR Website, http://mcr.lternet.edu/about/media"),
+                                        h2("Where is Mo'orea?"),
+                                        p(where.txt),
                                         img(src = "Moorea_map.png"),
-                                        em("Figure 1: Map of Mo'orea LTER sites and habitats. Taken directly from Leichter et al. 2013"),
-                        
+                                        em("Figure 2: Map of Mo'orea LTER sites and habitats. Taken directly from Leichter et al. 2013"),
+                                        h2("What does this app do with the LTER data?"),
+                                        p(data.txt),
+                                        h2("More questions?"),
+                                        p("If you have more questions about the app, you can contact the app creator, Julianna Renzi, at jrenzi[at]ucsb.edu."),
                                         h2("Citations"),
-                                        p("[1] Leichter, J.J., A.L. Alldredge, G. Bernardi, A.J. Brooks, C.A. Carlson, R.C. Carpenter, P.J. Edmunds, M.R. Fewings, K.M. Hanson, J.L. Hench, and others. 2013. Biological and physical interactions on a tropical island coral reef: Transport and retention processes on Moorea, French Polynesia. Oceanography 26(3):52–63")
+                                        strong("[1]"),
+                                               p("Leichter, J.J., A.L. Alldredge, G. Bernardi, A.J. Brooks, C.A. Carlson, R.C. Carpenter, P.J. Edmunds, M.R. Fewings, K.M. Hanson, J.L. Hench, and others. 2013. Biological and physical interactions on a tropical island coral reef: Transport and retention processes on Moorea, French Polynesia. Oceanography 26(3):52–63"),
+                                        strong("[2]"),
+                                            p("Carpenter, R of Moorea Coral Reef LTER. 2020. MCR LTER: Coral Reef: Long-term Population and Community Dynamics: Benthic Algae and Other Community Components, ongoing since 2005. knb-lter-mcr.8.32 doi:10.6073/pasta/0bf200e9e0f099de69826f57b18ff3da"),
+                                        strong("[3]"), 
+                                            p("Carpenter, R of Moorea Coral Reef LTER. 2020. MCR LTER: Coral Reef: Long-term Population and Community Dynamics: Other Benthic Invertebrates, ongoing since 2005. knb-lter-mcr.7.32 doi:10.6073/pasta/6b5bd9b8ef282fb9a23ba89572835f68"),
+                                        strong("[4]"),
+                                            p("Edmunds, P of Moorea Coral Reef LTER. 2020. MCR LTER: Coral Reef: Long-term Population and Community Dynamics: Corals, ongoing since 2005. knb-lter-mcr.4.38 doi:10.6073/pasta/10ee808a046cb63c0b8e3bc3c9799806")
     
                                         
                                     )
