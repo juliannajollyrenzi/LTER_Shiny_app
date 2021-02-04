@@ -1,0 +1,413 @@
+---
+title: "Wrangle LTER data"
+author: "Julianna Renzi"
+date: "1/22/2021"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(tidyverse) # data wrangling
+require(here) # relative file paths
+require(gghighlight) # highlight certain lines on graphs
+require(vegan) # for diversity analysis 
+
+```
+
+## Look at Other (non-coral) Benthic Invertebrates through time at the Mo'orea Coral Reef Long Term Ecological Research Site
+
+In this script we wrangle the data into a similar format that can be used in the app. We'll start with the invertebrate data to get summarized values for each year.
+
+These data can be found at: http://mcrlter.msi.ucsb.edu/cgi-bin/showDataset.cgi?docid=knb-lter-mcr.7 with the abstract "The data presented here are the abundances of the major invertebrate herbivores and corallivores on Moorea coral reefs. Abundances are estimated in 4 fixed quadrats along 5 permanent transects at each of 4 habitats at 2 sites on each of the 3 shores of Moorea each year. Counts are made in one-meter-squared quadrats." The dataset ranges from 2005-2020 and spans LTER 1, LTER 2, LTER 3, LTER 4, LTER 5, and LTER 6.
+
+Acanthaster/Culcita/Linckia are inconsistent and in laster years are noted when they're 1m away. In 2005-2006 the "No invertebrate observed" notation was used for no invertebrates, but in 2007 onwards they are listed as the species name with a count of 0. 2005-2006 was spread over two years because it took two years to get the base data everywhere but from then on it's one survey/year.
+
+```{r, message=FALSE, warning=FALSE}
+# read in the data 
+
+inverts <- read_csv(here("untouched_data", "MCR_LTER_Annual_Survey_Herbiv_Invert_20201026.csv")) %>% 
+  filter(Year != "2005-2006") %>% # filter out 2005-2006 because it was done over two years and had a different notation scheme
+  filter(!is.na(Taxonomy)) # filter out weird NA row that happened when we used read_csv()
+
+# summarize to get yearly values by species
+taxon_summ <- inverts %>% 
+  group_by(Year, Taxonomy) %>% 
+  summarize(Total_abund = sum(Count, na.rm = TRUE), 
+            N = n(), 
+            Mean_abund_per_m2 = sum(Count, na.rm = TRUE)/480) %>% # 5 transects * 4 quadrats/transect * 4 habitats (2 depths for outer, fringing, and backreef/lagoon) * 6 LTER sites each year = 480 quadrats total
+  filter(Taxonomy != "No invertebrate observed") %>% # get rid of empty lines
+  filter(!str_detect(Taxonomy, "(1m away)")) # remove these so only have what we observed in the 1m^2 quadrats
+
+# could also summarize by site
+site_summ <- inverts %>% 
+  group_by(Year, Taxonomy, Site) %>% 
+  summarize(Total_abund = sum(Count, na.rm = TRUE), 
+            N = n(), 
+            Mean_abund_per_m2 = sum(Count, na.rm = TRUE)/80) %>% # 5 transects * 4 quadrats/transect * 4 habitats (2 depths for outer, fringing, and backreef/lagoon) = 80 quadrats total
+  filter(Taxonomy != "No invertebrate observed") %>% # get rid of empty lines
+  filter(!str_detect(Taxonomy, "(1m away)")) # remove these so only have what we observed in the 1m^2 quadrats
+
+# write site_summ as a csv in the clean data to use in the app:
+# write_csv(site_summ, 
+#           file = here("cleaned_data", "inverts_by_site.csv"))
+
+
+# can also do by habitat
+habit_summ <- inverts %>% 
+  group_by(Year, Taxonomy, Habitat) %>% 
+  summarize(Total_abund = sum(Count, na.rm = TRUE), 
+            N = n(), 
+            Mean_abund_per_m2 = sum(Count, na.rm = TRUE)/120) %>% # 5 transects * 4 quadrats/transect * * 6 LTER sites= 80 quadrats total
+  filter(Taxonomy != "No invertebrate observed") %>% # get rid of empty lines
+  filter(!str_detect(Taxonomy, "(1m away)")) # remove these so only have what we observed in the 1m^2 quadrats
+
+# write habit_sum as a csv in the clean data to use in the app:
+# write_csv(habit_summ, 
+#          file = here("cleaned_data", "inverts_by_habitat.csv"))
+
+```
+
+Now explore potential plots
+
+```{r, message=FALSE, warning=FALSE}
+# taxonomy over time
+taxon_summ %>% 
+  ggplot(aes(x = Year, y = Mean_abund_per_m2, group = Taxonomy)) +
+  geom_line(aes(colour = Taxonomy)) + 
+  scale_color_manual(values = c("#A6CEE3", "#1F78B4", "#B2DF8A",
+                                "#33A02C", "#FB9A99", "#E31A1C",
+                                "#FDBF6F", "#FF7F00", "#CAB2D6",
+                                "#6A3D9A", "#FFFF99", "#B15928",
+                                "#666666", "#E7298A")) +
+  theme_bw() +
+  ylab(expression(paste("Average abundance per ", m^2))) + 
+  xlab("Survey year")
+```
+
+Break it up by habitat then by site
+
+```{r, nessage=FALSE, warning=FALSE}
+habit_summ %>% 
+  ggplot(aes(x = Year, y = Mean_abund_per_m2, group = Taxonomy)) +
+  geom_line(aes(colour = Taxonomy)) + 
+  scale_color_manual(values = c("#A6CEE3", "#1F78B4", "#B2DF8A",
+                                "#33A02C", "#FB9A99", "#E31A1C",
+                                "#FDBF6F", "#FF7F00", "#CAB2D6",
+                                "#6A3D9A", "#FFFF99", "#B15928",
+                                "#666666", "#E7298A")) +
+  theme_minimal() +
+  ylab("Average abundance per m^2") + 
+  xlab("Survey year") +
+  facet_wrap(~Habitat) + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+```
+
+```{r, nessage=FALSE, warning=FALSE}
+site_summ %>% 
+  ggplot(aes(x = Year, y = Mean_abund_per_m2, group = Taxonomy)) +
+  geom_line(aes(colour = Taxonomy)) + 
+  scale_color_manual(values = c("#A6CEE3", "#1F78B4", "#B2DF8A",
+                                "#33A02C", "#FB9A99", "#E31A1C",
+                                "#FDBF6F", "#FF7F00", "#CAB2D6",
+                                "#6A3D9A", "#FFFF99", "#B15928",
+                                "#666666", "#E7298A")) +
+  theme_minimal() +
+  ylab("Average abundance per m^2") + 
+  xlab("Survey year") +
+  facet_wrap(~Site) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+## Now look at benthos
+
+These data were taken from: http://mcrlter.msi.ucsb.edu/cgi-bin/showDataset.cgi?docid=knb-lter-mcr.8.
+
+The abstract online is: "The sampling described here quantifies the relative abundances of corals (aggregate abundance) and the other major benthic components including algal turfs, macroalgae, crustose corallines, and other sessile invertebrates. Abundance is estimated yearly at each of 6 sites (2 per shore) around the island. At each site, and in each of 4 habitats (fringing reef, backreef, forereef 10-m depth, forereef 17-m depth), 5 permanent 10-m long transects have been established and abundance estimates are made at fixed positions along each transect (n=10, 0.25 m2 quadrats per transect) allowing a repeated measures statistical analysis for the detection of temporal trends... ...The original design was established to support a nested, factorial ANOVA experimental approach, but the sampling strategy is amenable to many other designs to meet the users needs. In the factorial construct, shore (north, southeast, or southwest) is treated as a fixed factor, site (LTER 1-6) as a random factor nested within shore, and time as a repeated measures factor based on individual quadrats that are relocated. In the case of the outer reef, depth (10 or 17 m) also was used as a fixed factor to contrast the effects of time and shore between depths"
+
+```{r, message = FALSE, warning=FALSE}
+benthos <- read_csv(here("untouched_data", "MCR_LTER_Annual_Survey_Benthic_Cover_20201221.csv")) %>% 
+  filter(!is.na(Year)) # filter out NAs
+
+# see there are a ~85 species (likely too many to plot on one graph clearly)
+spp_list <- as.data.frame(benthos %>% select(Taxonomy_Substrate_Functional_Group) %>% unique)
+# can write it to a CSV to assign groupings (below)
+# write.csv(spp_list, file = "Benthic_species_key.csv")
+
+# summarize the data by taxonomy
+benth_taxon <- benthos %>% 
+  group_by(Year, Taxonomy_Substrate_Functional_Group) %>% 
+  summarize(Total_percent = sum(Percent_Cover, na.rm = TRUE), 
+            Mean_perc_cov = sum(Percent_Cover, na.rm = TRUE)/1200, # 1200 because it's 6 sites * 4 gabitats * 5 transects * 10 0.25 m^2 quadrats 
+            N = n())
+
+# by habitat
+benth_habit <- benthos %>% 
+  group_by(Year, Taxonomy_Substrate_Functional_Group, Habitat) %>% 
+  summarize(Total_percent = sum(Percent_Cover, na.rm = TRUE), 
+            Mean_perc_cov = sum(Percent_Cover, na.rm = TRUE)/300, # 1200 because it's 6 sites * 5 transects * 10 0.25 m^2 quadrats 
+            N = n())
+
+# by site
+benth_site <- benthos %>% 
+  group_by(Year, Taxonomy_Substrate_Functional_Group, Site) %>% 
+  summarize(Total_percent = sum(Percent_Cover, na.rm = TRUE), 
+            Mean_perc_cov = sum(Percent_Cover, na.rm = TRUE)/200, # 1200 because it's 4 gabitats * 5 transects * 10 0.25 m^2 quadrats 
+            N = n())
+```
+
+```{r}
+# try plotting with gghighlight
+benth_taxon %>% 
+  ggplot(aes(x = Year, y = Mean_perc_cov, group = Taxonomy_Substrate_Functional_Group)) +
+  geom_line(aes(colour = Taxonomy_Substrate_Functional_Group)) +
+  theme_bw() +
+  scale_color_brewer(palette = "Dark2") +
+  gghighlight(max(Mean_perc_cov) > 12) +
+  ylab("Mean percent cover (%)") + 
+  xlab("Survey year") 
+
+# by site
+benth_site %>% 
+  ggplot(aes(x = Year, y = Mean_perc_cov, group = Taxonomy_Substrate_Functional_Group)) +
+  geom_line(aes(color = Taxonomy_Substrate_Functional_Group)) + 
+  theme_bw() +
+  gghighlight(max(Mean_perc_cov) > 13) +
+  scale_color_brewer(palette = "Dark2") +
+  ylab("Mean percent cover (%)") + 
+  xlab("Survey year") + 
+  facet_wrap("Site")
+
+# by habitat
+benth_habit %>% 
+  ggplot(aes(x = Year, y = Mean_perc_cov, group = Taxonomy_Substrate_Functional_Group)) +
+  facet_wrap(~Habitat) +
+  geom_line(aes(colour = Taxonomy_Substrate_Functional_Group)) + 
+  theme_bw() +
+  scale_color_brewer(palette = "Dark2") +
+  gghighlight(max(Mean_perc_cov) > 13) +
+  ylab("Mean percent cover (%)") + 
+  xlab("Survey year")  
+
+
+
+```
+
+Simplify benthos using a key we classified in Excel
+
+```{r}
+benthic_spp_key <- read_csv("Benthic_species_key.csv")
+benthos_grouped <- benthos %>% 
+  full_join(benthic_spp_key, by = "Taxonomy_Substrate_Functional_Group")
+```
+
+Now look by habitat 
+
+```{r}
+# now can summarize in the same way
+# by habitat
+benth_habit_group <- benthos_grouped %>% 
+  group_by(Year, Spp_grouping, Habitat) %>% 
+  summarize(Total_percent = sum(Percent_Cover), 
+            Mean_perc_cov = sum(Percent_Cover)/300, # 300 because it's 6 sites *  5 transects * 10 0.25 m^2 quadrats 
+            N = n())
+
+# then plot
+benth_habit_group %>% 
+  filter(Spp_grouping == "Crustose_corallines" |
+         Spp_grouping == "Hard_coral" |
+         Spp_grouping == "Macroalgae" |
+         Spp_grouping == "Turf") %>% 
+  ggplot(aes(x = Year, y = Mean_perc_cov, group = Spp_grouping)) +
+  geom_line(aes(colour = Spp_grouping)) +
+  scale_color_brewer(palette = "Dark2") +
+  theme_minimal() +
+  ylab("Mean percent cover (%)") + 
+  xlab("Survey year") +
+  facet_wrap(~Habitat)
+
+```
+
+Now look by LTER site
+
+```{r}
+benth_site_group <- benthos_grouped %>% 
+  group_by(Year, Spp_grouping, Site) %>% 
+  summarize(Total_percent = sum(Percent_Cover), 
+            Mean_perc_cov = sum(Percent_Cover)/200, # 200 because it's 4 habitats * 5 transects * 10 0.25 m^2 quadrats 
+            N = n())
+
+# then plot
+benth_site_group %>% 
+  filter(Spp_grouping == "Crustose_corallines" |
+         Spp_grouping == "Hard_coral" |
+         Spp_grouping == "Macroalgae" |
+         Spp_grouping == "Turf") %>% 
+  ggplot(aes(x = Year, y = Mean_perc_cov, group = Spp_grouping)) +
+  geom_line(aes(colour = Spp_grouping)) +
+  scale_color_brewer(palette = "Dark2") +
+  theme_minimal() +
+  ylab("Mean percent cover (%)") + 
+  xlab("Survey year") +
+  facet_wrap(~Site)
+```
+
+
+## Diversity changes through time
+
+First for macroalgae
+
+```{r}
+# look at how macroalgaal diversity changes through time
+# first want benthos_grouped in a species matrix so it can be used by Vegan
+
+wide_benthos_habitat <- benthos_grouped %>% 
+  filter(Spp_grouping == "Macroalgae") %>% # just get macroalgae
+  group_by(Year, Habitat, Taxonomy_Substrate_Functional_Group) %>% # group by habitat for this part
+  summarize(Sum_percent_cover = sum(Percent_Cover)) %>% # get the sum of percent cover per habitat
+  spread(Taxonomy_Substrate_Functional_Group, Sum_percent_cover) %>% # change to wide format
+  replace(is.na(.), 0) # turn NAs into zeros
+
+algal_mat <- wide_benthos_habitat[, 3:length(colnames(wide_benthos_habitat))] # get rid of descriptive columns to make the species matris
+
+# get the Shannon Diversity index
+alg.shann.ind <- diversity(algal_mat, index = "shannon")
+
+alg.shann.ind <- as.data.frame(alg.shann.ind) # this just makes it into a data frame so we can keep all our data easily and add to them
+  colnames(alg.shann.ind) <- "Shannon_index" # this is just so we remember what these values are
+  alg.div.metrics <- cbind(wide_benthos_habitat[, 1:2], alg.shann.ind)
+
+# Can also calculate the number of species (species richness) using the specnumber() function
+alg.spp.richness <- specnumber(algal_mat)
+  alg.spp.richness <- as.data.frame(alg.spp.richness)
+  colnames(alg.spp.richness) <- "Species_richness"
+  alg.div.metrics <- cbind(alg.div.metrics, alg.spp.richness)
+  
+```
+
+Explore patterns graphically
+
+```{r}
+# first plot diversity
+alg.div.metrics %>% 
+  ggplot(aes(x = Year, y = Shannon_index, group = Habitat)) +
+  geom_line(aes(colour = Habitat)) +
+  theme_minimal() +
+  scale_color_brewer(palette = "Set2") + 
+  ylab("Macroalgal diversity (Shannon index)")
+
+# then plot species richness
+alg.div.metrics %>% 
+  ggplot(aes(x = Year, y = Species_richness, group = Habitat)) +
+  geom_line(aes(colour = Habitat)) +
+  theme_classic() +
+  scale_color_brewer(palette = "Set2") + 
+  ylab("Macroalgal species richness") +
+  theme(legend.position = "top")
+```
+
+Now try by site instead to see if that changes the pattern we see
+
+```{r}
+# do all the same, but this time grouping by site (sorry for the confusing variable names)
+wide_benthos_site <- benthos_grouped %>% 
+  filter(Spp_grouping == "Macroalgae") %>% # just get macroalgae
+  group_by(Year, Site, Taxonomy_Substrate_Functional_Group) %>% # group by site now for this part (Habitat last time)
+  summarize(Sum_percent_cover = sum(Percent_Cover)) %>% # get the sum of percent cover per habitat
+  spread(Taxonomy_Substrate_Functional_Group, Sum_percent_cover) %>% # change to wide format
+  replace(is.na(.), 0) # turn NAs into zeros
+
+algal_mat.site <- wide_benthos_site[, 3:length(colnames(wide_benthos_site))] # get rid of descriptive columns to make the species matris
+
+# get the Shannon Diversity index
+alg.shann.ind.s <- diversity(algal_mat.site, index = "shannon")
+
+alg.shann.ind.s <- as.data.frame(alg.shann.ind.s) # this just makes it into a data frame so we can keep all our data easily and add to them
+  colnames(alg.shann.ind.s) <- "Shannon_index" # this is just so we remember what these values are
+  alg.div.metrics.s <- cbind(wide_benthos_site[, 1:2], alg.shann.ind.s)
+
+# Can also calculate the number of species (species richness) using the specnumber() function
+alg.spp.richness.s <- specnumber(algal_mat.site)
+  alg.spp.richness.s <- as.data.frame(alg.spp.richness.s)
+  colnames(alg.spp.richness.s) <- "Species_richness"
+  alg.div.metrics.s <- cbind(alg.div.metrics.s, alg.spp.richness.s)
+```
+
+And plot
+
+```{r}
+# diversity
+alg.div.metrics.s %>% 
+  ggplot(aes(x = Year, y = Shannon_index, group = Site)) +
+  geom_line(aes(colour = Site)) +
+  theme_minimal() +
+  scale_color_brewer(palette = "Set2") + 
+  ylab("Macroalgal diversity (Shannon index)")
+
+# then plot species richness
+alg.div.metrics.s %>% 
+  ggplot(aes(x = Year, y = Species_richness, group = Site)) +
+  geom_line(aes(colour = Site)) +
+  theme_classic() +
+  scale_color_brewer(palette = "Set2") + 
+  ylab("Macroalgal species richness") +
+  theme(legend.position = "top")
+```
+
+
+## Examine abiotic variablrs
+
+Here we want to calculate Degree Heating Weeks (DHWs), which are calculated as amount of time spent over the bleaching threshold (1°C + the local Maximum of the Monthly Mean) over a 12-week moving window. Below is more information on DHWs, which are calculated from the Coral Bleaching HotSpot product. DHWs greater than 4 are thought to result in widespread bleaching and values greater than 8 are thought to induce widespread mortality, although given the fine temporal resolution we're integrating over our values for bleaching may be significantly lower. 
+
+"The HotSpot anomaly was based on the climatological mean SST of the hottest month (often referred to as the Maximum of the Monthly Mean (MMM) SST climatology) (Liu et al., 2003; Liu et al., 2005; Skirving, 2006). This MMM SST climatology is simply the highest of the monthly mean SST climatologies described in the Climatology section. HotSpot = SST - MMM_SST_climatology." DHWs are then cumulative values of when SSTs are 1°C above the MMM, or, in other words, cumulative HotSpot values over time, but only when the HotSpot value exceeds the bleaching threshold (HotSpot > 1).
+
+The data below are from Thermisters at each of the 6 LTER sites that have been recording temperature in 20 minute increments. Here is the link to the dataset for LTER 6: http://mcrlter.msi.ucsb.edu/cgi-bin/showDataset.cgi?docid=knb-lter-mcr.1035&displaymodule=entity&entitytype=dataTable&entityindex=6 
+
+```{r}
+# lter1_temp <- read_csv(here("untouched_data", # "MCR_LTER01_BottomMountThermistors_20191023.csv")) %>%
+#   mutate(year = format(time_local, format = "%Y")) %>%
+#   mutate(month = format(time_local, format = "%m")) %>%
+#   mutate(day = format(time_local, format = "%d"))
+  
+# get the MMM for reference
+# MMM <- lter1_temp %>% 
+#   filter(year %in% c(2005, 2006, 2007, 2008, 2009, 2010, # 2011, 2012, 2013, 2014)) %>% 
+#   group_by(year, month) %>% 
+#   summarize(Mean_T = mean(temperature_c)) %>% 
+#   group_by(year) %>% 
+#   summarize(MMM = max(Mean_T)) %>% 
+#   summarize(Ten_yr_MMM = mean(MMM)) %>% 
+#   as.double # we'll use 28.9 deg C as the MMM because it # was the average of the MMM of the first ten years
+# 
+# # go through and accumulate Degree Heating time over a # 12-week window
+# dh_time <- c()
+# change_time <- c()
+
+# for (i in 1:4) {
+#   # loop through every row in the thermister data
+#   ifelse(lter1_temp$time_local[i] > (12*7*24*60*60 + # lter1_temp$time_local[1]), # if the time is less than 3 # months (12 weeks*7 days *24 hr*60 min*60 sec, don't start # counting)
+#          dh_time <- append(dh_time, NA), # if it hasn't # been 3 months, add an NA to our degree heating vector
+#          ifelse(lter1_temp$temperature_c[i] > (MMM + 1), # # otherwise, check to see if it's exceeded the bleaching # threshold (1 degree over the MMM)
+#                 dh_time <- append(dh_time, # (lter1_temp$temperature_c[i] - MMM -1)), 
+#                 dh_time <- append(dh_time, NA)))
+#   # if it has exceeded, add the DH value to the dh vector # and if not add an NA
+#   change_time <- append(change_time, # lter1_temp$time_local[i] - lter1_temp$time_local[i-1]) # # also add the time step to the time vector no matter what
+#   if(i %% 1000 == 0) {
+#     print(i) # here  we just print every 1,000 rows to # make sure it's running (pretty slow)
+#   }
+# }
+# 
+# # dim(lter1_temp)[1]
+# # now we want to add these values to our dataset 
+# lter1_dhw <- cbind(lter1_temp, 
+#       "Degree_heating" = dh_time, 
+#       "Delta_time" = change_time)
+# 
+# # change to append not cbind 
+```
+
+
+
+
