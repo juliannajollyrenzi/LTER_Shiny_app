@@ -104,8 +104,38 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                     )
                                     )# want a widget and a graph (i.e. sidebar and a main panel)
                            ),
-                           tabPanel("Benthic species"),
-                           tabPanel("Macroalgal diversity")
+                           
+                           
+                           
+                           tabPanel("Benthic species",
+                                    sidebarLayout(
+                                        sidebarPanel(
+                                            selectInput("select", label = h3("Select box"), 
+                                                        choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3), 
+                                                        selected = 1),
+                                            
+                                            hr(),
+                                            fluidRow(column(3, verbatimTextOutput("value")))
+                                        ),
+                                        mainPanel("Benthic (i.e. bottom-dwelling) species")
+                                        
+                                    )),
+                           
+                           
+                           
+                           tabPanel("Macroalgal diversity",
+                                    sidebarLayout(
+                                        sidebarPanel(
+                                            # Copy the line below to make a date range selector
+                                            dateRangeInput("dates", label = h3("Date range")),
+                                            
+                                            hr(),
+                                            fluidRow(column(4, verbatimTextOutput("value")))
+                                        ), 
+                                        
+                                        mainPanel("Macroalgal diversity through time")
+                                    )
+                                    )
                            
                 ) # create a navigation bar for tabs and names of tabs
                 
@@ -160,6 +190,15 @@ server <- function(input, output) {
             theme(text = element_text(size=15),
                   axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
     )
+    
+    
+    # now start on work for drop down benthic tab
+    output$value <- renderPrint({ input$select }) # this is from the gallery
+    
+    
+    # now start work on the date range
+    # You can access the values of the widget (as a vector of Dates) with input$dates, e.g.
+    output$value <- renderPrint({ input$dates })
     
     
 }
