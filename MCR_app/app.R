@@ -28,6 +28,25 @@ mcr_theme <- bs_theme(
 ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand/contract it. theme is for the CSS in the www subfolder
                 
                 navbarPage("Mo'orea Coral Reef LTER",
+                           tabPanel("Background information",
+                                    mainPanel(
+                                        h1("The Mo'orea Long Term Ecological Research Site (LTER)"),
+                                        h2("What is the Mo'orea LTER?"),
+                                        p("It is..."),
+                                        h2("Where is the Mo'orea LTER?"),
+                                        p("Mo'orea is..."),
+                                        img(src = "Moorea_map.png"),
+                                        em("Figure 1: Map of Mo'orea LTER sites and habitats. Taken directly from Leichter et al. 2013"),
+                        
+                                        h2("Citations"),
+                                        p("[1] Leichter, J.J., A.L. Alldredge, G. Bernardi, A.J. Brooks, C.A. Carlson, R.C. Carpenter, P.J. Edmunds, M.R. Fewings, K.M. Hanson, J.L. Hench, and others. 2013. Biological and physical interactions on a tropical island coral reef: Transport and retention processes on Moorea, French Polynesia. Oceanography 26(3):52–63")
+    
+                                        
+                                    )
+                                        
+                                    ),
+                           
+                           
                            navbarMenu("Non-coral invertebrates",
                            tabPanel("By habitat",
                                     sidebarLayout(
