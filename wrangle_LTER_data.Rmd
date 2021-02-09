@@ -252,6 +252,11 @@ benth_site_group %>%
   ylab("Mean percent cover (%)") + 
   xlab("Survey year") +
   facet_wrap(~Site)
+
+# save as csv for use in shiny
+# write_csv(benth_site_group,file = here("cleaned_data", "benthos_by_site.csv"))
+
+# write_csv(benth_habit_group,file = here("cleaned_data", "benthos_by_habitat.csv"))
 ```
 
 
@@ -354,6 +359,92 @@ alg.div.metrics.s %>%
   scale_color_brewer(palette = "Set2") + 
   ylab("Macroalgal species richness") +
   theme(legend.position = "top")
+```
+
+
+## Fishes through time
+
+```{r}
+# read in fish data
+# Four replicate transects are surveyed in each of six locations on the forereef (two on each of Moorea's three sides), six locations on the backreef (two on each of Moorea's three sides) and on six locations on the fringing reef (two on each of Moorea's three sides) for a total of 72 individual transects
+fishes <- read_csv(here("untouched_data", "MCR_LTER_Annual_Fish_Survey_20210108.csv")) %>% 
+  filter(!is.na(Year)) %>%  # filter out NAs
+  filter(Year > 2005) %>% # filter for after 2006 when they started doing total length
+  filter(Habitat != "error") # get rid of error rows
+
+# see there are a ~398 species (definitely too many to plot on one graph clearly)
+spp_list <- as.data.frame(fishes %>% select(Taxonomy) %>% unique)
+
+funct_list <- as.data.frame(fishes %>% select(Fine_Trophic) %>% unique) # see need to filter out na and unknowns 
+
+```
+
+Now plot by habitat 
+
+```{r}
+# summarize the data by fine trophic group
+fish_trophic_hab <- fishes %>% 
+  filter(Fine_Trophic != "na" & Fine_Trophic != "Unknown") %>% 
+  group_by(Year, Fine_Trophic, Habitat) %>% 
+  summarize(Total_count = sum(Count),
+            Total_biomass_kg = sum(Biomass)/1000, # this is assuming Biomass is a sum (which I think it is looking at the data). Calculated fish biomass is a wet weight. Fish biomass (body weight in g) so we divide by 1,000 to get kg
+            N = n(), 
+            Max_N = max(n()))
+
+# then plot
+fish_trophic_hab %>% 
+  ggplot(aes(x = Year, y = Total_biomass_kg, group = Fine_Trophic)) +
+  geom_line(aes(colour = Fine_Trophic)) +
+  scale_color_brewer(palette = "Paired") +
+  theme_classic() +
+  ylab("Total biomass (kg)") + 
+  xlab("Survey year") +
+  facet_wrap(~Habitat) +
+  theme(legend.position = "bottom") +
+  scale_fill_discrete(name = "Trophic position")
+
+```
+
+Then by site
+
+```{r}
+# re-summarize the data
+fish_trophic_site <- fishes %>% 
+  filter(Fine_Trophic != "na" & Fine_Trophic != "Unknown") %>% 
+  group_by(Year, Fine_Trophic, Site) %>% 
+  summarize(Total_count = sum(Count),
+            Total_biomass_kg = sum(Biomass)/1000, # this is assuming Biomass is a sum (which I think it is looking at the data). Calculated fish biomass is a wet weight. Fish biomass (body weight in g) so we divide by 1,000 to get kg
+            N = n(), 
+            Max_N = max(n()))
+
+# then plot
+fish_trophic_site %>% 
+  ggplot(aes(x = Year, y = Total_biomass_kg, group = Fine_Trophic)) +
+  geom_line(aes(colour = Fine_Trophic)) +
+  scale_color_brewer(palette = "Paired") +
+  theme_classic() +
+  ylab("Total biomass (kg)") + 
+  xlab("Survey year") +
+  facet_wrap(~Site) +
+  theme(legend.position = "bottom") +
+  labs(title = "LTER Sites") +
+  scale_fill_discrete(name = "Trophic position") 
+
+
+```
+
+## Bring in Acanthaster (COTS) data
+
+```{r}
+cots <- read_csv(here("untouched_data", "MCR_LTER_COTS_abundance_2005-2018_20181221.csv"))
+
+cots_site <- cots %>% 
+  group_by(Year, Site) %>% 
+  summarize(Count_COTS = sum(COTS))
+
+cots_habitat <- cots %>% 
+  group_by(Year, Site) %>% 
+  summarize(Count_COTS = sum(COTS))
 ```
 
 

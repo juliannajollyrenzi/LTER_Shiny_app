@@ -15,6 +15,13 @@ invert_habitat <- read_csv(here("cleaned_data",
 # load invert data by site
 invert_site <- read_csv(here("cleaned_data", 
                                 "inverts_by_site.csv"))
+# load benthos data by habitat
+benth_habitat <- read_csv(here("cleaned_data", 
+                               "benthos_by_habitat.csv"))
+# load benthos data by site
+benth_site <- read_csv(here("cleaned_data", 
+                            "benthos_by_site.csv"))
+
 
 # put text blocks here so they don't clog up the ui code
 about.txt <- "The Mo'orea Long Term Ecological Research (LTER) site is a reserach site that was established by the U.S. National Science Foundation to gain understanding of long term dynamics in coral reef ecosystems. 
@@ -85,7 +92,7 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                                                         selected = "Acanthaster planci") # create widgets within panel
                                         ),
                                         mainPanel("Invertebrate abundance over time, by habitat (note the two outer sites are distinguished by their depth, in meters)",
-                                                  plotOutput("inv_hab_plot") # THIS IS THE LAST THING!! Put this in after you do output in server
+                                                  plotOutput("inv_hab_plot")
                                         
                                         
                                     ))),
@@ -135,7 +142,34 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                         
                                         mainPanel("Macroalgal diversity through time")
                                     )
-                                    )
+                                    ),
+                           navbarMenu("Fishes",
+                                
+                                      tabPanel(
+                                          "By habitat",
+                                          sidebarLayout(
+                                              checkboxGroupInput(
+                                                  inputId = "pick_fish_h",
+                                                  label = "Choose species: "),
+                                              mainPanel(
+                                                  "Fish abundance over time, by habitat (note the two outer sites are distinguished by their depth, in meters)"
+                                              )
+                                          )
+                                      ),
+                                      
+                                      
+                               tabPanel(
+                                   "By site",
+                                   sidebarLayout(
+                                       checkboxGroupInput(
+                                           inputId = "pick_fish_s",
+                                           label = "Choose species: "),
+                                   mainPanel(
+                                       "Fish abundance over time, by LTER site. Recall LTER 1 and 2 are on the northern side, LTER 3 and 4 are on the southeastern side, and LTER 5 and 6 are on the southwestern side of the island"
+                                   )
+                                   )
+                               )
+                           )
                            
                 ) # create a navigation bar for tabs and names of tabs
                 
@@ -153,7 +187,7 @@ server <- function(input, output) {
             filter(Taxonomy %in% input$pick_species_h)
     }) # reactive dataframe for the species the user selected (input$pick_species is now a vector of the user selections)
     
-    output$inv_hab_plot <- renderPlot(
+    output$inv_hab_plot <- renderPlot({
         ggplot(data = inv_hab_reactive(), aes(x = Year, y = Mean_abund_per_m2)) +
             geom_line(aes(color = Taxonomy)) + # don't forget parenthesis after calling reactive dataset!
             scale_color_manual(values = c("#A6CEE3", "#1F78B4", "#B2DF8A",
@@ -167,7 +201,7 @@ server <- function(input, output) {
             facet_wrap("Habitat") +
             theme(text = element_text(size=15),
                   axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-    )
+    })
     
     # now create the widget for the same data, but divided by site (second drop down)
     inv_site_reactive <- reactive({
@@ -175,7 +209,7 @@ server <- function(input, output) {
             filter(Taxonomy %in% input$pick_species_s)
     }) # reactive dataframe for the species the user selected (input$pick_species is now a vector of the user selections)
     
-    output$inv_site_plot <- renderPlot(
+    output$inv_site_plot <- renderPlot({
         ggplot(data = inv_site_reactive(), aes(x = Year, y = Mean_abund_per_m2)) +
             geom_line(aes(color = Taxonomy)) + # don't forget parenthesis after calling reactive dataset!
             scale_color_manual(values = c("#A6CEE3", "#1F78B4", "#B2DF8A",
@@ -189,7 +223,7 @@ server <- function(input, output) {
             facet_wrap("Site") +
             theme(text = element_text(size=15),
                   axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-    )
+    })
     
     
     # now start on work for drop down benthic tab
@@ -198,7 +232,7 @@ server <- function(input, output) {
     
     # now start work on the date range
     # You can access the values of the widget (as a vector of Dates) with input$dates, e.g.
-    output$value <- renderPrint({ input$dates })
+    output$dates <- renderPrint({ input$dates })
     
     
 }
