@@ -144,7 +144,11 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                     )
                                     ),
                            navbarMenu("Fishes",
+<<<<<<< HEAD
                                 
+=======
+                                      
+>>>>>>> 0ddd0d816cb97bfb82af54c998930d20d7193b52
                                       tabPanel(
                                           "By habitat",
                                           sidebarLayout(
@@ -158,6 +162,7 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                       ),
                                       
                                       
+<<<<<<< HEAD
                                tabPanel(
                                    "By site",
                                    sidebarLayout(
@@ -169,6 +174,19 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                    )
                                    )
                                )
+=======
+                                      tabPanel(
+                                          "By site",
+                                          sidebarLayout(
+                                              checkboxGroupInput(
+                                                  inputId = "pick_fish_s",
+                                                  label = "Choose species: "),
+                                              mainPanel(
+                                                  "Fish abundance over time, by LTER site. Recall LTER 1 and 2 are on the northern side, LTER 3 and 4 are on the southeastern side, and LTER 5 and 6 are on the southwestern side of the island"
+                                              )
+                                          )
+                                      )
+>>>>>>> 0ddd0d816cb97bfb82af54c998930d20d7193b52
                            )
                            
                 ) # create a navigation bar for tabs and names of tabs
