@@ -430,6 +430,11 @@ fish_trophic_site %>%
   labs(title = "LTER Sites") +
   scale_fill_discrete(name = "Trophic position") 
 
+# and save datasets
+# write_csv(fish_trophic_hab, 
+#          file = here("cleaned_data", "fish_by_habitat.csv"))
+# write_csv(fish_trophic_site, 
+#          file = here("cleaned_data", "fish_by_site.csv"))
 
 ```
 
@@ -443,8 +448,30 @@ cots_site <- cots %>%
   summarize(Count_COTS = sum(COTS))
 
 cots_habitat <- cots %>% 
-  group_by(Year, Site) %>% 
+  group_by(Year, Habitat) %>% 
   summarize(Count_COTS = sum(COTS))
+
+# plot by site
+cots_site %>% 
+  ggplot(aes(x = Year, y = Count_COTS)) +
+  geom_line() +
+  theme_classic() +
+  ylab("COTS counts") + 
+  xlab("Survey year") +
+  facet_wrap(~Site) +
+  labs(title = "LTER Sites") 
+
+# plot by habitat
+# plot
+cots_habitat %>% 
+  ggplot(aes(x = Year, y = Count_COTS)) +
+  geom_line() +
+  theme_classic() +
+  ylab("COTS counts") + 
+  xlab("Survey year") +
+  facet_wrap(~Habitat) +
+  labs(title = "LTER Habitats") 
+
 ```
 
 
