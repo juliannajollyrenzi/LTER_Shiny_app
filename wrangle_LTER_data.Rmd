@@ -472,6 +472,10 @@ cots_habitat %>%
   facet_wrap(~Habitat) +
   labs(title = "LTER Habitats") 
 
+# write data
+# write_csv(cots_site,file = here("cleaned_data", "cots_by_site.csv"))
+# write_csv(cots_habitat,file = here("cleaned_data", "cots_by_habitat.csv"))
+
 ```
 
 ## Other disturbances

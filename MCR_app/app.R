@@ -27,6 +27,11 @@ fish_habitat <- read_csv(here("cleaned_data",
 # load fish data by site
 fish_site <- read_csv(here("cleaned_data",
                            "fish_by_site.csv"))
+# load COTS data
+cots_habitat <- read_csv(here("cleaned_data",
+                              "cots_by_habitat.csv"))
+cots_site <- read_csv(here("cleaned_data",
+                           "cots_by_site.csv"))
 
 
 # put text blocks here so they don't clog up the ui code
@@ -189,9 +194,16 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                    )
                                    )
                                )
-                           )
+                           ),
+                           tabPanel("Potential stressors",
+                                    h3("Crown of thorns starfish outbreaks"),
+                                    p("Crown of thorns starfish (COTS).."),
+                                    plotOutput("COTS_site_plot"), 
+                                    p("And by habitat we se..."),
+                                    plotOutput("COTS_hab_plot")
+                                    )
                            
-                ) # create a navigation bar for tabs and names of tabs
+                ) 
                 
 )
 
@@ -338,6 +350,28 @@ server <- function(input, output) {
             theme(legend.position = "bottom") +
             labs(title = "LTER Sites") +
             scale_fill_discrete(name = "Trophic position") 
+    })
+    
+    # create some static graphs for the "other stressors" tab
+    output$COTS_site_plot <- renderPlot({
+        ggplot(data = cots_site,
+               aes(x = Year, y = Count_COTS)) +
+            geom_line() +
+            theme_classic() +
+            ylab("COTS counts") + 
+            xlab("Survey year") +
+            facet_wrap(~Site) +
+            labs(title = "LTER Sites")  
+    })
+    output$COTS_hab_plot <- renderPlot({
+        ggplot(data = cots_habitat,
+               aes(x = Year, y = Count_COTS)) +
+            geom_line() +
+            theme_classic() +
+            ylab("COTS counts") + 
+            xlab("Survey year") +
+            facet_wrap(~Habitat) +
+            labs(title = "Habitats (forereef, backreef, lagoon)")  
     })
     
 }
