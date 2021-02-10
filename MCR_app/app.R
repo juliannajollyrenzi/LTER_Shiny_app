@@ -133,19 +133,31 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                            
                            
                            
-                           tabPanel("Benthic species",
+                           navbarMenu("Benthos over time",
+                               tabPanel("By habitat",
                                     sidebarLayout(
                                         sidebarPanel(
                                             # Copy the line below to make a slider range 
-                                            sliderInput("benthDates", label = h3("Year Range"), min = 2005, 
+                                            sliderInput("benthDates_h", label = h3("Year Range"), min = 2005, 
                                                         max = 2020, value = c(2005, 2010), sep = "", step = 1),
                                             
                                         ), 
                                         
-                                        mainPanel("Benthic (i.e. bottom dwelling) species through time",
-                                                  plotOutput("benth_time_plot"))
+                                        mainPanel("Benthic (i.e. bottom dwelling) organisms through time, divided by habitat type",
+                                                  plotOutput("benth_time_plot_h"))
                                     )
                                     ),
+                               tabPanel("By site",
+                                        sidebarLayout(
+                                            sidebarPanel(
+                                                sliderInput("benthDates_s", label = h3("Year Range"), min = 2005,
+                                                            max = 2020, value = c(2005, 2010), sep = "", step = 1),
+                                            ),
+                                            
+                                            mainPanel("Benthic (i.e. bottom dwelling) organisms through time, divided by LTER Site",
+                                                      plotOutput("benth_time_plot_s"))
+                                        ))
+                           ),
                            navbarMenu("Fishes",
                                       tabPanel(
                                           "By habitat",
@@ -247,11 +259,12 @@ server <- function(input, output) {
                        Spp_grouping == "Hard_coral" |
                        Spp_grouping == "Macroalgae" |
                        Spp_grouping == "Turf") %>% 
-            filter(Year >= input$benthDates[1] & Year <= input$benthDates[2])
+            filter(Year >= input$benthDates_h[1] & Year <= input$benthDates_h[2]) %>% 
+            mutate(Year = as.integer(Year))
     })
     
-    # plot benthos over time
-    output$benth_time_plot <- renderPlot({
+    # plot benthos over time by habitat
+    output$benth_time_plot_h <- renderPlot({
         ggplot(data = benth_hab_reactive(),
                aes(x = Year, y = Mean_perc_cov, group = Spp_grouping)) +
             geom_line(aes(colour = Spp_grouping)) +
@@ -261,6 +274,31 @@ server <- function(input, output) {
             xlab("Survey year") +
             facet_wrap(~Habitat)
     })
+    
+    # now by site
+    # start with reactive df
+    benth_site_reactive <- reactive({
+        benth_site %>% 
+            filter(Spp_grouping == "Crustose_corallines" |
+                       Spp_grouping == "Hard_coral" |
+                       Spp_grouping == "Macroalgae" |
+                       Spp_grouping == "Turf") %>% 
+            filter(Year >= input$benthDates_s[1] & Year <= input$benthDates_s[2]) %>% 
+            mutate(Year = as.integer(Year))
+    })
+    
+    output$benth_time_plot_s <- renderPlot({
+        ggplot(data = benth_site_reactive(),
+               aes(x = Year, y = Mean_perc_cov, group = Spp_grouping)) +
+            geom_line(aes(colour = Spp_grouping)) +
+            scale_color_brewer(palette = "Dark2") +
+            theme_minimal() +
+            ylab("Mean percent cover (%)") + 
+            xlab("Survey year") +
+            facet_wrap(~Site) +
+            theme(axis.text.x = element_text(angle = 90))
+    })
+    
     
     
     # work on fishes: start with by habitat
