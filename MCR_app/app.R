@@ -120,41 +120,41 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                            
                            
                            
-                           tabPanel("Benthic species",
+                           tabPanel("Macroalgal diversity",
                                     sidebarLayout(
                                         sidebarPanel(
                                             selectInput("select", label = h3("Select box"), 
                                                         choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3), 
                                                         selected = 1)
                                         ),
-                                        mainPanel("Benthic (i.e. bottom-dwelling) species")
+                                        mainPanel("Macroalgal diversity through time")
                                         
                                     )),
                            
                            
                            
-                           tabPanel("Macroalgal diversity",
+                           tabPanel("Benthic species",
                                     sidebarLayout(
                                         sidebarPanel(
-                                            # Copy the line below to make a date range selector
-                                            dateRangeInput("dates", label = h3("Date range")),
+                                            # Copy the line below to make a slider range 
+                                            sliderInput("benthDates", label = h3("Year Range"), min = 2005, 
+                                                        max = 2020, value = c(2005, 2010), sep = "", step = 1),
                                             
-                                            hr(),
-                                            fluidRow(column(4, verbatimTextOutput("value")))
                                         ), 
                                         
-                                        mainPanel("Macroalgal diversity through time")
+                                        mainPanel("Benthic (i.e. bottom dwelling) species through time",
+                                                  plotOutput("benth_time_plot"))
                                     )
                                     ),
                            navbarMenu("Fishes",
                                       tabPanel(
                                           "By habitat",
-                                          sidebarLayout(
+                                          sidebarLayout(sidebarPanel(
                                               checkboxGroupInput(
                                                   inputId = "pick_fish_h",
                                                   label = "Choose species: ",
                                                   choices = unique(fish_habitat$Fine_Trophic),
-                                                  selected = "Benthic Invertebrate Consumer"),
+                                                  selected = "Benthic Invertebrate Consumer")),
                                               mainPanel(
                                                   "Fish abundance over time, by habitat (note the two outer sites are distinguished by their depth, in meters)",
                                                   plotOutput("fish_hab_plot")
@@ -165,12 +165,15 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                       
                                tabPanel(
                                    "By site",
-                                   sidebarLayout(
+                                   sidebarLayout(sidebarPanel(
                                        checkboxGroupInput(
                                            inputId = "pick_fish_s",
-                                           label = "Choose species: "),
+                                           label = "Choose species: ",
+                                           choices = unique(fish_habitat$Fine_Trophic),
+                                           selected = "Benthic Invertebrate Consumer")),
                                    mainPanel(
-                                       "Fish abundance over time, by LTER site. Recall LTER 1 and 2 are on the northern side, LTER 3 and 4 are on the southeastern side, and LTER 5 and 6 are on the southwestern side of the island"
+                                       "Fish abundance over time, by LTER site. Recall LTER 1 and 2 are on the northern side, LTER 3 and 4 are on the southeastern side, and LTER 5 and 6 are on the southwestern side of the island",
+                                       plotOutput("fish_site_plot")
                                    )
                                    )
                                )
@@ -235,11 +238,32 @@ server <- function(input, output) {
     output$value <- renderPrint({ input$select }) # this is from the gallery
     
     
-    # now start work on the date range
-    # You can access the values of the widget (as a vector of Dates) with input$dates, e.g.
-    output$dates <- renderPrint({ input$dates })
     
-    # work on fishes
+    # now start work on the slider range for the benthos
+    # start with reactive df
+    benth_hab_reactive <- reactive({
+        benth_habitat %>% 
+            filter(Spp_grouping == "Crustose_corallines" |
+                       Spp_grouping == "Hard_coral" |
+                       Spp_grouping == "Macroalgae" |
+                       Spp_grouping == "Turf") %>% 
+            filter(Year >= input$benthDates[1] & Year <= input$benthDates[2])
+    })
+    
+    # plot benthos over time
+    output$benth_time_plot <- renderPlot({
+        ggplot(data = benth_hab_reactive(),
+               aes(x = Year, y = Mean_perc_cov, group = Spp_grouping)) +
+            geom_line(aes(colour = Spp_grouping)) +
+            scale_color_brewer(palette = "Dark2") +
+            theme_minimal() +
+            ylab("Mean percent cover (%)") + 
+            xlab("Survey year") +
+            facet_wrap(~Habitat)
+    })
+    
+    
+    # work on fishes: start with by habitat
     fish_hab_reactive <- reactive({
         fish_habitat %>% 
             filter(Fine_Trophic %in% input$pick_fish_h)
@@ -258,6 +282,25 @@ server <- function(input, output) {
             scale_fill_discrete(name = "Trophic position")
     })
     
+    # then fishes by site
+    fish_site_reactive <- reactive({
+        fish_site %>% 
+            filter(Fine_Trophic %in% input$pick_fish_s)
+    })
+    
+    output$fish_site_plot <- renderPlot({
+        ggplot(data = fish_site_reactive(),
+               aes(x = Year, y = Total_biomass_kg, group = Fine_Trophic)) +
+            geom_line(aes(colour = Fine_Trophic)) +
+            scale_color_brewer(palette = "Paired") +
+            theme_classic() +
+            ylab("Total biomass (kg)") + 
+            xlab("Survey year") +
+            facet_wrap(~Site) +
+            theme(legend.position = "bottom") +
+            labs(title = "LTER Sites") +
+            scale_fill_discrete(name = "Trophic position") 
+    })
     
 }
 

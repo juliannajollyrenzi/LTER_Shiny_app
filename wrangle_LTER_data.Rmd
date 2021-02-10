@@ -210,8 +210,8 @@ Now look by habitat
 # by habitat
 benth_habit_group <- benthos_grouped %>% 
   group_by(Year, Spp_grouping, Habitat) %>% 
-  summarize(Total_percent = sum(Percent_Cover), 
-            Mean_perc_cov = sum(Percent_Cover)/300, # 300 because it's 6 sites *  5 transects * 10 0.25 m^2 quadrats 
+  summarize(Total_percent = sum(Percent_Cover, na.rm = TRUE), 
+            Mean_perc_cov = sum(Percent_Cover, na.rm = TRUE)/300, # 300 because it's 6 sites *  5 transects * 10 0.25 m^2 quadrats 
             N = n())
 
 # then plot
@@ -235,8 +235,8 @@ Now look by LTER site
 ```{r}
 benth_site_group <- benthos_grouped %>% 
   group_by(Year, Spp_grouping, Site) %>% 
-  summarize(Total_percent = sum(Percent_Cover), 
-            Mean_perc_cov = sum(Percent_Cover)/200, # 200 because it's 4 habitats * 5 transects * 10 0.25 m^2 quadrats 
+  summarize(Total_percent = sum(Percent_Cover, na.rm = TRUE), 
+            Mean_perc_cov = sum(Percent_Cover, na.rm = TRUE)/200, # 200 because it's 4 habitats * 5 transects * 10 0.25 m^2 quadrats 
             N = n())
 
 # then plot
