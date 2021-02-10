@@ -474,6 +474,9 @@ cots_habitat %>%
 
 ```
 
+## Other disturbances
+
+Hurricane Oli in 2010, COTS 2007-2009, big bleaching in 2019 (https://www.abc.net.au/news/science/2019-05-21/coral-bleaching-french-polynesia/11129634). General temperatures and nutrients
 
 ## Examine abiotic variablrs
 

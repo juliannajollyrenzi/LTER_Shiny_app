@@ -21,6 +21,12 @@ benth_habitat <- read_csv(here("cleaned_data",
 # load benthos data by site
 benth_site <- read_csv(here("cleaned_data", 
                             "benthos_by_site.csv"))
+# load fish data by habitat
+fish_habitat <- read_csv(here("cleaned_data",
+                              "fish_by_habitat.csv"))
+# load fish data by site
+fish_site <- read_csv(here("cleaned_data",
+                           "fish_by_site.csv"))
 
 
 # put text blocks here so they don't clog up the ui code
@@ -119,10 +125,7 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                         sidebarPanel(
                                             selectInput("select", label = h3("Select box"), 
                                                         choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3), 
-                                                        selected = 1),
-                                            
-                                            hr(),
-                                            fluidRow(column(3, verbatimTextOutput("value")))
+                                                        selected = 1)
                                         ),
                                         mainPanel("Benthic (i.e. bottom-dwelling) species")
                                         
@@ -144,25 +147,22 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                     )
                                     ),
                            navbarMenu("Fishes",
-<<<<<<< HEAD
-                                
-=======
-                                      
->>>>>>> 0ddd0d816cb97bfb82af54c998930d20d7193b52
                                       tabPanel(
                                           "By habitat",
                                           sidebarLayout(
                                               checkboxGroupInput(
                                                   inputId = "pick_fish_h",
-                                                  label = "Choose species: "),
+                                                  label = "Choose species: ",
+                                                  choices = unique(fish_habitat$Fine_Trophic),
+                                                  selected = "Benthic Invertebrate Consumer"),
                                               mainPanel(
-                                                  "Fish abundance over time, by habitat (note the two outer sites are distinguished by their depth, in meters)"
+                                                  "Fish abundance over time, by habitat (note the two outer sites are distinguished by their depth, in meters)",
+                                                  plotOutput("fish_hab_plot")
                                               )
                                           )
                                       ),
                                       
                                       
-<<<<<<< HEAD
                                tabPanel(
                                    "By site",
                                    sidebarLayout(
@@ -174,19 +174,6 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                    )
                                    )
                                )
-=======
-                                      tabPanel(
-                                          "By site",
-                                          sidebarLayout(
-                                              checkboxGroupInput(
-                                                  inputId = "pick_fish_s",
-                                                  label = "Choose species: "),
-                                              mainPanel(
-                                                  "Fish abundance over time, by LTER site. Recall LTER 1 and 2 are on the northern side, LTER 3 and 4 are on the southeastern side, and LTER 5 and 6 are on the southwestern side of the island"
-                                              )
-                                          )
-                                      )
->>>>>>> 0ddd0d816cb97bfb82af54c998930d20d7193b52
                            )
                            
                 ) # create a navigation bar for tabs and names of tabs
@@ -251,6 +238,25 @@ server <- function(input, output) {
     # now start work on the date range
     # You can access the values of the widget (as a vector of Dates) with input$dates, e.g.
     output$dates <- renderPrint({ input$dates })
+    
+    # work on fishes
+    fish_hab_reactive <- reactive({
+        fish_habitat %>% 
+            filter(Fine_Trophic %in% input$pick_fish_h)
+    })
+    
+    output$fish_hab_plot <- renderPlot({
+        ggplot(data = fish_hab_reactive(), 
+               aes(x = Year, y = Total_biomass_kg, group = Fine_Trophic)) +
+            geom_line(aes(colour = Fine_Trophic)) +
+            scale_color_brewer(palette = "Paired") +
+            theme_classic() +
+            ylab("Total biomass (kg)") + 
+            xlab("Survey year") +
+            facet_wrap(~Habitat) +
+            theme(legend.position = "bottom") +
+            scale_fill_discrete(name = "Trophic position")
+    })
     
     
 }
