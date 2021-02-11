@@ -211,7 +211,7 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                         tabPanel("By habitat", plotOutput("COTS_hab_plot"))
                                     ),
                                     h3("Temparture over time"),
-                                    p("Temperature can cause..."),
+                                    p("Temperature can cause... Maximums"),
                                     tabsetPanel(type = "tabs",
                                                 tabPanel("LTER 1", plotOutput("lter1_temp_plot")),
                                                 tabPanel("LTER 2", plotOutput("lter2_temp_plot")),
@@ -220,8 +220,22 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                                 tabPanel("LTER 5", plotOutput("lter5_temp_plot")),
                                                 tabPanel("LTER 6", plotOutput("lter6_temp_plot"))
                                                 ),
-                                    h3("Hurricane Oli"),
-                                    p("Hurricanes...")
+                                    p("Temperature can cause... Means"),
+                                    tabsetPanel(type = "tabs",
+                                                tabPanel("LTER 1", plotOutput("lter1_temp_plot_mean")),
+                                                tabPanel("LTER 2", plotOutput("lter2_temp_plot_mean")),
+                                                tabPanel("LTER 3", plotOutput("lter3_temp_plot_mean")),
+                                                tabPanel("LTER 4", plotOutput("lter4_temp_plot_mean")),
+                                                tabPanel("LTER 5", plotOutput("lter5_temp_plot_mean")),
+                                                tabPanel("LTER 6", plotOutput("lter6_temp_plot_mean"))
+                                    ),
+                                    h3("Cyclone Oli"),
+                                    p("Cyclones and hurricanes can damage coral reefs. Big storms can uproot corals entirely, the turbulence from the storm can re-suspend harmful sediments, and loose fragments in the water column can cut corals, which has been linked to increases in disease. In In February, 2010 a large tropical storm, Cyclone Oli, passed by French Polynesia, damaging coral reefs. Check out the infrared photograph below from captured by the National Oceanic and Atmospheric Administration's Geostationary Operational Environmental Satellite (GOES-11) showing Oli during its formation as a cyclone (~Feb 1, 2010)."),
+                                    img(src = "Cyclone_Oli_FP.jpg", width="50%"),
+                                    em("Photo credit: NOAA/JTWC"),
+                                    p("The infrared photo below shows Oli passing French Polynesia. The image was taken by NASA's Aqua satellite on February 3. Purple indicates the most intense part of the storm, with hurricanes and cloud temperatures below -63° Farenheight, causing 20ft waves! Do you notice any time series in the LTER data that change after 2010? Which species do you think are most vulnerable to tropical storms? How does having long-term ecological monitoring sites like Mo'orea impact our ability to study ecosystem changes after natural disasters like Cyclone Oli?"),
+                                    img(src = "Cyclone_oli_formation.jpg", width="50%"),
+                                    em("Photo credit: NASA/JPL, Ed Olsen")
                                     )
                            
                 ) 
@@ -396,7 +410,7 @@ server <- function(input, output) {
     })
     
     
-    # plot temperature data over time
+    # plot Maximum temperature data over time
     output$lter1_temp_plot <- renderPlot({
         lter1.t %>% 
                mutate(reef_type_code = factor(reef_type_code, levels = c("BAK", "FRI"), labels = c("Backreef", "Fringing"))) %>% # for labeling
@@ -407,7 +421,6 @@ server <- function(input, output) {
                    theme_light() +
                    ylab("Max benthic temperature (°C)") +
                    xlab("Date") +
-                   ggtitle("LTER 1") +
                    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
                    geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
     })
@@ -421,7 +434,6 @@ server <- function(input, output) {
             theme_light() +
             ylab("Max benthic temperature (°C)") +
             xlab("Date") +
-            ggtitle("LTER 2") +
             theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
             geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
     })
@@ -435,7 +447,6 @@ server <- function(input, output) {
             theme_light() +
             ylab("Max benthic temperature (°C)") +
             xlab("Date") +
-            ggtitle("LTER 3") +
             theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
             geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
     })
@@ -449,7 +460,6 @@ server <- function(input, output) {
             theme_light() +
             ylab("Max benthic temperature (°C)") +
             xlab("Date") +
-            ggtitle("LTER 4") +
             theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
             geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
     })
@@ -463,7 +473,6 @@ server <- function(input, output) {
             theme_light() +
             ylab("Max benthic temperature (°C)") +
             xlab("Date") +
-            ggtitle("LTER 5") +
             theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
             geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
     })
@@ -477,7 +486,87 @@ server <- function(input, output) {
             theme_light() +
             ylab("Max benthic temperature (°C)") +
             xlab("Date") +
-            ggtitle("LTER 6") +
+            theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+            geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
+    })
+    
+    
+    # plot MEAN temperature data over time
+    output$lter1_temp_plot_mean <- renderPlot({
+        lter1.t %>% 
+            mutate(reef_type_code = factor(reef_type_code, levels = c("BAK", "FRI"), labels = c("Backreef", "Fringing"))) %>% # for labeling
+            ggplot(aes(x = Date, y = Mean_T, color = as.factor(sensor_depth_m))) +
+            geom_line(alpha = 0.6) +
+            facet_wrap(~reef_type_code, ncol= 1) +
+            scale_color_manual(name = "Depth", labels = c("1m", "6m"), values = brewer.pal(2, "Set1")) +
+            theme_light() +
+            ylab("Mean benthic temperature (°C)") +
+            xlab("Date") +
+            theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+            geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
+    })
+    output$lter2_temp_plot_mean <- renderPlot({
+        lter2.t %>% 
+            mutate(reef_type_code = factor(reef_type_code, levels = c("BAK", "FOR", "FRI"), labels = c("Backreef", "Forereef", "Fringing"))) %>% # for labeling
+            ggplot(aes(x = Date, y = Mean_T, color = as.factor(sensor_depth_m))) +
+            geom_line(alpha = 0.6) +
+            facet_wrap(~reef_type_code, ncol= 1) +
+            scale_color_manual(name = "Depth", labels = c("1m", "2m", "4m", "10m", "20m", "30m", "40m"), values = brewer.pal(7, "Set1")) +
+            theme_light() +
+            ylab("Mean benthic temperature (°C)") +
+            xlab("Date") +
+            theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+            geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
+    })
+    output$lter3_temp_plot_mean <- renderPlot({
+        lter3.t %>% 
+            mutate(reef_type_code = factor(reef_type_code, levels = c("BAK", "FOR", "FRI"), labels = c("Backreef", "Forereef", "Fringing"))) %>% # for labeling
+            ggplot(aes(x = Date, y = Mean_T, color = as.factor(sensor_depth_m))) +
+            geom_line(alpha = 0.6) +
+            facet_wrap(~reef_type_code, ncol= 1) +
+            scale_color_manual(name = "Depth", labels = c("1m", "2m", "7m", "10m", "20m", "30m", "40m"), values = brewer.pal(7, "Set1")) +
+            theme_light() +
+            ylab("Mean benthic temperature (°C)") +
+            xlab("Date") +
+            theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+            geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
+    })
+    output$lter4_temp_plot_mean <- renderPlot({
+        lter4.t %>% 
+            mutate(reef_type_code = factor(reef_type_code, levels = c("BAK", "FOR", "FRI"), labels = c("Backreef", "Forereef", "Fringing"))) %>% # for labeling
+            ggplot(aes(x = Date, y = Mean_T, color = as.factor(sensor_depth_m))) +
+            geom_line(alpha = 0.6) +
+            facet_wrap(~reef_type_code, ncol= 1) +
+            scale_color_manual(name = "Depth", labels = c("1m", "2m", "6m", "10m", "20m", "30m", "40m"), values = brewer.pal(7, "Set1")) +
+            theme_light() +
+            ylab("Mean benthic temperature (°C)") +
+            xlab("Date") +
+            theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+            geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
+    })
+    output$lter5_temp_plot_mean <- renderPlot({
+        lter5.t %>% 
+            mutate(reef_type_code = factor(reef_type_code, levels = c("BAK", "FOR", "FRI"), labels = c("Backreef", "Forereef", "Fringing"))) %>% # for labeling
+            ggplot(aes(x = Date, y = Mean_T, color = as.factor(sensor_depth_m))) +
+            geom_line(alpha = 0.6) +
+            facet_wrap(~reef_type_code, ncol= 1) +
+            scale_color_manual(name = "Depth", labels = c("1m", "2m", "3m", "10m", "20m", "30m", "40m"), values = brewer.pal(7, "Set1")) +
+            theme_light() +
+            ylab("Mean benthic temperature (°C)") +
+            xlab("Date") +
+            theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+            geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
+    })
+    output$lter6_temp_plot_mean <- renderPlot({
+        lter6.t %>% 
+            mutate(reef_type_code = factor(reef_type_code, levels = c("BAK", "FOR", "FRI"), labels = c("Backreef", "Forereef", "Fringing"))) %>% # for labeling
+            ggplot(aes(x = Date, y = Mean_T, color = as.factor(sensor_depth_m))) +
+            geom_line(alpha = 0.6) +
+            facet_wrap(~reef_type_code, ncol= 1) +
+            scale_color_manual(name = "Depth", labels = c("1 m", "2 m", "4m", "10 m", "20m", "30m", "40m"), values = brewer.pal(7, "Set1")) +
+            theme_light() +
+            ylab("Mean benthic temperature (°C)") +
+            xlab("Date") +
             theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
             geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
     })
