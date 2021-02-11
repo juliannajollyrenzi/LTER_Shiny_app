@@ -8,6 +8,7 @@ library(shiny)
 library(tidyverse) # for data wrangling
 library(here) # for relative file paths
 library(bslib) # for themes
+library(RColorBrewer) # for color
 
 # load invert data by habitat
 invert_habitat <- read_csv(here("cleaned_data", 
@@ -32,6 +33,13 @@ cots_habitat <- read_csv(here("cleaned_data",
                               "cots_by_habitat.csv"))
 cots_site <- read_csv(here("cleaned_data",
                            "cots_by_site.csv"))
+# load temperature data
+lter1.t <- read_csv(here("cleaned_data", "lter1_temp_summ.csv"))
+lter2.t <- read_csv(here("cleaned_data", "lter2_temp_summ.csv"))
+lter3.t <- read_csv(here("cleaned_data", "lter3_temp_summ.csv"))
+lter4.t <- read_csv(here("cleaned_data", "lter4_temp_summ.csv"))
+lter5.t <- read_csv(here("cleaned_data", "lter5_temp_summ.csv"))
+lter6.t <- read_csv(here("cleaned_data", "lter6_temp_summ.csv"))
 
 
 # put text blocks here so they don't clog up the ui code
@@ -203,7 +211,17 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                         tabPanel("By habitat", plotOutput("COTS_hab_plot"))
                                     ),
                                     h3("Temparture over time"),
-                                    p("Temperature can cause...")
+                                    p("Temperature can cause..."),
+                                    tabsetPanel(type = "tabs",
+                                                tabPanel("LTER 1", plotOutput("lter1_temp_plot")),
+                                                tabPanel("LTER 2", plotOutput("lter2_temp_plot")),
+                                                tabPanel("LTER 3", plotOutput("lter3_temp_plot")),
+                                                tabPanel("LTER 4", plotOutput("lter4_temp_plot")),
+                                                tabPanel("LTER 5", plotOutput("lter5_temp_plot")),
+                                                tabPanel("LTER 6", plotOutput("lter6_temp_plot"))
+                                                ),
+                                    h3("Hurricane Oli"),
+                                    p("Hurricanes...")
                                     )
                            
                 ) 
@@ -377,23 +395,95 @@ server <- function(input, output) {
             labs(title = "Habitats")  
     })
     
+    
+    # plot temperature data over time
+    output$lter1_temp_plot <- renderPlot({
+        lter1.t %>% 
+               mutate(reef_type_code = factor(reef_type_code, levels = c("BAK", "FRI"), labels = c("Backreef", "Fringing"))) %>% # for labeling
+                   ggplot(aes(x = Date, y = Max_T, color = as.factor(sensor_depth_m))) +
+                   geom_line(alpha = 0.6) +
+                   facet_wrap(~reef_type_code, ncol= 1) +
+                   scale_color_manual(name = "Depth", labels = c("1m", "6m"), values = brewer.pal(2, "Set1")) +
+                   theme_light() +
+                   ylab("Max benthic temperature (°C)") +
+                   xlab("Date") +
+                   ggtitle("LTER 1") +
+                   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+                   geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
+    })
+    output$lter2_temp_plot <- renderPlot({
+        lter2.t %>% 
+            mutate(reef_type_code = factor(reef_type_code, levels = c("BAK", "FOR", "FRI"), labels = c("Backreef", "Forereef", "Fringing"))) %>% # for labeling
+            ggplot(aes(x = Date, y = Max_T, color = as.factor(sensor_depth_m))) +
+            geom_line(alpha = 0.6) +
+            facet_wrap(~reef_type_code, ncol= 1) +
+            scale_color_manual(name = "Depth", labels = c("1m", "2m", "4m", "10m", "20m", "30m", "40m"), values = brewer.pal(7, "Set1")) +
+            theme_light() +
+            ylab("Max benthic temperature (°C)") +
+            xlab("Date") +
+            ggtitle("LTER 2") +
+            theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+            geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
+    })
+    output$lter3_temp_plot <- renderPlot({
+        lter3.t %>% 
+            mutate(reef_type_code = factor(reef_type_code, levels = c("BAK", "FOR", "FRI"), labels = c("Backreef", "Forereef", "Fringing"))) %>% # for labeling
+            ggplot(aes(x = Date, y = Max_T, color = as.factor(sensor_depth_m))) +
+            geom_line(alpha = 0.6) +
+            facet_wrap(~reef_type_code, ncol= 1) +
+            scale_color_manual(name = "Depth", labels = c("1m", "2m", "7m", "10m", "20m", "30m", "40m"), values = brewer.pal(7, "Set1")) +
+            theme_light() +
+            ylab("Max benthic temperature (°C)") +
+            xlab("Date") +
+            ggtitle("LTER 3") +
+            theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+            geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
+    })
+    output$lter4_temp_plot <- renderPlot({
+        lter4.t %>% 
+        mutate(reef_type_code = factor(reef_type_code, levels = c("BAK", "FOR", "FRI"), labels = c("Backreef", "Forereef", "Fringing"))) %>% # for labeling
+            ggplot(aes(x = Date, y = Max_T, color = as.factor(sensor_depth_m))) +
+            geom_line(alpha = 0.6) +
+            facet_wrap(~reef_type_code, ncol= 1) +
+            scale_color_manual(name = "Depth", labels = c("1m", "2m", "6m", "10m", "20m", "30m", "40m"), values = brewer.pal(7, "Set1")) +
+            theme_light() +
+            ylab("Max benthic temperature (°C)") +
+            xlab("Date") +
+            ggtitle("LTER 4") +
+            theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+            geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
+    })
+    output$lter5_temp_plot <- renderPlot({
+        lter5.t %>% 
+        mutate(reef_type_code = factor(reef_type_code, levels = c("BAK", "FOR", "FRI"), labels = c("Backreef", "Forereef", "Fringing"))) %>% # for labeling
+            ggplot(aes(x = Date, y = Max_T, color = as.factor(sensor_depth_m))) +
+            geom_line(alpha = 0.6) +
+            facet_wrap(~reef_type_code, ncol= 1) +
+            scale_color_manual(name = "Depth", labels = c("1m", "2m", "3m", "10m", "20m", "30m", "40m"), values = brewer.pal(7, "Set1")) +
+            theme_light() +
+            ylab("Max benthic temperature (°C)") +
+            xlab("Date") +
+            ggtitle("LTER 5") +
+            theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+            geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
+    })
+    output$lter6_temp_plot <- renderPlot({
+        lter6.t %>% 
+        mutate(reef_type_code = factor(reef_type_code, levels = c("BAK", "FOR", "FRI"), labels = c("Backreef", "Forereef", "Fringing"))) %>% # for labeling
+            ggplot(aes(x = Date, y = Max_T, color = as.factor(sensor_depth_m))) +
+            geom_line(alpha = 0.6) +
+            facet_wrap(~reef_type_code, ncol= 1) +
+            scale_color_manual(name = "Depth", labels = c("1 m", "2 m", "4m", "10 m", "20m", "30m", "40m"), values = brewer.pal(7, "Set1")) +
+            theme_light() +
+            ylab("Max benthic temperature (°C)") +
+            xlab("Date") +
+            ggtitle("LTER 6") +
+            theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+            geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
+    })
+    
 }
 
 
 ## Run app----
 shinyApp(ui = ui, server = server)
-
-
-
-
-
-### NOTE: to start do this:
-# make a user interface
-#ui <- fluidPage()
-
-# create a reactive dataset to use in the server
-
-# make a server for creating outputs from ui
-#server <- function(input, output) {}
-
-#shinyApp(ui = ui, server = server)
