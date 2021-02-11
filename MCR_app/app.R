@@ -195,12 +195,15 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                    )
                                )
                            ),
-                           tabPanel("Potential stressors",
+                           tabPanel("Environmental factors",
                                     h3("Crown of thorns starfish outbreaks"),
                                     p("Crown of thorns starfish (COTS).."),
-                                    plotOutput("COTS_site_plot"), 
-                                    p("And by habitat we se..."),
-                                    plotOutput("COTS_hab_plot")
+                                    tabsetPanel(type = "tabs",
+                                        tabPanel("By site", plotOutput("COTS_site_plot")),
+                                        tabPanel("By habitat", plotOutput("COTS_hab_plot"))
+                                    ),
+                                    h3("Temparture over time"),
+                                    p("Temperature can cause...")
                                     )
                            
                 ) 
@@ -356,8 +359,8 @@ server <- function(input, output) {
     output$COTS_site_plot <- renderPlot({
         ggplot(data = cots_site,
                aes(x = Year, y = Count_COTS)) +
-            geom_line() +
-            theme_classic() +
+            geom_line(color = "#3895D3") +
+            theme_light() +
             ylab("COTS counts") + 
             xlab("Survey year") +
             facet_wrap(~Site) +
@@ -366,12 +369,12 @@ server <- function(input, output) {
     output$COTS_hab_plot <- renderPlot({
         ggplot(data = cots_habitat,
                aes(x = Year, y = Count_COTS)) +
-            geom_line() +
-            theme_classic() +
+            geom_line(color = "#3895D3") +
+            theme_light() +
             ylab("COTS counts") + 
             xlab("Survey year") +
             facet_wrap(~Habitat) +
-            labs(title = "Habitats (forereef, backreef, lagoon)")  
+            labs(title = "Habitats")  
     })
     
 }
