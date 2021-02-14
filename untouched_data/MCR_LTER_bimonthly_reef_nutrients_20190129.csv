@@ -1,0 +1,437 @@
+Cruise,Location,Type,Date,Time,Latitude,Longitude,Bottom_Depth,Sample_Depth,Phosphate,Silicate,Nitrite,Nitrite_and_Nitrate,Comments
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2005-08-10,08:00,-17.47503,-149.83707,17,1,0.14,0.92,0.04,0.29,na
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2005-08-10,09:00,-17.47785,-149.84213,2,1,0.2,0.29,0.11,0.7,na
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2005-08-10,09:30,-17.48488,-149.83365,14,1,0.15,0.65,0.08,0.79,na
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2005-12-04,08:36,-17.47785,-149.84213,2,1,0.09,0.44,0.08,0.32,na
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2005-12-04,09:10,-17.48488,-149.83365,14,1,0.09,0.43,0.11,0.46,na
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2005-12-05,11:00,-17.47503,-149.83707,17,1,0.1,0.56,0.07,0.17,na
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2006-03-26,08:30,-17.47785,-149.84213,2,1,0.16,0.37,0.03,0.46,na
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2006-03-26,09:07,-17.48488,-149.83365,14,1,0.14,0.31,0.03,0.53,na
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2006-03-27,09:55,-17.47503,-149.83707,17,1,0.1,0.37,0.05,0.21,na
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2006-06-17,08:15,-17.47785,-149.84213,2,1,0.09,0.81,0.07,0.53,na
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2006-06-17,08:48,-17.48488,-149.83365,14,1,0.11,0.82,0.06,0.56,na
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2006-06-20,09:48,-17.47503,-149.83707,17,1,0.06,0.61,0.05,0.24,na
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2006-08-27,11:05,-17.47785,-149.84213,2,1,0.15,0.18,0.07,0.47,na
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2006-08-27,08:15,-17.48488,-149.83365,14,1,0.17,0.17,0.09,0.52,na
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2006-08-29,10:18,-17.47503,-149.83707,17,1,0.14,0.21,0.25,0.61,na
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2006-12-11,10:05,-17.47503,-149.83707,17,1,0.17,1.11,0.02,0.04,na
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2006-12-13,10:58,-17.47785,-149.84213,2,1,0.17,0.85,0.04,0.25,na
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2006-12-13,08:45,-17.48488,-149.83365,14,1,0.19,0.73,0.06,0.42,na
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2007-03-24,10:25,-17.47503,-149.83707,17,1,0.19,3.19,0.08,1.05,na
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2007-03-25,11:00,-17.47785,-149.84213,2,1,0.19,2.81,0.07,1.29,na
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2007-03-25,08:08,-17.48488,-149.83365,14,1,0.22,2.66,0.1,4.35,na
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2007-08-12,15:45,-17.47503,-149.83707,2,0.5,0.19,0.59,0.1,0.34,sunny; no rain in previous 3 days
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2007-08-13,08:30,-17.47503,-149.83707,17,0.5,0.17,0.48,0.09,0.27,sunny; strong wind from NE; no rain last 4 days
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2007-08-14,10:00,-17.48488,-149.83365,14,0.5,0.16,0.28,0.09,0.26,strong NE wind
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2007-08-18,08:45,-17.47503,-149.83707,17,1,0.14,0.65,0.07,0.21,na
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2007-08-20,10:35,-17.47785,-149.84213,2,1,0.15,1.39,0.06,0.29,na
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2007-08-20,08:10,-17.48488,-149.83365,14,1,0.14,0.73,0.07,0.26,na
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2007-08-28,09:30,-17.47785,-149.84213,2,0.5,0.16,0.3,0.04,0.21,clear and sunny; no rain for days
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2007-08-28,09:40,-17.48488,-149.83365,14,0.5,0.16,0.3,0.07,0.27,clear and sunny; no rain for days
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2007-11-30,12:00,-17.47503,-149.83707,17,0.5,0.12,2.19,0,0.25,rain previous night
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2007-12-07,11:30,-17.47785,-149.84213,2,0.5,0.12,1.67,0.14,0.4,overcast; lots of rain last week; strong S wind today
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2007-12-07,11:45,-17.48488,-149.83365,14,0.5,0.14,1.62,0.32,0.52,overcast; lots of rain last week; strong S wind today
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2007-12-09,10:50,-17.47503,-149.83707,17,0.5,0.13,1.28,0.13,0.36,light rain in morning; sunny previous day
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2008-01-08,08:45,-17.48488,-149.83365,14,0.5,0.13,1.09,0.13,0.43,sunny; evening rain 2 days before
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2008-01-08,11:45,-17.47503,-149.83707,17,0.5,0.13,2.37,0.13,0.37,sunny; evening rain 2 days before
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2008-01-12,11:15,-17.47785,-149.84213,2,1,0.14,1.45,0.13,0.41,na
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2008-01-12,08:07,-17.48488,-149.83365,14,1,0.14,1.73,0.32,0.74,na
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2008-01-14,10:24,-17.47503,-149.83707,17,1,0.14,1.68,0.29,0.71,na
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2008-01-21,10:30,-17.47785,-149.84213,2,0.5,0.14,1.87,0.11,0.44,several squalls/day for 4-5 days prior; rain in night but none for previous 8 hours
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2008-01-21,10:45,-17.48488,-149.83365,14,0.5,0.15,1.87,0.22,0.51,several squalls/day for 4-5 days prior; rain in night but none for previous 8 hours
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2008-08-23,11:50,-17.47503,-149.83707,17,1,0.17,0.58,0.11,0.34,na
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2008-08-25,10:30,-17.47785,-149.84213,2,1,0.21,0.46,0.25,0.87,na
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2008-08-25,08:00,-17.48488,-149.83365,14,1,0.22,0.53,0.14,0.76,na
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2008-09-02,09:00,-17.47785,-149.84213,2,0.5,0.22,1.4,0.19,0.55,Very strong wind directly from east for previous 3 days- 20-25 kts; heavy chop in lagoon; Cooks Bay calm; L1 and L2 very; vry choppy
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2008-09-02,09:00,-17.48488,-149.83365,14,0.5,0.21,1.83,0.1,0.56,Very strong wind directly from east for previous 3 days- 20-25 kts; heavy chop in lagoon; Cooks Bay calm; L1 and L2 very; vry choppy
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2008-09-08,09:00,-17.47785,-149.84213,2,0.5,0.2,2.14,0.1,0.38,na
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2008-12-05,15:30,-17.47785,-149.84213,2,0.5,0.24,1.63,0.03,0.16,Raining - started 2 hours earlier
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2008-12-05,17:45,-17.48488,-149.83365,14,0.5,0.24,1.55,0.13,0.27,Raining- heavy 
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2008-12-06,09:30,-17.47503,-149.83707,17,0.5,0.23,1.44,0.17,0.29,Cloudy with sun - rained several hours the afternoon before
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2008-12-20,14:20,-17.48488,-149.83365,14,0.5,0.25,0.98,0.1,0.43,Cloudy with sun - rained several hours the afternoon before
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2008-12-20,14:13,-17.47785,-149.84213,2,0.5,0.25,1,0.14,0.59,Cloudy with sun - rained several hours the afternoon before
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2008-12-20,14:00,-17.47503,-149.83707,17,0.5,0.18,0.5,0.21,0.57,Cloudy with sun - rained several hours the afternoon before
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2008-12-29,13:40,-17.47503,-149.83707,17,0.5,0.22,0.79,0.11,0.15,Hot - no clouds - big swell
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2008-12-29,13:50,-17.47785,-149.84213,2,0.5,0.24,0.66,0.11,0.28,Hot - no clouds - big swell
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2008-12-29,14:00,-17.48488,-149.83365,14,0.5,0.25,0.71,0.16,0.5,Hot - no clouds - big swell
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-01-06,00:00,-17.48488,-149.83365,14,0.5,0.26,1.33,0.19,0.64,na
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-01-06,00:00,-17.47785,-149.84213,2,0.5,0.23,0.35,0.16,0.37,na
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-01-06,00:00,-17.47503,-149.83707,17,0.5,0.24,0.3,0.1,0.17,na
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2009-01-11,10:34,-17.47785,-149.84213,2,1,0.24,0.5,0.09,0.52,na
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2009-01-11,08:15,-17.48488,-149.83365,14,1,0.26,0.57,0.1,0.43,na
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2009-01-13,10:11,-17.47503,-149.83707,17,1,0.21,0.99,0.19,0.58,na
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-01-19,09:00,-17.47503,-149.83707,17,0.5,0.23,1.07,0.17,0.42,steady light rain; huge swells; 2-3 ft chop
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-01-19,10:00,-17.48488,-149.83365,14,0.5,0.24,1.13,0.25,0.7, rain for couple of days prior
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-01-20,11:30,-17.47785,-149.84213,2,0.5,0.24,1.15,0.11,0.38,cloudy; light showers previous day
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-01-21,08:35,-17.47503,-149.83707,17,0.5,0.23,2.12,0.2,0.31,calm and intermittant rain for several days with very high swell on NS
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-01-21,08:43,-17.48488,-149.83365,14,0.5,0.24,2.34,0.3,0.66,calm and intermittant rain for several days with very high swell on NS
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-01-21,08:46,-17.47785,-149.84213,2,0.5,0.22,1.95,0.11,0.11,calm and intermittant rain for several days with very high swell on NS
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-01-25,14:30,-17.48488,-149.83365,14,0.5,0.15,0.9,0.08,1.17,na
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-02-01,14:30,-17.47785,-149.84213,2,0.5,0.18,0.84,0.06,1.18,clear and sunny; light showers in morning
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-02-01,14:30,-17.48488,-149.83365,14,0.5,0.16,0.69,0.11,1,clear and sunny; light showers in morning
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-02-01,14:30,-17.47503,-149.83707,17,0.5,0.14,0.59,0.07,0.59,clear and sunny; light showers in morning
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-04-02,09:30,-17.47785,-149.84213,2,0.5,0.18,0.75,0.04,0.89,slight rain before sampling/cloudy
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-04-02,09:35,-17.48488,-149.83365,14,0.5,0.17,0.52,0.08,0.83,slight rain before sampling/cloudy
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-04-03,15:30,-17.47503,-149.83707,17,0.5,0.13,0.6,0.1,0.65,very choppy; no rain
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-04-10,09:15,-17.47503,-149.83707,17,0.5,0.13,0.53,0.03,0.58,clear;low swell; south wind night before
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-04-10,09:27,-17.47785,-149.84213,2,0.5,0.14,0.62,0.07,0.8,clear;low swell; south wind night before
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-04-10,09:32,-17.48488,-149.83365,14,0.5,0.14,1.53,0.08,0.69,clear;low swell; south wind night before
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-04-19,15:30,-17.47503,-149.83707,17,0.5,0.12,0.34,0.04,0.73,Pty cloudy; calm
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-04-19,15:50,-17.47785,-149.84213,2,0.5,0.16,0.32,0.06,0.74,Pty cloudy; calm
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-04-19,16:00,-17.48488,-149.83365,14,0.5,0.19,0.88,0.09,0.79,Pty cloudy; calm
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-04-28,16:30,-17.47785,-149.84213,2,0.5,0.39,0.6,0.09,0.77,slightly overcast
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-04-28,16:15,-17.48488,-149.83365,14,0.5,0.42,0.78,0.09,0.72,slightly overcast
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-04-28,16:00,-17.47503,-149.83707,17,0.5,0.13,0.52,0.03,0.39,slightly overcast
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-05-05,16:00,-17.47503,-149.83707,17,0.5,0.13,0.74,0.07,0.41,calm; sunny
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-05-05,15:30,-17.47785,-149.84213,2,0.5,0.17,0.6,0.11,0.61,calm; sunny
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-05-05,16:30,-17.48488,-149.83365,14,0.5,0.17,0.85,0.12,0.68,calm; sunny
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-05-16,16:30,-17.47785,-149.84213,2,0.5,0.18,0.13,0.07,0.69,overcast; calm
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-05-16,16:00,-17.47503,-149.83707,17,0.5,0.14,0.46,0.01,0.44,overcast; calm
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-05-16,16:30,-17.48488,-149.83365,14,0.5,0.23,2.07,0.11,0.81,overcast; calm
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-06-01,10:30,-17.47785,-149.84213,2,0.5,0.13,0.33,0.05,0.52,overcast; windy
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-06-01,11:30,-17.48488,-149.83365,14,0.5,0.14,0.27,0.07,0.55,overcast; windy
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-06-01,11:15,-17.47503,-149.83707,17,0.5,0.14,0.35,0.04,0.24,overcast; windy
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-06-06,14:30,-17.48488,-149.83365,14,0.5,0.29,0.42,0.07,0.47,overcast; windy
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-06-06,14:40,-17.47785,-149.84213,2,0.5,0.17,0.36,0.07,0.41,overcast; windy
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-06-06,15:30,-17.47503,-149.83707,17,0.5,0.12,0.36,0.02,0.31,overcast; windy
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-06-22,10:50,-17.47503,-149.83707,17,0.5,0.14,0.35,0.06,0.35,calm; sunny
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-06-22,11:10,-17.48488,-149.83365,14,0.5,0.17,0.29,0.06,0.72,calm; sunny
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-06-22,11:50,-17.47785,-149.84213,2,0.5,0.16,0.34,0.08,0.78,calm; sunny; low swell
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-07-07,12:10,-17.47503,-149.83707,17,0.5,0.15,0.36,0.07,0.38,calm; sunny; slight E-wind
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-07-07,11:55,-17.47785,-149.84213,2,0.5,0.17,0.31,0.07,0.55,calm; sunny; slight E-wind
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-07-07,12:00,-17.48488,-149.83365,14,0.5,0.19,3.34,0.14,0.85,calm; sunny; slight E-wind
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-07-12,16:00,-17.47785,-149.84213,2,0.5,0.14,2.98,0.08,0.64,clear; calm; no rain; 
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-07-12,16:40,-17.48488,-149.83365,14,0.5,0.2,3.77,0.08,0.58,clear; calm; no rain; 
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-07-23,09:45,-17.48488,-149.83365,14,0.5,0.16,0.85,0.13,0.91,na
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-07-24,16:00,-17.47785,-149.84213,2,0.5,0.15,0.78,0.13,0.8,na
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-07-25,08:00,-17.47503,-149.83707,17,0.5,0.18,0.76,0.09,0.55,na
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2009-07-27,11:00,-17.47785,-149.84213,2,1,0.19,0.48,0.07,0.75,na
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2009-07-27,08:10,-17.48488,-149.83365,14,1,0.18,0.37,0.11,0.64,na
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2009-07-29,10:02,-17.47503,-149.83707,17,1,0.18,0.33,0.12,0.81,na
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-08-04,08:20,-17.47503,-149.83707,17,0.5,0.17,0.56,0.11,0.39,calm; no rain for several days
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-08-04,08:50,-17.47785,-149.84213,2,0.5,0.19,0.37,0.09,0.73,calm; no rain for several days
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-08-04,09:30,-17.48488,-149.83365,14,0.5,0.2,0.37,0.07,0.57,calm; no rain for several days
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-09-10,15:10,-17.47503,-149.83707,17,0.5,0.11,1.06,0.03,0.06,na
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-09-10,15:15,-17.48488,-149.83365,14,0.5,0.12,1.42,0.06,0.34,na
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-09-10,15:20,-17.47785,-149.84213,2,0.5,0.14,1,0.07,0.42,na
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-09-24,12:28,-17.48488,-149.83365,14,0.5,0.14,0.9,0.09,0.37,na
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-09-24,12:15,-17.47503,-149.83707,17,0.5,0.14,0.87,0.06,0.25,na
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-09-24,12:22,-17.47785,-149.84213,2,0.5,0.15,1.77,0.08,0.32,may have screwed up locations
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-10-10,13:51,-17.47503,-149.83707,17,0.5,NA,NA,NA,NA,na
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-10-10,13:36,-17.48488,-149.83365,14,0.5,0.14,1.45,0.25,0.42,na
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-10-10,13:44,-17.47785,-149.84213,2,0.5,0.14,0.77,0.18,0.31,na
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-10-24,15:25,-17.47785,-149.84213,2,0.5,0.18,1.06,0.06,0.24,na
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-10-24,15:20,-17.47503,-149.83707,17,0.5,0.15,1.49,0.05,0.21,na
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-10-24,15:30,-17.48488,-149.83365,14,0.5,0.13,1.08,0.1,0.4,na
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-11-26,14:20,-17.47785,-149.84213,2,0.5,0.15,0.88,0.56,0.89,na
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-11-26,14:10,-17.47503,-149.83707,17,0.5,0.13,1,0.16,0.23,na
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-11-26,14:24,-17.48488,-149.83365,14,0.5,0.14,1.31,0.08,0.33,na
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2009-12-12,10:35,-17.47503,-149.83707,17,0.5,0.15,1.44,0.01,0.01,na
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2009-12-12,10:45,-17.47785,-149.84213,2,0.5,0.14,0.99,0.05,0.15,na
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2009-12-12,10:50,-17.48488,-149.83365,14,0.5,0.12,0.82,0.15,0.28,na
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2010-01-15,11:00,-17.47503,-149.83707,17,1,0.24,0.87,0.22,0.6,na
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2010-01-18,11:05,-17.47785,-149.84213,2,1,0.24,0.73,0.2,0.78,na
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2010-01-18,08:30,-17.48488,-149.83365,14,1,0.25,0.83,0.21,1.11,na
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2010-07-15,11:20,-17.47785,-149.84213,2,0.5,0.17,0.88,0.04,0.27,10 kt winds; some rain night prior
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2010-07-15,11:25,-17.48488,-149.83365,14,0.5,0.18,0.98,0.07,0.44,10 kt winds; some rain night prior
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2010-07-28,14:54,-17.47785,-149.84213,2,0.5,0.2,0.89,0.07,0.36,na
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2010-07-28,15:00,-17.48488,-149.83365,14,0.5,0.18,1.01,0.07,0.42,na
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2010-07-29,16:00,-17.47503,-149.83707,17,0.5,0.15,0.97,0.03,0.11,na
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2010-08-06,12:15,-17.47503,-149.83707,17,0.5,0.14,0.96,0.05,0.07,na
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2010-08-07,16:38,-17.47785,-149.84213,2,0.5,0.18,0.88,0.08,0.55,rain earlier that day
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2010-08-07,16:41,-17.48488,-149.83365,14,0.5,0.18,2.05,0.1,0.63,rain earlier that day
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2010-08-15,09:50,-17.47503,-149.83707,17,1,0.15,0.86,0.06,0.15,na
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2010-08-17,09:50,-17.47785,-149.84213,2,1,0.15,0.83,0.13,0.5,na
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2010-08-17,08:02,-17.48488,-149.83365,14,1,0.17,0.83,0.1,0.52,na
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2010-08-29,10:30,-17.47503,-149.83707,17,0.5,0.13,0.79,0.04,0.12,calm; sunny; no rain for 2 weeks prior
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2010-08-29,11:15,-17.47785,-149.84213,2,0.5,0.17,0.92,0.02,0.3,calm; sunny; no rain for 2 weeks prior
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2010-08-29,11:10,-17.48488,-149.83365,14,0.5,0.13,0.49,0.1,0.31,calm; sunny; no rain for 2 weeks prior
+Additional nutrients,LTER 1 Forereef Water Column,Niskin bottle,2010-09-09,15:28,-17.47556667,-149.8393167,1,0,0.08,NA,0.12,0.25,NA
+Additional nutrients,LTER 1 Forereef Water Column,Niskin bottle,2010-09-09,15:33,-17.47581667,-149.83915,1,0,0.09,NA,0.03,0.26,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-09,16:09,-17.4768,-149.8393333,1,0,0.10,NA,0.07,0.36,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-09,16:19,-17.47796667,-149.8392833,1,0,0.10,NA,0.09,0.50,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-09,16:25,-17.47928333,-149.8393167,1,0,0.09,NA,0.07,0.51,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-09,16:31,-17.48055,-149.8393667,1,0,0.10,NA,0.07,0.58,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-09,16:35,-17.48178333,-149.8393667,1,0,0.09,NA,0.06,0.45,NA
+Additional nutrients,LTER 1 Forereef Water Column,Niskin bottle,2010-09-10,12:36,-17.47425,-149.8393,24,0,0.09,NA,0.07,0.30,NA
+Additional nutrients,LTER 1 Forereef Water Column,Niskin bottle,2010-09-10,12:45,-17.4756,-149.8392667,5,0,0.08,NA,0.06,0.28,NA
+Additional nutrients,LTER 1 Forereef Water Column,Niskin bottle,2010-09-10,12:53,-17.4782,-149.8464833,5,0,0.09,NA,0.10,0.32,NA
+Additional nutrients,LTER 1 Forereef Water Column,Niskin bottle,2010-09-10,12:56,-17.47673333,-149.8465,20,0,0.08,NA,0.07,0.19,NA
+Additional nutrients,LTER 1 Forereef Water Column,Niskin bottle,2010-09-10,13:32,-17.4742,-149.8320833,43,0,0.07,NA,0.04,0.19,NA
+Additional nutrients,LTER 1 Forereef Water Column,Niskin bottle,2010-09-10,13:35,-17.47548333,-149.8320667,10,0,0.08,NA,0.07,0.22,NA
+Additional nutrients,LTER 1 Forereef Water Column,Niskin bottle,2010-09-10,13:40,-17.47686667,-149.8319667,3,0,0.09,NA,0.07,0.26,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-10,16:18,-17.47688333,-149.8393667,1,0,0.09,NA,0.08,0.76,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-10,16:31,-17.47805,-149.8393167,1,0,0.09,NA,0.10,0.54,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-10,06:44,-17.4793,-149.8393167,1,0,0.09,NA,0.09,0.56,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-10,16:55,-17.48056667,-149.8394167,1,0,0.09,NA,0.11,0.38,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-10,17:05,-17.48185,-149.8394333,1,0,0.10,NA,0.11,0.33,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-10,17:28,-17.48221667,-149.8460667,1,0,0.12,NA,0.12,0.54,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-10,17:35,-17.48165,-149.8463667,1,0,0.11,NA,0.10,0.39,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-10,17:42,-17.48061667,-149.8465333,1,0,0.10,NA,0.09,0.30,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-10,17:51,-17.47936667,-149.8465667,1,0,0.10,NA,0.10,0.26,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-11,12:02,-17.47676667,-149.83935,1,0,0.09,NA,0.09,0.17,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-11,12:18,-17.47756667,-149.8395,1,0,0.09,NA,0.12,0.19,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-11,12:34,-17.47853333,-149.8392833,1,0,0.09,NA,0.10,0.25,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-11,12:49,-17.47981667,-149.8388667,1,0,0.09,NA,0.11,0.27,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-11,13:04,-17.48158333,-149.83855,1,0,0.09,NA,0.10,0.31,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-11,17:06,-17.4779,-149.8321167,1,0,0.08,NA,0.10,0.21,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-11,17:17,-17.47923333,-149.83215,1,0,0.10,NA,0.09,0.33,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-11,17:22,-17.48053333,-149.83205,1,0,0.09,NA,0.08,0.40,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-11,17:26,-17.48178333,-149.83215,1,0,0.10,NA,0.10,0.38,NA
+Additional nutrients,LTER 1 Forereef Water Column,Niskin bottle,2010-09-13,15:00,-17.47425,-149.83935,1,0,0.08,NA,0.07,0.15,NA
+Additional nutrients,LTER 1 Forereef Water Column,Niskin bottle,2010-09-13,15:08,-17.47548333,-149.8393,1,0,0.10,NA,0.10,0.23,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-13,15:58,-17.47671667,-149.8393167,1,0,0.11,NA,0.13,0.41,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-13,16:15,-17.47793333,-149.8392833,1,0,0.11,NA,0.12,0.50,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-13,16:23,-17.47926667,-149.8393167,1,0,0.11,NA,0.10,0.55,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-13,16:32,-17.48055,-149.8393167,1,0,0.10,NA,0.10,0.42,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-13,16:38,-17.4818,-149.8392833,3,0,0.12,NA,0.11,0.47,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-15,15:19,-17.47671667,-149.83935,1,0,0.11,NA,0.12,0.37,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-15,15:34,-17.47696667,-149.8393833,1,0,0.12,NA,0.14,0.28,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-15,15:50,-17.47738333,-149.8394333,1,0,0.11,NA,0.10,0.22,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-15,16:05,-17.47808333,-149.83945,1,0,0.12,NA,0.13,0.38,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-15,16:20,-17.47845,-149.8394333,1,0,0.12,NA,0.14,0.39,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-15,16:35,-17.47901667,-149.8394333,1,0,0.12,NA,0.14,0.45,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-15,16:50,-17.48085,-149.8388667,1,0,0.11,NA,0.12,0.26,NA
+Additional nutrients,LTER 1 Backreef Water Column,Niskin bottle,2010-09-15,17:06,-17.48218333,-149.8387833,1,0,0.10,NA,0.10,0.32,NA
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2010-09-08,08:38,-17.47503,-149.83707,17,0.5,0.12,0.49,0.08,0.18,na
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2010-09-08,08:48,-17.47785,-149.84213,2,0.5,0.12,0.43,0.06,0.37,na
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2010-09-08,08:54,-17.48488,-149.83365,14,0.5,0.13,1.48,0.07,0.47,na
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2010-09-15,16:45,-17.47503,-149.83707,17,0.5,0.15,0.55,0.04,0.27,na
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2010-09-15,17:00,-17.47785,-149.84213,2,0.5,0.15,2.76,0.08,0.5,na
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2010-09-15,17:10,-17.48488,-149.83365,14,0.5,0.12,0.75,0.08,0.52,na
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2011-01-08,17:20,-17.48488,-149.83365,14,0.5,0.13,1.13,0.05,0.31,windy; Sw-heavy rain on Jan 6
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2011-01-08,17:00,-17.47785,-149.84213,2,0.5,0.12,0.49,0.05,0.26,na
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2011-01-15,09:15,-17.47503,-149.83707,17,1,0.12,0.42,0.04,0.11,na
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2011-01-17,09:59,-17.47785,-149.84213,2,1,0.14,0.74,0.05,0.26,na
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2011-01-17,08:10,-17.48488,-149.83365,14,1,0.14,0.5,0.06,0.33,na
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2011-04-08,13:15,-17.47503,-149.83707,17,0.5,0.00,0.34,0.05,0.11,overcast
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2011-04-13,16:10,-17.48488,-149.83365,14,0.5,0.04,0.34,0.09,0.39,sunny and clear
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2011-04-13,16:20,-17.47785,-149.84213,2,0.5,0.06,0.30,0.08,0.38,
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2011-04-23,15:25,-17.48488,-149.83365,14,0.5,0.04,0.30,0.09,0.42,overcast
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2011-04-23,15:30,-17.47785,-149.84213,2,0.5,0.09,0.24,0.08,0.44,overcast
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2011-04-26,16:00,-17.47503,-149.83707,17,0.5,0.01,0.38,0.06,0.08,overcast
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2011-04-29,15:30,-17.48488,-149.83365,14,0.5,0.04,0.40,0.08,0.43,na
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2011-04-29,15:40,-17.47785,-149.84213,2,0.5,0.05,0.43,0.09,0.49,na
+Additional nutrients,LTER 1 Backreef Water Column,Falcon tube,2011-05-06,11:30,-17.47785,-149.84213,2,0.5,0.05,0.39,0.09,0.52,rain the morning of and night before
+Additional nutrients,LTER 1 Fringing Reef Water Column,Falcon tube,2011-05-06,11:35,-17.48488,-149.83365,14,0.5,0.07,0.62,0.10,0.72,rain the morning of and night before
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2011-05-06,14:00,-17.47503,-149.83707,17,0.5,0.05,0.46,0.07,0.32,rain the morning of and night before
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2011-06-04,11:30,-17.47503,-149.83707,17,0.5,0.12,1.41,0.11,0.56,"calm and sunny; low wind"
+Additional nutrients,LTER 1 Forereef Water Column,Falcon tube,2011-06-07,11:10,-17.47503,-149.83707,17,0.5,0.14,1.27,0.11,0.53,"calm and sunny; low wind; 42 hrs aftr Maramu"
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2011-07-22,10:45,-17.47503,-149.83707,17,1,0.19,0.34,0.09,0.61,na
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2011-07-24,10:23,-17.47785,-149.84213,2,1,0.23,0.86,0.10,0.42,na
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2011-07-24,11:22,-17.48488,-149.83365,14,1,0.21,0.29,0.20,0.54,na
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2011-08-03,13:45,-17.47503,-149.83707,17,0.5,0.14,0.23,0.07,0.09,some white caps
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2011-08-03,16:20,-17.47785,-149.84213,2,0.5,0.15,0.20,0.16,0.34,na
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2011-08-03,16:25,-17.48488,-149.83365,14,0.5,0.13,0.26,0.09,0.35,na
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2011-08-12,10:45,-17.47503,-149.83707,17,0.5,0.13,0.36,0.09,0.22,"calm; clear day; no wind or swell"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2011-08-12,16:00,-17.48488,-149.83365,14,0.5,0.13,0.90,0.13,0.35,"calm; clear day; no wind or swell"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2011-08-12,16:00,-17.47785,-149.84213,2,0.5,0.14,0.27,0.12,0.33,"calm; clear day; no wind or swell"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2011-08-22,17:05,-17.48488,-149.83365,14,0.5,0.14,0.56,0.15,0.60,"calm; clear day; no wind or swell"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2011-08-22,17:10,-17.47785,-149.84213,2,0.5,0.14,0.62,0.06,0.41,"calm; clear day; no wind or swell"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2011-08-23,12:00,-17.47503,-149.83707,17,0.5,0.13,0.37,0.14,0.32,calm and sunny
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2012-01-03,16:30,-17.48488,-149.83365,14,0.5,0.18,0.50,0.08,0.34,"calm; sunny"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2012-01-03,16:30,-17.47785,-149.84213,2,0.5,0.19,0.48,0.06,0.33,"calm; sunny"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2012-01-03,07:50,-17.47503,-149.83707,17,0.5,0.18,1.57,0.06,0.36,"calm; sunny; low wind"
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2012-01-17,09:58,-17.47503,-149.83707,17,1,0.23,1.01,0.19,0.35,na
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2012-01-19,08:19,-17.47785,-149.84213,2,1,0.25,0.91,0.20,0.62,na
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2012-01-19,08:55,-17.48488,-149.83365,14,1,0.19,0.90,0.25,0.78,na
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2012-01-23,10:30,-17.47503,-149.83707,17,0.5,0.16,0.86,0.07,0.17,"calm; sunny; low wind"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2012-01-23,13:30,-17.47785,-149.84213,2,0.5,0.18,0.94,0.04,0.24,"calm; sunny; low wind"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2012-01-23,15:30,-17.48488,-149.83365,14,0.5,0.18,1.18,0.06,0.56,"calm; sunny; low wind"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2012-02-13,17:00,-17.48488,-149.83365,14,0.5,0.16,0.52,0.06,0.30,"sunny; light wind"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2012-02-13,17:10,-17.47785,-149.84213,2,0.5,0.14,0.50,0.10,0.32,"sunny; light wind"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2012-04-06,09:50,-17.47503,-149.83707,17,0.5,0.13,0.39,0.07,0.14,"sunny; swell"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2012-04-07,10:30,-17.47785,-149.84213,2,0.5,0.12,0.49,0.06,0.20,"sunny; calm"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2012-04-07,10:30,-17.48488,-149.83365,14,0.5,0.13,0.39,0.08,0.29,"sunny; calm"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2012-04-17,14:00,-17.47785,-149.84213,2,0.5,0.14,0.49,0.09,0.34,"sunny; calm"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2012-04-17,14:05,-17.48488,-149.83365,14,0.5,0.15,0.46,0.08,0.33,"sunny; calm"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2012-04-24,13:00,-17.47503,-149.83707,17,0.5,0.15,0.64,0.09,0.11,"sunny; calm; clear"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2012-04-30,13:20,-17.47503,-149.83707,17,0.5,0.17,3.23,0.13,0.67,overcast
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2012-04-30,16:30,-17.48488,-149.83365,14,0.5,0.16,1.34,0.12,0.66,overcast
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2012-04-30,16:30,-17.47785,-149.84213,2,0.5,0.17,1.12,0.19,0.44,overcast
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2012-05-14,16:10,-17.47503,-149.83707,17,0.5,0.16,0.53,0.07,0.08,"calm; sunny"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2012-05-16,16:30,-17.47785,-149.84213,2,0.5,0.16,0.61,0.10,0.33,"calm; sunny"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2012-05-16,16:35,-17.48488,-149.83365,14,0.5,0.17,0.86,0.11,0.48,"calm; sunny"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2012-05-23,16:40,-17.47785,-149.84213,2,0.5,0.16,0.95,0.08,0.26,calm
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2012-05-23,16:45,-17.48488,-149.83365,14,0.5,0.23,0.62,0.12,0.53,calm
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2012-06-04,15:20,-17.47503,-149.83707,17,0.5,0.16,0.64,0.07,0.23,"windy; current"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2012-06-09,11:30,-17.47785,-149.84213,2,0.5,0.20,0.68,0.15,0.49,"calm; sunny"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2012-06-09,11:40,-17.48488,-149.83365,14,0.5,0.19,0.56,0.11,0.62,"calm; sunny"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2012-06-12,11:30,-17.47503,-149.83707,17,0.5,0.14,1.18,0.06,0.12,"calm; good vis"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2012-06-23,11:10,-17.47503,-149.83707,17,0.5,0.15,0.68,0.10,0.14,"overcast; strong wind out of E"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2012-06-23,11:40,-17.47785,-149.84213,2,0.5,0.15,1.14,0.10,0.27,"overcast; strong wind out of E"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2012-06-23,11:45,-17.48488,-149.83365,14,0.5,0.16,0.86,0.16,0.35,"overcast; strong wind out of E"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2012-07-01,11:00,-17.47785,-149.84213,2,0.5,0.15,0.61,0.08,0.43,"calm; sunny"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2012-07-01,11:05,-17.48488,-149.83365,14,0.5,0.13,1.06,0.08,0.30,"calm; sunny"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2012-07-03,12:00,-17.47503,-149.83707,17,0.5,0.14,1.15,0.09,0.12,"light wind; sunny"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2012-07-18,10:00,-17.47785,-149.84213,2,0.5,0.14,0.82,0.07,0.37,small white caps
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2012-07-18,10:00,-17.48488,-149.83365,14,0.5,0.16,1.39,0.12,0.40,small white caps
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2012-07-29,12:30,-17.47503,-149.83707,17,0.5,0.16,0.50,0.10,0.20,"calm; sunny"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2012-08-08,12:30,-17.48488,-149.83365,14,0.5,0.17,1.54,0.10,0.52,"calm; sunny"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2012-08-08,12:35,-17.47785,-149.84213,2,0.5,0.18,1.39,0.10,0.47,"calm; sunny"
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2012-08-12,11:21,17.47503333,149.8370667,17,1,0.13,0.36,0.06,0.19,"light rain event 7:00 AM.  After 8:00 sunny; no clouds; light wind"
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2012-08-14,10:15,17.47785,149.8421333,2,1,0.15,0.36,0.05,0.39,"sunny; light wind"
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2012-08-14,09:03,17.48488333,149.83365,14,1,0.16,1.18,0.08,0.64,"sunny; light wind"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2012-08-22,09:11,-17.47503,-149.83707,17,0.5,0.16,0.57,0.01,0.33,"calm; sunny"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2012-08-23,14:50,-17.47785,-149.84213,2,0.5,0.15,0.39,0.02,0.26,"overcast; calm"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2012-08-23,14:50,-17.48488,-149.83365,14,0.5,0.19,0.45,0.05,0.42,"overcast; calm"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2012-09-09,15:30,-17.47785,-149.84213,2,0.5,0.13,0.20,0.08,0.25,"sunny; E winds"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2012-09-09,16:30,-17.48488,-149.83365,14,0.5,0.11,0.17,0.05,0.24,"sunny; E winds"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2012-09-10,09:30,-17.47503,-149.83707,17,0.5,0.11,0.23,0.05,0.10,"sunny; E winds"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2012-12-05,10:40,-17.47503,-149.83707,17,0.5,0.13,0.33,0.03,0.05,"sunny; small swell"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2012-12-06,11:30,-17.47785,-149.84213,2,0.5,0.16,0.35,0.08,0.31,"windy; overcast"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2012-12-06,11:35,-17.48488,-149.83365,14,0.5,0.15,0.41,0.10,0.34,"windy; overcast"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2012-12-07,10:30,-17.47503,-149.83707,17,0.5,0.15,1.58,0.09,0.25,"calm; clear"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2013-01-10,14:18,-17.47785,-149.84213,2,0.5,0.16,0.73,0.05,0.20,"calm; slightly cloudy"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2013-01-10,14:21,-17.48488,-149.83365,14,0.5,0.17,1.76,0.10,0.51,"calm; slightly cloudy"
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2013-01-14,10:01,-17.47503,-149.83707,17,1,0.14,0.65,0.05,0.22,"~1.5 m swell; stronger wind than offshore; overcast"
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2013-01-16,10:29,-17.47785,-149.84213,2,1,0.17,0.74,0.05,0.35,"light wind; mostly overcast"
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2013-01-16,08:16,-17.48488,-149.83365,14,1,0.17,1.38,0.05,0.35,"light wind; mostly overcast"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2013-01-23,10:15,-17.47503,-149.83707,17,0.5,0.15,0.65,0.05,0.08,"clear; ~1.5 m swell"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2013-01-23,11:10,-17.48488,-149.83365,14,0.5,0.16,1.23,0.08,0.21,"clear; ~1.5 m swell"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2013-01-23,11:50,-17.47785,-149.84213,2,0.5,0.15,0.80,0.04,0.15,"clear; ~1.5 m swell"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2013-01-30,12:30,-17.47503,-149.83707,17,0.5,0.13,1.24,0.05,0.44,"medium swell; sunny"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2013-01-30,09:30,-17.47785,-149.84213,2,0.5,0.15,1.02,0.08,0.61,"medium swell; sunny"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2013-01-30,09:40,-17.48488,-149.83365,14,0.5,0.17,0.90,0.04,0.61,"medium swell; sunny"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2013-04-24,15:40,-17.47785,-149.84213,2,0.5,0.14,0.88,0.03,0.57,"small swell; slightly overcast; low wind"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2013-04-24,15:45,-17.48488,-149.83365,14,0.5,0.14,2.23,0.03,0.69,"small swell; slightly overcast; low wind"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2013-04-30,16:00,-17.47503,-149.83707,17,0.5,0.13,1.90,0.06,0.40,"calm sea; partly cloudy"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2013-05-18,16:10,-17.47785,-149.84213,2,0.5,0.18,1.60,0.03,0.79,"calm; low wind"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2013-05-18,16:15,-17.48488,-149.83365,14,0.5,0.17,1.63,0.09,0.80,"calm; low wind"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2013-05-30,10:15,-17.47503,-149.83707,17,0.5,0.14,1.20,0.04,0.49,"calm; medium wind"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2013-06-05,12:15,-17.47785,-149.84213,2,0.5,0.17,0.77,0.07,0.66,"calm; sunny"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2013-06-05,12:20,-17.48488,-149.83365,14,0.5,0.16,1.43,0.07,0.74,"calm; sunny"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2013-06-11,11:20,-17.47503,-149.83707,17,0.5,0.16,1.58,0.06,0.63,"mild wind; sunny"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2013-06-11,13:15,-17.47785,-149.84213,2,0.5,0.16,1.05,0.04,0.70,"mild wind; sunny"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2013-06-11,13:20,-17.48488,-149.83365,14,0.5,0.17,1.72,0.09,0.81,"mild wind; sunny"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2013-06-30,09:50,-17.47503,-149.83707,17,0.5,0.14,0.77,0.02,0.52,"sunny; 2m swell"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2013-07-01,10:25,-17.48488,-149.83365,14,0.5,0.16,0.87,0.09,0.69,NA
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2013-07-15,11:10,-17.47785,-149.84213,2,0.5,0.15,0.58,0.10,0.67,"suny; clear; calm"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2013-07-15,11:15,-17.48488,-149.83365,14,0.5,0.14,0.98,0.07,0.67,"suny; clear; calm"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2013-07-17,15:30,-17.47503,-149.83707,17,0.5,0.13,0.92,0.05,0.40,"calm; sunny"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2013-08-03,14:45,-17.47503,-149.83707,17,0.5,0.15,0.63,0.05,0.43,"calm; sunny"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2013-08-03,15:05,-17.47785,-149.84213,2,0.5,0.16,0.88,0.09,0.70,"calm; sunny"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2013-08-03,15:10,-17.48488,-149.83365,14,0.5,0.17,1.08,0.10,0.80,"calm; sunny"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2013-08-18,09:25,-17.47503,-149.83707,17,0.5,0.14,0.55,0.09,0.52,"overcast; light wind"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2013-08-18,14:35,-17.48488,-149.83365,14,0.5,0.19,1.35,0.09,0.81,"sunny; calm"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2013-08-18,14:40,-17.47785,-149.84213,2,0.5,0.16,0.99,0.06,0.69,"sunny; calm"
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2013-08-21,10:25,-17.47503,-149.83707,17,1,0.15,0.75,0.08,0.44,"overcast; calm"
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2013-08-23,10:45,-17.47785,-149.84213,2,1,0.18,0.85,0.11,0.87,"overcast; calm"
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2013-08-23,08:37,-17.48488,-149.83365,14,1,0.14,1.30,0.11,0.67,"overcast; calm"
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2014-01-24,10:05,-17.47503,-149.83707,17,1,0.14,0.34,0.05,0.12,"overcast; calm"
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2014-01-22,10:39,-17.47785,-149.84213,2,1,0.16,0.81,0.09,0.65,"overcast; calm"
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2014-01-22,08:39,-17.48488,-149.83365,14,1,0.15,0.53,0.10,0.30,"overcast; calm"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2014-01-05,16:30,-17.48488,-149.83365,14,0.5,0.16,1.25,0.05,0.37,"calm; sunny"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2014-01-05,16:40,-17.47785,-149.84213,2,0.5,0.15,0.63,0.05,0.28,"calm; sunny"
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2014-01-24,10:05,-17.47503,-149.83707,17,1,0.14,0.34,0.05,0.12,NA
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2014-01-22,10:39,-17.47785,-149.84213,2,1,0.16,0.81,0.09,0.65,NA
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2014-01-22,08:39,-17.48488,-149.83365,14,1,0.15,0.53,0.10,0.30,NA
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2014-01-28,10:30,-17.47503,-149.83707,17,0.5,0.14,0.50,0.03,0.06,"sunny; medium swell"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2014-02-05,09:45,-17.47503,-149.83707,17,0.5,0.15,0.92,0.07,0.24,"calm; sunny"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2014-02-06,14:20,-17.47785,-149.84213,2,0.5,0.15,1.55,0.08,0.30,windy
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2014-02-06,14:30,-17.48488,-149.83365,14,0.5,0.15,0.68,0.07,0.29,windy
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2014-04-04,11:30,-17.47503,-149.83707,17,0.5,0.15,1.53,0.02,0.13,windy
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2014-04-18,15:30,-17.47503,-149.83707,17,0.5,0.17,1.14,0.03,0.05,calm seas
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2014-04-23,11:35,-17.47785,-149.84213,2,0.5,0.13,1.22,0.05,0.39,"sunny; 5 knot wind"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2014-04-23,11:40,-17.48488,-149.83365,14,0.5,0.14,1.08,0.08,0.20,"sunny; 5 knot wind"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2014-05-19,15:50,-17.47785,-149.84213,2,0.5,0.14,1.35,0.08,0.35,"sunny; 10 knot wind from E"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2014-05-19,16:00,-17.48488,-149.83365,14,0.5,0.14,0.70,0.06,0.23,"sunny; 10 knot wind from E"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2014-05-28,16:30,-17.47503,-149.83707,17,0.5,0.16,2.39,0.06,0.39,15 knot wind from E
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2014-05-30,16:30,-17.47785,-149.84213,2,0.5,0.08,1.64,0.04,0.15,"overcast; wind from SE"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2014-05-30,16:35,-17.48488,-149.83365,14,0.5,0.14,1.19,0.06,0.37,"overcast; wind from SE"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2014-06-04,09:35,-17.47503,-149.83707,17,0.5,0.13,1.61,0.03,0.20,"sunny; wind from S"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2014-06-06,12:05,-17.47785,-149.84213,2,0.5,0.16,1.33,0.05,0.18,"sunny; light wind"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2014-06-06,12:10,-17.48488,-149.83365,14,0.5,0.12,1.46,0.06,0.16,"sunny; light wind"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2014-06-11,10:30,-17.47503,-149.83707,17,0.5,0.13,0.96,0.02,0.16,"sunny; light wind"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2014-06-27,10:30,-17.47503,-149.83707,17,0.5,0.11,1.62,0.04,0.35,"rain; some swell; strong current"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2014-06-29,14:45,-17.47785,-149.84213,2,0.5,0.12,2.23,0.06,0.33,"sunny; slightly overcast; light wind"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2014-06-29,14:40,-17.48488,-149.83365,14,0.5,0.11,2.44,0.08,0.51,"sunny; slightly overcast; light wind"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2014-07-09,16:30,-17.47785,-149.84213,2,0.5,0.15,1.73,0.09,0.47,"overcast; light rain and wind"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2014-07-09,16:35,-17.48488,-149.83365,14,0.5,0.13,2.81,0.07,0.45,"overcast; light rain and wind"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2014-07-13,11:20,-17.47503,-149.83707,17,0.5,0.12,0.74,0.03,0.16,cloudy and rainy
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2014-08-19,09:41,-17.47503,-149.83707,17,1,0.12,0.17,0.09,0.32,NA
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2014-08-21,09:44,-17.47785,-149.84213,2,1,0.13,0.18,0.10,0.46,NA
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2014-08-21,08:53,-17.48488,-149.83365,14,1,0.14,0.66,0.10,0.43,NA
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2014-08-29,10:50,-17.47503,-149.83707,17,0.5,0.14,2.17,0.04,0.10,"overcast; light wind"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2014-08-30,11:40,-17.47785,-149.84213,2,0.5,0.18,1.60,0.09,0.50,"sunny with clouds; winds from South"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2014-08-30,11:45,-17.48488,-149.83365,14,0.5,0.16,0.84,0.10,0.55,"sunny with clouds; winds from South"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2015-01-12,10:20,-17.47503,-149.83707,17,0.5,0.14,0.90,0.05,0.15,rain squall ~2 hours earlier
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2015-01-16,14:43,-17.47503,-149.83707,17,0.5,0.14,0.92,0.04,0.19,"overcast; rainstorms earlier"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2015-01-16,16:24,-17.47785,-149.84213,2,0.5,0.15,0.84,0.06,0.22,"overcast; rainstorms earlier"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2015-01-16,16:35,-17.48488,-149.83365,14,0.5,0.17,1.71,0.10,0.60,"overcast; rainstorms earlier"
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2015-01-27,09:55,-17.47503,-149.83707,17,1,0.12,1.28,0.09,0.19,NA
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2015-01-29,09:17,-17.47785,-149.84213,2,1,0.15,0.73,0.07,0.18,NA
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2015-01-29,08:43,-17.48488,-149.83365,14,1,0.17,1.54,0.11,0.32,NA
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2015-02-11,11:00,-17.47785,-149.84213,2,0.5,0.03,1.69,0.08,0.24,"Overcast; heavy rain night before"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2015-02-11,11:10,-17.48488,-149.83365,14,0.5,0.05,1.31,0.09,0.31,"Overcast; heavy rain night before"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2015-02-24,09:45,-17.47503,-149.83707,17,0.5,0.04,0.57,0.22,0.25,"10knot wind from East; Sunny"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2015-02-24,10:00,-17.47785,-149.84213,2,0.5,0.05,0.54,0.19,0.27,"10knot wind from East; Sunny"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2015-02-24,10:05,-17.48488,-149.83365,14,0.5,0.03,0.71,0.09,0.24,"10knot wind from East; Sunny"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2015-04-03,12:10,-17.47503,-149.83707,17,0.5,0.05,1.01,0.03,0.08,"Sunny; low wind and swell"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2015-04-20,14:45,-17.48488,-149.83365,14,0.5,0.07,0.91,0.07,0.27,wind 15 knots from east
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2015-04-24,16:30,-17.47503,-149.83707,17,0.5,0.02,0.85,0.06,0.08,wind 10 knots from east
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2015-04-28,17:10,-17.47785,-149.84213,2,0.5,0.05,0.76,0.06,0.33,Rain for most of day
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2015-04-28,17:15,-17.48488,-149.83365,14,0.5,0.03,0.84,0.09,0.31,Rain for most of day
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2015-05-12,09:20,-17.47503,-149.83707,17,0.5,0.06,0.87,0.03,0.14,"calm; sunny; low wind"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2015-05-12,15:30,-17.47785,-149.84213,2,0.5,0.04,0.85,0.10,0.26,"calm; sunny; low wind"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2015-05-12,15:40,-17.48488,-149.83365,14,0.5,0.06,3.48,0.04,0.34,"calm; sunny; low wind"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2015-05-20,14:40,-17.47785,-149.84213,2,0.5,0.04,1.91,0.01,0.21,"calm; sunny; low wind"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2015-05-20,14:45,-17.48488,-149.83365,14,0.5,0.05,0.89,0.06,0.32,"calm; sunny; low wind"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2015-05-26,09:50,-17.47785,-149.84213,2,0.5,0.01,0.80,0.10,0.42,"low swell; wind 15knot from east"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2015-05-26,09:55,-17.48488,-149.83365,14,0.5,0.03,0.82,0.15,0.48,"low swell; wind 15knot from east"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2015-06-05,10:30,-17.47785,-149.84213,2,0.5,0.01,0.80,0.05,0.40,"calm; sunny; low wind"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2015-06-05,10:40,-17.48488,-149.83365,14,0.5,0.08,0.84,0.05,0.59,"calm; sunny; low wind"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2015-06-29,10:45,-17.47503,-149.83707,17,0.5,0.06,0.76,0.07,0.20,"sunny; slight swell"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2015-06-29,10:50,-17.47785,-149.84213,2,0.5,0.08,0.86,0.09,0.39,"sunny; slight swell"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2015-06-29,11:00,-17.48488,-149.83365,14,0.5,0.10,2.74,0.05,0.48,"sunny; slight swell"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2015-07-17,11:45,-17.47503,-149.83707,17,0.5,0.08,3.27,0.06,0.10,"sunny; calm; rained all day previous day."
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2015-07-17,02:35,-17.47785,-149.84213,2,0.5,0.07,4.64,0.07,0.38,"sunny; rained all day previous day. Getting windy"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2015-07-17,02:50,-17.48488,-149.83365,14,0.5,0.12,1.49,0.14,0.73,"sunny; rained all day previous day. Getting windy"
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2015-08-07,10:30,-17.47503,-149.83707,17,0.5,0.07,1.70,0.07,0.14,"partly couldy; small current; flat"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2015-08-08,08:30,-17.47785,-149.84213,2,0.5,0.14,2.52,0.11,0.57,"windy; partly cloudy"
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2015-08-08,08:40,-17.48488,-149.83365,14,0.5,0.09,0.72,0.01,0.46,"windy; partly cloudy"
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2015-08-18,09:49,-17.47503,-149.83707,17,1,0.08,0.80,0.04,0.25,"sunny; no wind"
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2015-08-20,10:04,-17.47785,-149.84213,2,1,0.13,2.22,0.09,0.65,"sunny; light wind"
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2015-08-20,08:14,-17.48488,-149.83365,14,1,0.07,1.98,0.11,0.66,"sunny; light wind"
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2016-01-22,09:35,-17.47503,-149.83707,17,1,0.07,0.87,0.03,0.09,"sunny; conditions bad enough to not go offshore; rainy and bad weather for last couple weeks"
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2016-01-22,09:50,-17.47785,-149.84213,2,1,0.10,1.26,0.05,0.31,"sunny; conditions bad enough to not go offshore; rainy and bad weather for last couple weeks"
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2016-01-22,10:00,-17.48488,-149.83365,14,1,0.08,1.22,0.07,0.27,"sunny; conditions bad enough to not go offshore; rainy and bad weather for last couple weeks"
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2016-04-22,14:10,-17.47785,-149.84213,2,1,0.19,1.65,0.07,0.21,NA
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2016-04-22,14:15,-17.48488,-149.83365,14,1,0.19,2.82,0.11,0.39,NA
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2016-04-22,14:25,-17.47503,-149.83707,17,1,0.24,3.50,0.10,0.35,NA
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2016-05-15,11:35,-17.47503,-149.83707,17,1,0.19,2.14,0.05,0.18,NA
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2016-05-15,11:45,-17.47785,-149.84213,2,1,0.12,1.28,0.02,0.24,NA
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2016-05-15,11:50,-17.48488,-149.83365,14,1,0.22,1.38,0.02,0.32,NA
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2016-05-29,12:00,-17.47503,-149.83707,17,1,0.19,1.16,0.06,0.15,NA
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2016-05-29,12:30,-17.47785,-149.84213,2,1,0.22,1.50,0.06,0.39,NA
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2016-05-29,12:35,-17.48488,-149.83365,14,1,0.24,2.58,0.05,0.74,NA
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2016-07-06,08:16,-17.47503,-149.83707,17,1,0.19,1.38,0.06,0.18,NA
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2016-07-06,10:45,-17.47785,-149.84213,2,1,0.24,1.87,0.08,0.32,NA
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2016-07-06,10:50,-17.48488,-149.83365,14,1,0.23,2.17,0.01,0.42,NA
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2016-07-30,12:45,-17.47503,-149.83707,17,1,0.17,1.21,0.06,0.08,NA
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2016-07-30,15:12,-17.47785,-149.84213,2,1,0.18,1.03,0.06,0.18,NA
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2016-07-30,15:17,-17.48488,-149.83365,14,1,0.20,1.06,0.00,0.29,NA
+Additional nutrients,LTER 1 Forereef Water Column,falcon tube,2016-08-03,10:30,-17.47503,-149.83707,17,1,0.19,2.94,0.06,0.21,NA
+Additional nutrients,LTER 1 Backreef Water Column,falcon tube,2016-08-03,11:30,-17.47785,-149.84213,2,1,0.16,1.02,0.01,0.28,NA
+Additional nutrients,LTER 1 Fringing Reef Water Column,falcon tube,2016-08-03,11:35,-17.48488,-149.83365,14,1,0.16,1.14,0.03,0.04,NA
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2016-08-24,10:05,-17.47503,-149.83707,17,5,0.09,1.26,0.06,0.29,"slightly overcast; not best overshore conditions but doable"
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2016-08-24,11:41,-17.47785,-149.84213,2,1,0.15,0.97,0.05,0.17,"slightly overcast; not best overshore conditions but doable"
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2016-08-24,10:30,-17.48488,-149.83365,14,5,0.20,0.96,0.09,0.39,"slightly overcast; not best overshore conditions but doable"
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2017-01-16,09:53,-17.47503,-149.83707,17,5,0.15,1.20,0.08,0.13,"rough offshore conditions; huge multiple day rain storm before hand"
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2017-01-16,11:50,-17.47785,-149.84213,2,1,0.17,1.10,0.09,0.13,"rough offshore conditions; huge multiple day rain storm before hand"
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2017-01-16,10:18,-17.48488,-149.83365,14,5,0.12,1.68,0.11,0.28,"rough offshore conditions; huge multiple day rain storm before hand"
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2017-08-24,09:20,-17.47503,-149.83707,17,5,0.06,3.08,0.24,0.53,"beautiful day; but windy; swell whitecaps for 2 weeks prior"
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2017-08-24,11:24,-17.47785,-149.84213,2,1,0.06,1.35,0.06,0.22,"beautiful day; but windy; swell whitecaps for 2 weeks prior"
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2017-08-24,09:48,-17.48488,-149.83365,14,5,0.07,0.61,0.01,0.00,"beautiful day; but windy; swell whitecaps for 2 weeks prior"
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2017-01-09,08:49,-17.47503,-149.83707,17,5,0.12,1.29,0.07,0.02,Calm and Sunny
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2017-01-09,10:49,-17.47785,-149.84213,2,1,0.09,0.80,0.00,0.01,Calm and Sunny
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2017-01-09,09:14,-17.48488,-149.83365,14,5,0.18,1.11,0.05,0.00,Calm and Sunny
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2017-08-24,09:20,-17.47503,-149.83707,17,5,0.12,0.61,0.01,0.07,"beautiful day; but windy; swell whitecaps for 2 weeks prior"
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2017-08-24,11:24,-17.47785,-149.84213,2,1,0.12,0.33,0.00,0.13,"beautiful day; but windy; swell whitecaps for 2 weeks prior"
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2017-08-24,09:48,-17.48488,-149.83365,14,5,0.12,0.68,0.00,0.28,"beautiful day; but windy; swell whitecaps for 2 weeks prior"
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2018-01-09,08:49,-17.47503,-149.83707,17,5,0.09,2.75,0.01,0.01,Calm and Sunny
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2018-01-09,10:49,-17.47785,-149.84213,2,1,0.12,1.89,0.02,0.07,Calm and Sunny
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2018-01-09,09:14,-17.48488,-149.83365,14,5,0.17,2.21,0.02,0.14,Calm and Sunny
+LTER bi-annual,LTER 1 Forereef Water Column,Niskin bottle,2018-08-14,08:49,-17.47503,-149.83707,17,5,0.06,0.86,0.02,0.04,NA
+LTER bi-annual,LTER 1 Backreef Water Column,Niskin bottle,2018-08-14,10:49,-17.47785,-149.84213,2,1,0.09,0.82,0.04,0.18,NA
+LTER bi-annual,LTER 1 Fringing Reef Water Column,Niskin bottle,2018-08-14,09:14,-17.48488,-149.83365,14,5,0.10,0.89,0.06,0.22,NA

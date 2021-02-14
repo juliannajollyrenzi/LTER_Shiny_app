@@ -140,21 +140,21 @@ spp_list <- as.data.frame(benthos %>% select(Taxonomy_Substrate_Functional_Group
 benth_taxon <- benthos %>% 
   group_by(Year, Taxonomy_Substrate_Functional_Group) %>% 
   summarize(Total_percent = sum(Percent_Cover, na.rm = TRUE), 
-            Mean_perc_cov = sum(Percent_Cover, na.rm = TRUE)/1200, # 1200 because it's 6 sites * 4 gabitats * 5 transects * 10 0.25 m^2 quadrats 
+            Mean_perc_cov = sum(Percent_Cover, na.rm = TRUE)/1200, # 1200 because it's 6 sites * 4 habitats * 5 transects * 10 0.25 m^2 quadrats 
             N = n())
 
 # by habitat
 benth_habit <- benthos %>% 
   group_by(Year, Taxonomy_Substrate_Functional_Group, Habitat) %>% 
   summarize(Total_percent = sum(Percent_Cover, na.rm = TRUE), 
-            Mean_perc_cov = sum(Percent_Cover, na.rm = TRUE)/300, # 1200 because it's 6 sites * 5 transects * 10 0.25 m^2 quadrats 
+            Mean_perc_cov = sum(Percent_Cover, na.rm = TRUE)/300, # 300 because it's 6 sites * 5 transects * 10 0.25 m^2 quadrats 
             N = n())
 
 # by site
 benth_site <- benthos %>% 
   group_by(Year, Taxonomy_Substrate_Functional_Group, Site) %>% 
   summarize(Total_percent = sum(Percent_Cover, na.rm = TRUE), 
-            Mean_perc_cov = sum(Percent_Cover, na.rm = TRUE)/200, # 1200 because it's 4 habitats * 5 transects * 10 0.25 m^2 quadrats 
+            Mean_perc_cov = sum(Percent_Cover, na.rm = TRUE)/200, # 200 because it's 4 habitats * 5 transects * 10 0.25 m^2 quadrats 
             N = n())
 ```
 
@@ -394,6 +394,72 @@ Save files as csv's in `cleaned_data`
 
 ```
 
+## Look at just Turbinaria ornata over time 
+
+```{r}
+t_ornata <- benthos %>% 
+  filter(Taxonomy_Substrate_Functional_Group == "Turbinaria ornata")
+
+# summarize by habitat
+t_ornata_habit <- t_ornata %>% 
+  group_by(Year, Habitat) %>% 
+  summarize(Total_percent = sum(Percent_Cover, na.rm = TRUE), 
+            Mean_perc_cov = sum(Percent_Cover, na.rm = TRUE)/300, # 1200 because 6 sites, 5 transects, 10 quadrats per transect
+            N = n())
+
+# and by site
+t_ornata_site <- t_ornata %>% 
+  group_by(Year, Site) %>% 
+  summarize(Total_percent = sum(Percent_Cover, na.rm = TRUE), 
+            Mean_perc_cov = sum(Percent_Cover, na.rm = TRUE)/200, # 200 because it's 4 habitats* 5 transects * 10 0.25 m^2 quadrats  
+            N = n())
+```
+
+Plot it
+
+```{r}
+# first by habitat
+ggplot(data = t_ornata_habit,
+               aes(x = Year, y = Mean_perc_cov, group = Habitat)) +
+            geom_line(aes(colour = Habitat)) +
+            scale_color_brewer(palette = "Dark2") +
+            theme_classic() +
+            theme(text = element_text(size=15),
+                  axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+                  axis.title.x = element_text(vjust = -0.7),
+                  legend.position = "bottom") +
+            scale_x_continuous(breaks = seq(min(t_ornata_habit$Year), 
+                                            max(t_ornata_habit$Year), by = 1)) +
+            ylab(expression(paste("Mean percent cover: ", italic("T. ornata")))) + 
+            xlab("Survey year") 
+
+
+```
+
+```{r}
+# then by site
+ggplot(data = t_ornata_site,
+               aes(x = Year, y = Mean_perc_cov, group = Site)) +
+            geom_line(aes(colour = Site)) +
+            scale_color_brewer(palette = "Dark2") +
+            theme_classic() +
+            theme(text = element_text(size=15),
+                  axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+                  axis.title.x = element_text(vjust = -0.7),
+                  legend.position = "bottom") +
+            scale_x_continuous(breaks = seq(min(t_ornata_site$Year), 
+                                            max(t_ornata_site$Year), by = 1)) +
+            ylab(expression(paste("Mean percent cover: ", italic("T. ornata")))) + 
+            xlab("Survey year") 
+
+```
+
+Then write the csv's
+
+```{r}
+# write_csv(t_ornata_habit, file = here("cleaned_data", "t_ornata_by_hab.csv"))
+# write_csv(t_ornata_site, file = here("cleaned_data", "t_ornata_by_site.csv"))
+```
 
 
 ## Fishes through time
@@ -472,6 +538,9 @@ fish_trophic_site %>%
 
 ```
 
+
+
+
 ## Bring in Acanthaster (COTS) data
 
 ```{r}
@@ -517,6 +586,23 @@ cots_habitat %>%
 Hurricane Oli in 2010, COTS 2007-2009, big bleaching in 2019 (https://www.abc.net.au/news/science/2019-05-21/coral-bleaching-french-polynesia/11129634). General temperatures and nutrients
 
 ## Examine abiotic variablrs
+
+## Nutrients
+
+```{r}
+nutrients <- read.csv(here("untouched_data", "MCR_LTER_bimonthly_reef_nutrients_20190129.csv")) # use read.csv() to get all latitude/longitude digits 
+# see all digits are there:
+print(nutrients[2, "Latitude"], digits = 11)
+
+# plot values
+
+```
+
+
+
+
+
+## Old temperature code (not used)
 
 Here we want to calculate Degree Heating Weeks (DHWs), which are calculated as amount of time spent over the bleaching threshold (1°C + the local Maximum of the Monthly Mean) over a 12-week moving window. Below is more information on DHWs, which are calculated from the Coral Bleaching HotSpot product. DHWs greater than 4 are thought to result in widespread bleaching and values greater than 8 are thought to induce widespread mortality, although given the fine temporal resolution we're integrating over our values for bleaching may be significantly lower. 
 

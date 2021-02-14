@@ -47,6 +47,10 @@ lter6.t <- read_csv(here("cleaned_data", "lter6_temp_summ.csv"))
 alg_div_h <- read_csv(here("cleaned_data", "alg_div_by_hab.csv"))
 alg_div_s <- read_csv(here("cleaned_data", "alg_div_by_site.csv"))
 
+# turbinaria data
+t_ornata_habit <- read_csv(here("cleaned_data", "t_ornata_by_hab.csv"))
+t_ornata_site <- read_csv(here("cleaned_data", "t_ornata_by_site.csv"))
+
 
 # put text blocks here so they don't clog up the ui code
 about.txt <- "The Mo'orea Long Term Ecological Research (LTER) site is a reserach site that was established by the U.S. National Science Foundation to gain understanding of long term dynamics in coral reef ecosystems. 
@@ -62,8 +66,9 @@ The Mo'orea LTER collects data in all of these habitats, including at two differ
 Researchers regularly survey all of four these habitats at six different sites around the island: LTER 1 and 2 (northern shore), LTER 3 and 4 (southeastern shore), and LTER 5 and 6 (southwestern shore)."
 
 data.txt <- "We use data that are freely available on the Mo'orea LTER website (http://mcrlter.msi.ucsb.edu/data/topic/; downloaded Jan 2021). 
-We focus on three core datasets: annual surveys of benthic organisms (i.e. species that live on the bottom, such as algae and sponges) [2]; 
-annual surveys of non-coral invertebrates, such as sea urchins and snails [3]; and annual surveys of hard corals [4].
+We focus on these core datasets: annual surveys of benthic organisms (i.e. species that live on the bottom, such as algae and sponges) [2]; 
+annual surveys of non-coral invertebrates, such as sea urchins and snails [3]; annual surveys of hard corals [4]; annual surveys of reef-associated fishes [5]; 
+high-resolution temperature data taken every 20 minutes [6]; bi-monthly nutrient data [7]; and annual surveys of Crown-of-thorns-starfishes [8].
 We create interactive visualizations of each of these time series, which we hope will inspire questions for further research and make the Mo'orea LTER data more accessible."
 
 ## Create theme----
@@ -100,7 +105,16 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                         strong("[3]"), 
                                             p("Carpenter, R of Moorea Coral Reef LTER. 2020. MCR LTER: Coral Reef: Long-term Population and Community Dynamics: Other Benthic Invertebrates, ongoing since 2005. knb-lter-mcr.7.32 doi:10.6073/pasta/6b5bd9b8ef282fb9a23ba89572835f68"),
                                         strong("[4]"),
-                                            p("Edmunds, P of Moorea Coral Reef LTER. 2020. MCR LTER: Coral Reef: Long-term Population and Community Dynamics: Corals, ongoing since 2005. knb-lter-mcr.4.38 doi:10.6073/pasta/10ee808a046cb63c0b8e3bc3c9799806")
+                                            p("Edmunds, P of Moorea Coral Reef LTER. 2020. MCR LTER: Coral Reef: Long-term Population and Community Dynamics: Corals, ongoing since 2005. knb-lter-mcr.4.38 doi:10.6073/pasta/10ee808a046cb63c0b8e3bc3c9799806"),
+                                        strong("[5]"),
+                                            p("Brooks, A of Moorea Coral Reef LTER. 2021. MCR LTER: Coral Reef: Long-term Population and Community Dynamics: Fishes, ongoing since 2005. knb-lter-mcr.6.58 doi:10.6073/pasta/a667eed481d9743c69c4209f6479acb4"),
+                                        strong("[6]"),
+                                            p("Leichter, J, K. Seydel and C. Gotschalk of Moorea Coral Reef LTER. 2019. MCR LTER: Coral Reef: Benthic Water Temperature, ongoing since 2005. knb-lter-mcr.1035.12 doi:10.6073/pasta/ea6a89415b1d9118d441235723c1a23f"),
+                                        strong("[7]"),
+                                            p("Alldredge, A of Moorea Coral Reef LTER. 2019. MCR LTER: Coral Reef: Water Column: Nutrients, ongoing since 2005. knb-lter-mcr.1034.9 doi:10.6073/pasta/9328a024f2bf16ecc66024f07dbcc574"),
+                                        strong("[8]"),
+                                            p("Brooks, A of Moorea Coral Reef LTER. 2018. MCR LTER: Coral Reef: Long-term Population Dynamics of Acanthaster planci, ongoing since 2005. knb-lter-mcr.1039.9 doi:10.6073/pasta/3fcbd829a459c879fc5e1d3b11518956"),
+                                    
     
                                         
                                     )
@@ -256,7 +270,21 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                     em("Photo credit: NOAA/JTWC"),
                                     p("The infrared photo below shows Oli passing French Polynesia. The image was taken by NASA's Aqua satellite on February 3. Purple indicates the most intense part of the storm, with hurricanes and cloud temperatures below -63° Farenheight, causing 20ft waves! Do you notice any time series in the LTER data that change after 2010? Which species do you think are most vulnerable to tropical storms? How does having long-term ecological monitoring sites like Mo'orea impact our ability to study ecosystem changes after natural disasters like Cyclone Oli?"),
                                     img(src = "Cyclone_oli_formation.jpg", width="50%"),
-                                    em("Photo credit: NASA/JPL, Ed Olsen")
+                                    em("Photo credit: NASA/JPL, Ed Olsen"),
+                                    h3("A quickly spreading macroalga: Turbinaria ornata"),
+                                    p("Turbinaria ornata is a physically-defended brown macroalgal species that has been spreading rapidly on Mo'orean reefs. T. ornata can compete with other species for space and light, which can be detrimental to hard corals. As it's increased in abundance over time, researchers have begun worrying that it may be bad news for some coral habitats. Do you notice any habitats or sites that look like they've seen large changes in T. ornata over time? Are there other species that seem to change as T. ornata increases?"),
+                                    tabsetPanel(type = "tabs",
+                                                tabPanel("By site", plotOutput("t_ornata_site_plot")),
+                                                tabPanel("By habitat", plotOutput("t_ornata_hab_plot"))
+                                    ),
+                                    img(src = "T_ornata_moorea.jpg", width="50%"),
+                                    em("A clump of T. ornata. Photo credit: Julianna Renzi"),
+                                    h3("Nutrients"),
+                                    p("Nutrients are vital to life, but some forms of nutrients can be harmful to some marine species"),
+                                    tabsetPanel(type = "tabs",
+                                                tabPanel("By site", plotOutput("nutrient_site_plot")),
+                                                tabPanel("By habitat", plotOutput("nutrient_hab_plot"))
+                                    )
                                     )
                            
                 ) 
@@ -720,6 +748,38 @@ server <- function(input, output) {
                                                        by = "1 year")) +
             theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
             geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
+    })
+    
+    
+    output$t_ornata_site_plot <- renderPlot({
+        ggplot(data = t_ornata_site,
+               aes(x = Year, y = Mean_perc_cov, group = Site)) +
+            geom_line(aes(colour = Site)) +
+            scale_color_brewer(palette = "Dark2") +
+            theme_classic() +
+            theme(text = element_text(size=15),
+                  axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+                  axis.title.x = element_text(vjust = -0.7),
+                  legend.position = "bottom") +
+            scale_x_continuous(breaks = seq(min(t_ornata_site$Year), 
+                                            max(t_ornata_site$Year), by = 1)) +
+            ylab(expression(paste("Mean percent cover: ", italic("T. ornata")))) + 
+            xlab("Survey year") 
+    })
+    output$t_ornata_hab_plot <- renderPlot({
+        ggplot(data = t_ornata_habit,
+               aes(x = Year, y = Mean_perc_cov, group = Habitat)) +
+            geom_line(aes(colour = Habitat)) +
+            scale_color_brewer(palette = "Dark2") +
+            theme_classic() +
+            theme(text = element_text(size=15),
+                  axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+                  axis.title.x = element_text(vjust = -0.7),
+                  legend.position = "bottom") +
+            scale_x_continuous(breaks = seq(min(t_ornata_habit$Year), 
+                                            max(t_ornata_habit$Year), by = 1)) +
+            ylab(expression(paste("Mean percent cover: ", italic("T. ornata")))) + 
+            xlab("Survey year") 
     })
     
 }
