@@ -293,6 +293,17 @@ alg.spp.richness <- specnumber(algal_mat)
   colnames(alg.spp.richness) <- "Species_richness"
   alg.div.metrics.h <- cbind(alg.div.metrics.h, alg.spp.richness)
   
+# get the Simpson index
+alg.simp.ind <- as.data.frame(diversity(algal_mat, index = "simpson"))
+  colnames(alg.simp.ind) <- "Simpson_index"
+  alg.div.metrics.h <- cbind(alg.div.metrics.h, alg.simp.ind)
+
+# get pileu's evenness
+piel.even <- as.data.frame(diversity(algal_mat, index = "shannon") / log(specnumber(algal_mat)))
+  colnames(piel.even) <- "Pielou_evenness"
+  alg.div.metrics.h <- cbind(alg.div.metrics.h, piel.even)
+
+  
 ```
 
 Explore patterns graphically
@@ -341,6 +352,16 @@ alg.spp.richness.s <- specnumber(algal_mat.site)
   alg.spp.richness.s <- as.data.frame(alg.spp.richness.s)
   colnames(alg.spp.richness.s) <- "Species_richness"
   alg.div.metrics.s <- cbind(alg.div.metrics.s, alg.spp.richness.s)
+  
+# get the Simpson index
+alg.simp.ind.s <- as.data.frame(diversity(algal_mat.site, index = "simpson"))
+  colnames(alg.simp.ind.s) <- "Simpson_index"
+  alg.div.metrics.s <- cbind(alg.div.metrics.s, alg.simp.ind.s)
+
+# get pileu's evenness
+piel.even.s <- as.data.frame(diversity(algal_mat.site, index = "shannon") / log(specnumber(algal_mat.site)))
+  colnames(piel.even.s) <- "Pielou_evenness"
+  alg.div.metrics.s <- cbind(alg.div.metrics.s, piel.even.s)
 ```
 
 And plot

@@ -24,10 +24,12 @@ benth_site <- read_csv(here("cleaned_data",
                             "benthos_by_site.csv"))
 # load fish data by habitat
 fish_habitat <- read_csv(here("cleaned_data",
-                              "fish_by_habitat.csv"))
+                              "fish_by_habitat.csv")) %>% # then clean up one messy classification (planktivores)
+    mutate(Fine_Trophic = replace(Fine_Trophic, Fine_Trophic == "Planktivore_exclusively", "Planktivore")) 
 # load fish data by site
 fish_site <- read_csv(here("cleaned_data",
-                           "fish_by_site.csv"))
+                           "fish_by_site.csv")) %>% # then clean up one messy classification (planktivores)
+    mutate(Fine_Trophic = replace(Fine_Trophic, Fine_Trophic == "Planktivore_exclusively", "Planktivore")) 
 # load COTS data
 cots_habitat <- read_csv(here("cleaned_data",
                               "cots_by_habitat.csv"))
@@ -140,23 +142,27 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                            tabPanel("By habitat",
                                     sidebarLayout(
                                         sidebarPanel(
-                                            selectInput("select", label = h3("Select diversity metric"), 
-                                                        choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3), 
-                                                        selected = 1)
+                                            selectInput("div_met_h", label = h3("Select diversity metric"), 
+                                                        choices = list("Shannon index" = "Shannon_index", "Species richness" = "Species_richness",
+                                                                       "Simpson index" = "Simpson_index", "Pielou's evenness" = "Pielou_evenness"), 
+                                                        selected = "Shannon_index")
                                         ),
-                                        mainPanel("Macroalgal diversity through time")
+                                        mainPanel("Macroalgal diversity through time",
+                                                  plotOutput("alg_div_plot_h"))
                                         
                                     )),
                            tabPanel("By site",
                                     sidebarLayout(
                                         sidebarPanel(
-                                            selectInput("select", label = h3("Select diversity metric"),
-                                                        choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
-                                                        selected = 1)
+                                            selectInput("div_met_s", label = h3("Select diversity metric"),
+                                                        choices = list("Shannon index" = "Shannon_index", "Species richness" = "Species_richness",
+                                                                       "Simpson index" = "Simpson_index", "Pielou's evenness" = "Pielou_evenness"),
+                                                        selected = "Shannon_index")
                                                 
                                             ),
                                         
-                                    mainPanel("Macroalgal diversity through time")
+                                    mainPanel("Macroalgal diversity through time",
+                                              plotOutput("alg_div_plot_s"))
                                     )
                                
                            )),
@@ -226,7 +232,7 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                         tabPanel("By habitat", plotOutput("COTS_hab_plot"))
                                     ),
                                     h3("Temparture over time"),
-                                    p("Both extremely cold temperatures and extremely warm temperatures stress corals out and can lead to coral death. Below are time series plots from the LTER showing maximum daily temperatures at different sites, habitats, and depths through time. The most significant heat event during this time period was in 2019, when hot temperatures drove corals to bleach and some to die. Read more about the 2019 event here: https://www.abc.net.au/news/science/2019-05-21/coral-bleaching-french-polynesia/11129634"),
+                                    p("Both extremely cold temperatures and extremely warm temperatures stress corals out and can lead to coral death. Below are time series plots from the LTER showing maximum daily temperatures at different sites, habitats, and depths through time. The most significant heat event during this time period was in 2019 (see dashed vertical line in plots below), when hot temperatures drove corals to bleach and some to die. Read more about the 2019 event here: https://www.abc.net.au/news/science/2019-05-21/coral-bleaching-french-polynesia/11129634"),
                                     tabsetPanel(type = "tabs",
                                                 tabPanel("LTER 1", plotOutput("lter1_temp_plot")),
                                                 tabPanel("LTER 2", plotOutput("lter2_temp_plot")),
@@ -280,9 +286,13 @@ server <- function(input, output) {
             theme_classic() +
             ylab(expression(paste("Average abundance per ", m^2))) + 
             xlab("Survey year") +
+            scale_x_continuous(breaks = seq(min(inv_hab_reactive()$Year), 
+                                            max(inv_hab_reactive()$Year), by = 1)) +
             facet_wrap("Habitat") +
             theme(text = element_text(size=15),
-                  axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+                  axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+                  axis.title.x = element_text(vjust = -0.7),
+                  legend.position = "bottom")
     })
     
     # now create the widget for the same data, but divided by site (second drop down)
@@ -302,9 +312,13 @@ server <- function(input, output) {
             theme_classic() +
             ylab(expression(paste("Average abundance per ", m^2))) + 
             xlab("Survey year") +
+            scale_x_continuous(breaks = seq(min(inv_site_reactive()$Year), 
+                                            max(inv_site_reactive()$Year), by = 1)) +
             facet_wrap("Site") +
             theme(text = element_text(size=15),
-                  axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+                  axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+                  axis.title.x = element_text(vjust = -0.7),
+                  legend.position = "bottom")
     })
     
     
@@ -330,8 +344,16 @@ server <- function(input, output) {
         ggplot(data = benth_hab_reactive(),
                aes(x = Year, y = Mean_perc_cov, group = Spp_grouping)) +
             geom_line(aes(colour = Spp_grouping)) +
-            scale_color_brewer(palette = "Dark2") +
-            theme_minimal() +
+            scale_color_manual(name = "Species grouping",
+                               labels = c("Crustose coralline algae", "Hard coral", "Macroalgae", "Turf algae"),
+                               values = brewer.pal(4, "Dark2")) +
+            theme_classic() +
+            theme(text = element_text(size=15),
+                  axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+                  axis.title.x = element_text(vjust = -0.7),
+                  legend.position = "bottom") +
+            scale_x_continuous(breaks = seq(min(benth_hab_reactive()$Year), 
+                                            max(benth_hab_reactive()$Year), by = 1)) +
             ylab("Mean percent cover (%)") + 
             xlab("Survey year") +
             facet_wrap(~Habitat)
@@ -353,13 +375,75 @@ server <- function(input, output) {
         ggplot(data = benth_site_reactive(),
                aes(x = Year, y = Mean_perc_cov, group = Spp_grouping)) +
             geom_line(aes(colour = Spp_grouping)) +
-            scale_color_brewer(palette = "Dark2") +
-            theme_minimal() +
+            scale_color_manual(name = "Species grouping",
+                                 labels = c("Crustose coralline algae", "Hard coral", "Macroalgae", "Turf algae"),
+                                 values = brewer.pal(4, "Dark2")) +
+            theme_classic() +
+            theme(text = element_text(size=15),
+                  axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+                  axis.title.x = element_text(vjust = -0.7),
+                  legend.position = "bottom") +
+            scale_x_continuous(breaks = seq(min(benth_site_reactive()$Year), 
+                                            max(benth_site_reactive()$Year), by = 1)) +
             ylab("Mean percent cover (%)") + 
             xlab("Survey year") +
             facet_wrap(~Site) +
             theme(axis.text.x = element_text(angle = 90))
     })
+    
+    
+    
+    
+    # plot macroalgal diversity over time: start with by habitat
+    alg_div_react_h <- reactive({
+        alg_div_h %>% 
+            dplyr::select("Year", "Habitat", input$div_met_h)
+    })
+    
+    output$alg_div_plot_h <- renderPlot({
+        nms <- names(alg_div_react_h()) # this is to get column names in the right format for ggplot (need to undo quotes, etc.)
+        yr <- nms[1]
+        metric <- nms[3]
+        y_lab <- c(str_split(nms[3], pattern = "_")[[1]]) # for y lab
+        ggplot(data = alg_div_react_h(),
+               aes(x = !!ensym(yr), y = !!ensym(metric), group = Habitat)) +
+            geom_line(aes(colour = Habitat)) +
+            scale_x_continuous(breaks = seq(min(alg_div_react_h()$Year), 
+                                            max(alg_div_react_h()$Year), by = 1)) +
+            theme_classic() +
+            theme(text = element_text(size=15),
+                  axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+                  axis.title.x = element_text(vjust = -0.7),
+                  legend.position = "bottom") +
+            scale_color_brewer(palette = "Set2") + 
+            ylab(paste(y_lab[1], y_lab[2]))
+    })
+    
+    # now by site
+    alg_div_react_s <- reactive({
+        alg_div_s %>% 
+            dplyr::select("Year", "Site", input$div_met_s)
+    })
+    
+    output$alg_div_plot_s <- renderPlot({
+        nms <- names(alg_div_react_s())
+        yr <- nms[1]
+        metric <- nms[3]
+        y_lab <- c(str_split(nms[3], pattern = "_")[[1]]) # for y lab
+        ggplot(data = alg_div_react_s(),
+               aes(x = !!ensym(yr), y = !!ensym(metric), group = Site)) +
+            geom_line(aes(colour = Site)) +
+            scale_x_continuous(breaks = seq(min(alg_div_react_s()$Year), 
+                                            max(alg_div_react_s()$Year), by = 1)) +
+            theme_classic() +
+            theme(text = element_text(size=15),
+                  axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+                  axis.title.x = element_text(vjust = -0.7),
+                  legend.position = "bottom") +
+            scale_color_brewer(palette = "Set2") + 
+            ylab(paste(y_lab[1], y_lab[2]))
+    })
+    
     
     
     
@@ -373,12 +457,16 @@ server <- function(input, output) {
         ggplot(data = fish_hab_reactive(), 
                aes(x = Year, y = Total_biomass_kg, group = Fine_Trophic)) +
             geom_line(aes(colour = Fine_Trophic)) +
-            scale_color_brewer(palette = "Paired") +
+            scale_color_manual(name = "Trophic group",
+                               values = brewer.pal(length(input$pick_fish_h), "Paired")) +
             theme_classic() +
             ylab("Total biomass (kg)") + 
             xlab("Survey year") +
+            scale_x_continuous(breaks = seq(min(fish_hab_reactive()$Year), 
+                                            max(fish_hab_reactive()$Year), by = 1)) +
             facet_wrap(~Habitat) +
-            theme(legend.position = "bottom") +
+            theme(legend.position = "bottom", axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+                  axis.title.x = element_text(vjust = -0.7)) +
             scale_fill_discrete(name = "Trophic position")
     })
     
@@ -392,12 +480,16 @@ server <- function(input, output) {
         ggplot(data = fish_site_reactive(),
                aes(x = Year, y = Total_biomass_kg, group = Fine_Trophic)) +
             geom_line(aes(colour = Fine_Trophic)) +
-            scale_color_brewer(palette = "Paired") +
+            scale_color_manual(name = "Trophic group",
+                               values = brewer.pal(length(input$pick_fish_s), "Paired")) +
             theme_classic() +
             ylab("Total biomass (kg)") + 
             xlab("Survey year") +
+            scale_x_continuous(breaks = seq(min(fish_site_reactive()$Year), 
+                                            max(fish_site_reactive()$Year), by = 1)) +
             facet_wrap(~Site) +
-            theme(legend.position = "bottom") +
+            theme(legend.position = "bottom", axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+                  axis.title.x = element_text(vjust = -0.7)) +
             labs(title = "LTER Sites") +
             scale_fill_discrete(name = "Trophic position") 
     })
@@ -408,8 +500,12 @@ server <- function(input, output) {
                aes(x = Year, y = Count_COTS)) +
             geom_line(color = "#3895D3") +
             theme_light() +
+            theme(legend.position = "bottom", axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+                  axis.title.x = element_text(vjust = -0.7)) +
             ylab("COTS counts") + 
             xlab("Survey year") +
+            scale_x_continuous(breaks = seq(min(cots_site$Year), 
+                                            max(cots_site$Year), by = 1)) +
             facet_wrap(~Site) +
             labs(title = "LTER Sites")  
     })
@@ -418,8 +514,12 @@ server <- function(input, output) {
                aes(x = Year, y = Count_COTS)) +
             geom_line(color = "#3895D3") +
             theme_light() +
+            theme(legend.position = "bottom", axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+                  axis.title.x = element_text(vjust = -0.7)) +
             ylab("COTS counts") + 
             xlab("Survey year") +
+            scale_x_continuous(breaks = seq(min(cots_site$Year), 
+                                            max(cots_site$Year), by = 1)) +
             facet_wrap(~Habitat) +
             labs(title = "Habitats")  
     })
@@ -436,6 +536,9 @@ server <- function(input, output) {
                    theme_light() +
                    ylab("Max benthic temperature (°C)") +
                    xlab("Date") +
+                    scale_x_date(breaks = function(x) seq.Date(from = as.Date("01-01-2005", format = "%m-%d-%Y"), 
+                                                               to = max(x), 
+                                                               by = "1 year")) +
                    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
                    geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
     })
@@ -449,6 +552,9 @@ server <- function(input, output) {
             theme_light() +
             ylab("Max benthic temperature (°C)") +
             xlab("Date") +
+            scale_x_date(breaks = function(x) seq.Date(from = as.Date("01-01-2005", format = "%m-%d-%Y"), 
+                                                       to = max(x), 
+                                                       by = "1 year")) +
             theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
             geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
     })
@@ -462,6 +568,9 @@ server <- function(input, output) {
             theme_light() +
             ylab("Max benthic temperature (°C)") +
             xlab("Date") +
+            scale_x_date(breaks = function(x) seq.Date(from = as.Date("01-01-2005", format = "%m-%d-%Y"), 
+                                                       to = max(x), 
+                                                       by = "1 year")) +
             theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
             geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
     })
@@ -475,6 +584,9 @@ server <- function(input, output) {
             theme_light() +
             ylab("Max benthic temperature (°C)") +
             xlab("Date") +
+            scale_x_date(breaks = function(x) seq.Date(from = as.Date("01-01-2005", format = "%m-%d-%Y"), 
+                                                       to = max(x), 
+                                                       by = "1 year")) +
             theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
             geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
     })
@@ -488,6 +600,9 @@ server <- function(input, output) {
             theme_light() +
             ylab("Max benthic temperature (°C)") +
             xlab("Date") +
+            scale_x_date(breaks = function(x) seq.Date(from = as.Date("01-01-2005", format = "%m-%d-%Y"), 
+                                                       to = max(x), 
+                                                       by = "1 year")) +
             theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
             geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
     })
@@ -501,6 +616,9 @@ server <- function(input, output) {
             theme_light() +
             ylab("Max benthic temperature (°C)") +
             xlab("Date") +
+            scale_x_date(breaks = function(x) seq.Date(from = as.Date("01-01-2005", format = "%m-%d-%Y"), 
+                                                       to = max(x), 
+                                                       by = "1 year")) +
             theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
             geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
     })
@@ -517,6 +635,9 @@ server <- function(input, output) {
             theme_light() +
             ylab("Mean benthic temperature (°C)") +
             xlab("Date") +
+            scale_x_date(breaks = function(x) seq.Date(from = as.Date("01-01-2005", format = "%m-%d-%Y"), 
+                                                       to = max(x), 
+                                                       by = "1 year")) +
             theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
             geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
     })
@@ -530,6 +651,9 @@ server <- function(input, output) {
             theme_light() +
             ylab("Mean benthic temperature (°C)") +
             xlab("Date") +
+            scale_x_date(breaks = function(x) seq.Date(from = as.Date("01-01-2005", format = "%m-%d-%Y"), 
+                                                       to = max(x), 
+                                                       by = "1 year")) +
             theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
             geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
     })
@@ -543,6 +667,9 @@ server <- function(input, output) {
             theme_light() +
             ylab("Mean benthic temperature (°C)") +
             xlab("Date") +
+            scale_x_date(breaks = function(x) seq.Date(from = as.Date("01-01-2005", format = "%m-%d-%Y"), 
+                                                       to = max(x), 
+                                                       by = "1 year")) +
             theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
             geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
     })
@@ -556,6 +683,9 @@ server <- function(input, output) {
             theme_light() +
             ylab("Mean benthic temperature (°C)") +
             xlab("Date") +
+            scale_x_date(breaks = function(x) seq.Date(from = as.Date("01-01-2005", format = "%m-%d-%Y"), 
+                                                       to = max(x), 
+                                                       by = "1 year")) +
             theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
             geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
     })
@@ -569,6 +699,9 @@ server <- function(input, output) {
             theme_light() +
             ylab("Mean benthic temperature (°C)") +
             xlab("Date") +
+            scale_x_date(breaks = function(x) seq.Date(from = as.Date("01-01-2005", format = "%m-%d-%Y"), 
+                                                       to = max(x), 
+                                                       by = "1 year")) +
             theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
             geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
     })
@@ -582,6 +715,9 @@ server <- function(input, output) {
             theme_light() +
             ylab("Mean benthic temperature (°C)") +
             xlab("Date") +
+            scale_x_date(breaks = function(x) seq.Date(from = as.Date("01-01-2005", format = "%m-%d-%Y"), 
+                                                       to = max(x), 
+                                                       by = "1 year")) +
             theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
             geom_vline(xintercept = as.Date("03-01-2019", format = "%m-%d-%Y"), linetype = "dashed", alpha = 0.5)
     })
