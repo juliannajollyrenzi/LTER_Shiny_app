@@ -41,6 +41,10 @@ lter4.t <- read_csv(here("cleaned_data", "lter4_temp_summ.csv"))
 lter5.t <- read_csv(here("cleaned_data", "lter5_temp_summ.csv"))
 lter6.t <- read_csv(here("cleaned_data", "lter6_temp_summ.csv"))
 
+# algal diversity data
+alg_div_h <- read_csv(here("cleaned_data", "alg_div_by_hab.csv"))
+alg_div_s <- read_csv(here("cleaned_data", "alg_div_by_site.csv"))
+
 
 # put text blocks here so they don't clog up the ui code
 about.txt <- "The Mo'orea Long Term Ecological Research (LTER) site is a reserach site that was established by the U.S. National Science Foundation to gain understanding of long term dynamics in coral reef ecosystems. 
@@ -132,19 +136,30 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                            ),
                            
                            
-                           
-                           tabPanel("Macroalgal diversity",
+                           navbarMenu("Macroalgal diversity",
+                           tabPanel("By habitat",
                                     sidebarLayout(
                                         sidebarPanel(
-                                            selectInput("select", label = h3("Select box"), 
+                                            selectInput("select", label = h3("Select diversity metric"), 
                                                         choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3), 
                                                         selected = 1)
                                         ),
                                         mainPanel("Macroalgal diversity through time")
                                         
                                     )),
-                           
-                           
+                           tabPanel("By site",
+                                    sidebarLayout(
+                                        sidebarPanel(
+                                            selectInput("select", label = h3("Select diversity metric"),
+                                                        choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
+                                                        selected = 1)
+                                                
+                                            ),
+                                        
+                                    mainPanel("Macroalgal diversity through time")
+                                    )
+                               
+                           )),
                            
                            navbarMenu("Benthos over time",
                                tabPanel("By habitat",
@@ -211,7 +226,7 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                         tabPanel("By habitat", plotOutput("COTS_hab_plot"))
                                     ),
                                     h3("Temparture over time"),
-                                    p("Both extremely cold temperatures and extremely warm temperatures stress corals out and can lead to coral death. Below are time series plots from the LTER showing both mean and maximum daily temperatures at different sites, habitats, and depths through time."),
+                                    p("Both extremely cold temperatures and extremely warm temperatures stress corals out and can lead to coral death. Below are time series plots from the LTER showing maximum daily temperatures at different sites, habitats, and depths through time. The most significant heat event during this time period was in 2019, when hot temperatures drove corals to bleach and some to die. Read more about the 2019 event here: https://www.abc.net.au/news/science/2019-05-21/coral-bleaching-french-polynesia/11129634"),
                                     tabsetPanel(type = "tabs",
                                                 tabPanel("LTER 1", plotOutput("lter1_temp_plot")),
                                                 tabPanel("LTER 2", plotOutput("lter2_temp_plot")),
@@ -220,7 +235,7 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                                 tabPanel("LTER 5", plotOutput("lter5_temp_plot")),
                                                 tabPanel("LTER 6", plotOutput("lter6_temp_plot"))
                                                 ),
-                                    p("Temperature can cause... Means"),
+                                    p("Below are plots of mean daily temperatures at different LTER sites, habitats, and depths."),
                                     tabsetPanel(type = "tabs",
                                                 tabPanel("LTER 1", plotOutput("lter1_temp_plot_mean")),
                                                 tabPanel("LTER 2", plotOutput("lter2_temp_plot_mean")),

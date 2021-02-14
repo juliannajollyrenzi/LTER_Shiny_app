@@ -154,7 +154,7 @@ benth_habit <- benthos %>%
 benth_site <- benthos %>% 
   group_by(Year, Taxonomy_Substrate_Functional_Group, Site) %>% 
   summarize(Total_percent = sum(Percent_Cover, na.rm = TRUE), 
-            Mean_perc_cov = sum(Percent_Cover, na.rm = TRUE)/200, # 1200 because it's 4 gabitats * 5 transects * 10 0.25 m^2 quadrats 
+            Mean_perc_cov = sum(Percent_Cover, na.rm = TRUE)/200, # 1200 because it's 4 habitats * 5 transects * 10 0.25 m^2 quadrats 
             N = n())
 ```
 
@@ -172,9 +172,11 @@ benth_taxon %>%
 # by site
 benth_site %>% 
   ggplot(aes(x = Year, y = Mean_perc_cov, group = Taxonomy_Substrate_Functional_Group)) +
-  geom_line(aes(color = Taxonomy_Substrate_Functional_Group)) + 
+  geom_line(aes(color = Taxonomy_Substrate_Functional_Group), 
+            show.legend = FALSE) + 
   theme_bw() +
-  gghighlight(max(Mean_perc_cov) > 13) +
+  gghighlight(max(Mean_perc_cov) > 13,
+              calculate_per_facet = TRUE) +
   scale_color_brewer(palette = "Dark2") +
   ylab("Mean percent cover (%)") + 
   xlab("Survey year") + 
@@ -187,7 +189,8 @@ benth_habit %>%
   geom_line(aes(colour = Taxonomy_Substrate_Functional_Group)) + 
   theme_bw() +
   scale_color_brewer(palette = "Dark2") +
-  gghighlight(max(Mean_perc_cov) > 13) +
+  gghighlight(max(Mean_perc_cov) > 13,
+              calculate_per_facet = TRUE) +
   ylab("Mean percent cover (%)") + 
   xlab("Survey year")  
 
@@ -282,13 +285,13 @@ alg.shann.ind <- diversity(algal_mat, index = "shannon")
 
 alg.shann.ind <- as.data.frame(alg.shann.ind) # this just makes it into a data frame so we can keep all our data easily and add to them
   colnames(alg.shann.ind) <- "Shannon_index" # this is just so we remember what these values are
-  alg.div.metrics <- cbind(wide_benthos_habitat[, 1:2], alg.shann.ind)
+  alg.div.metrics.h <- cbind(wide_benthos_habitat[, 1:2], alg.shann.ind)
 
 # Can also calculate the number of species (species richness) using the specnumber() function
 alg.spp.richness <- specnumber(algal_mat)
   alg.spp.richness <- as.data.frame(alg.spp.richness)
   colnames(alg.spp.richness) <- "Species_richness"
-  alg.div.metrics <- cbind(alg.div.metrics, alg.spp.richness)
+  alg.div.metrics.h <- cbind(alg.div.metrics.h, alg.spp.richness)
   
 ```
 
@@ -296,7 +299,7 @@ Explore patterns graphically
 
 ```{r}
 # first plot diversity
-alg.div.metrics %>% 
+alg.div.metrics.h %>% 
   ggplot(aes(x = Year, y = Shannon_index, group = Habitat)) +
   geom_line(aes(colour = Habitat)) +
   theme_minimal() +
@@ -304,7 +307,7 @@ alg.div.metrics %>%
   ylab("Macroalgal diversity (Shannon index)")
 
 # then plot species richness
-alg.div.metrics %>% 
+alg.div.metrics.h %>% 
   ggplot(aes(x = Year, y = Species_richness, group = Habitat)) +
   geom_line(aes(colour = Habitat)) +
   theme_classic() +
@@ -360,6 +363,16 @@ alg.div.metrics.s %>%
   ylab("Macroalgal species richness") +
   theme(legend.position = "top")
 ```
+
+Save files as csv's in `cleaned_data`
+
+```{r}
+# write_csv(alg.div.metrics.s,file = here("cleaned_data", "alg_div_by_site.csv"))
+# write_csv(alg.div.metrics.h,file = here("cleaned_data", "alg_div_by_hab.csv"))
+
+
+```
+
 
 
 ## Fishes through time
