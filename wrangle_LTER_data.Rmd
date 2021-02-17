@@ -13,6 +13,7 @@ require(tidyverse) # data wrangling
 require(here) # relative file paths
 require(gghighlight) # highlight certain lines on graphs
 require(vegan) # for diversity analysis 
+require(tsibble)
 
 ```
 
@@ -589,17 +590,87 @@ Hurricane Oli in 2010, COTS 2007-2009, big bleaching in 2019 (https://www.abc.ne
 
 ## Nutrients
 
+"This data package contains water chemistry measurements taken approximately bi-monthly at 3 stations on the north shore of Moorea, French Polynesia: Forereef, Lagoon, Fringing Reef. Nutrients are measured from water samples collected with Niskin bottles or Falcon tubes. For completeness, nutrient measurements are reported even when concentrations are below the detection limit of the method, which commonly occurs at this site. Sampling began in August, 2005 and is ongoing."
+
 ```{r}
 nutrients <- read.csv(here("untouched_data", "MCR_LTER_bimonthly_reef_nutrients_20190129.csv")) # use read.csv() to get all latitude/longitude digits 
 # see all digits are there:
 print(nutrients[2, "Latitude"], digits = 11)
 
 # plot values
+nut_tib <- nutrients %>% 
+  filter(Cruise == "LTER bi-annual") %>% # just get LTER surveys
+  rowwise() %>% 
+  mutate(Habitat = str_split(Location, " ")[[1]][3]) %>%  # need a row for habitat
+  mutate(Nitrate = Nitrite_and_Nitrate - Nitrite) %>% # get nitrate value
+  mutate(Date = as.Date(Date, format = "%Y-%m-%d")) 
+
+# look to see if there are duplicates
+nut_dups <- duplicates(nut_tib, key = c(Habitat, Cruise), index = Date)
+  # see most are actual duplicates, but some are different. For these purposes we'll take the average of both measurements
+
+# take average
+nut_summ <- nut_tib %>% 
+  group_by(Habitat, Date, Cruise) %>% 
+  summarize(Silicate = mean(Silicate),
+            Phosphate = mean(Phosphate),
+            Nitrite = mean(Nitrite),
+            Nitrate = mean(Nitrate),
+            Count = n())
 
 ```
 
+Now plot it
 
+```{r}
+# silicate
+nut_summ %>% 
+  ggplot(aes(x = Date, y = Silicate, color = Habitat)) +
+  geom_line() +
+  scale_color_brewer(palette = "Set2") +
+  theme_classic() +
+  ylab(expression(paste("Silicate concentrations (", mu, "mol / L)"))) +
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), 
+        legend.position = "bottom")
 
+# phosphate
+nut_summ %>% 
+  ggplot(aes(x = Date, y = Phosphate, color = Habitat)) +
+  geom_line() +
+  scale_color_brewer(palette = "Set2") +
+  theme_classic() +
+  ylab(expression(paste("Phosphate concentrations (", mu, "mol / L)"))) +
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), 
+        legend.position = "bottom")
+
+# nitrite
+nut_summ %>% 
+  ggplot(aes(x = Date, y = Nitrite, color = Habitat)) +
+  geom_line() +
+  scale_color_brewer(palette = "Set2") +
+  theme_classic() +
+  ylab(expression(paste("Nitrite concentrations (", mu, "mol / L)"))) +
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), 
+        legend.position = "bottom")
+
+# nitrate
+nut_summ %>% 
+  ggplot(aes(x = Date, y = Nitrate, color = Habitat)) +
+  geom_line() +
+  scale_color_brewer(palette = "Set2") +
+  theme_classic() +
+  ylab(expression(paste("Nitrate concentrations (", mu, "mol / L)"))) +
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), 
+        legend.position = "bottom")
+
+# write csv for nutrient data
+# write_csv(nut_summ,file = here("cleaned_data", "lter1_nutrients.csv"))
+  
+```
 
 
 ## Old temperature code (not used)

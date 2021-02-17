@@ -51,6 +51,8 @@ alg_div_s <- read_csv(here("cleaned_data", "alg_div_by_site.csv"))
 t_ornata_habit <- read_csv(here("cleaned_data", "t_ornata_by_hab.csv"))
 t_ornata_site <- read_csv(here("cleaned_data", "t_ornata_by_site.csv"))
 
+# read in nutrient data
+nutrients <- read_csv(here("cleaned_data", "lter1_nutrients.csv"))
 
 # put text blocks here so they don't clog up the ui code
 about.txt <- "The Mo'orea Long Term Ecological Research (LTER) site is a reserach site that was established by the U.S. National Science Foundation to gain understanding of long term dynamics in coral reef ecosystems. 
@@ -280,11 +282,14 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                     img(src = "T_ornata_moorea.jpg", width="50%"),
                                     em("A clump of T. ornata. Photo credit: Julianna Renzi"),
                                     h3("Nutrients"),
-                                    p("Nutrients are vital to life, but some forms of nutrients can be harmful to some marine species"),
+                                    p("Nutrients are vital to life, but some forms of nutrients can be harmful to some marine species. Here are plots showing how nutrients have changed at LTER 1 on the north shore in the backreef, fringing reef, and forereef (only LTER site included in the nutrient time series). Nitrate, for instance, can facilitate the growth of macroalgae and harm corals. Phosphorous, on the other hand, has been shown to help corals in some instances and potentially prevent coral bleaching. Do you notice any changes in other time series that might be related to nutrients?"),
                                     tabsetPanel(type = "tabs",
-                                                tabPanel("By site", plotOutput("nutrient_site_plot")),
-                                                tabPanel("By habitat", plotOutput("nutrient_hab_plot"))
-                                    )
+                                                tabPanel("Silicate", plotOutput("nutrients_silicate")),
+                                                tabPanel("Phosphate", plotOutput("nutrients_phosphate")),
+                                                tabPanel("Nitrite", plotOutput("nutrients_nitrite")),
+                                                tabPanel("Nitrate", plotOutput("nutrients_nitrate"))
+                                                )
+                                    
                                     )
                            
                 ) 
@@ -780,6 +785,54 @@ server <- function(input, output) {
                                             max(t_ornata_habit$Year), by = 1)) +
             ylab(expression(paste("Mean percent cover: ", italic("T. ornata")))) + 
             xlab("Survey year") 
+    })
+    
+    
+    
+    # now create nutrient plots
+    output$nutrients_silicate <- renderPlot({
+        nut_summ %>% 
+            ggplot(aes(x = Date, y = Silicate, color = Habitat)) +
+            geom_line() +
+            scale_color_brewer(palette = "Set2") +
+            theme_classic() +
+            ylab(expression(paste("Silicate concentrations (", mu, "mol / L)"))) +
+            scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
+            theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), 
+                  legend.position = "bottom")
+    })
+    output$nutrients_phosphate <- renderPlot({
+        nut_summ %>% 
+            ggplot(aes(x = Date, y = Phosphate, color = Habitat)) +
+            geom_line() +
+            scale_color_brewer(palette = "Set2") +
+            theme_classic() +
+            ylab(expression(paste("Phosphate concentrations (", mu, "mol / L)"))) +
+            scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
+            theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), 
+                  legend.position = "bottom")
+    })
+    output$nutrients_nitrite <- renderPlot({
+        nut_summ %>% 
+            ggplot(aes(x = Date, y = Nitrite, color = Habitat)) +
+            geom_line() +
+            scale_color_brewer(palette = "Set2") +
+            theme_classic() +
+            ylab(expression(paste("Nitrite concentrations (", mu, "mol / L)"))) +
+            scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
+            theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), 
+                  legend.position = "bottom")
+    })
+    output$nutrients_nitrate <- renderPlot({
+        nut_summ %>% 
+            ggplot(aes(x = Date, y = Nitrate, color = Habitat)) +
+            geom_line() +
+            scale_color_brewer(palette = "Set2") +
+            theme_classic() +
+            ylab(expression(paste("Nitrate concentrations (", mu, "mol / L)"))) +
+            scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
+            theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), 
+                  legend.position = "bottom")
     })
     
 }
