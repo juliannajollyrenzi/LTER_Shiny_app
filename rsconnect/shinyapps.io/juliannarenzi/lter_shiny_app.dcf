@@ -1,0 +1,10 @@
+name: lter_shiny_app
+title:
+username:
+account: juliannarenzi
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3724486
+bundleId: 4292430
+url: https://juliannarenzi.shinyapps.io/lter_shiny_app/
+when: 1614723511.18203

@@ -1,0 +1,12 @@
+name: MCR_LTER_explore
+title: MCR_LTER_explore
+username:
+account: juliannarenzi
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3724508
+bundleId: 4292681
+url: https://juliannarenzi.shinyapps.io/MCR_LTER_explore/
+when: 1614727703.28889
+asMultiple: FALSE
+asStatic: FALSE

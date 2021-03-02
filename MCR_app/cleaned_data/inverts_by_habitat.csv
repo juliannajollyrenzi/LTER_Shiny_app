@@ -1,0 +1,269 @@
+Year,Taxonomy,Habitat,Total_abund,N,Mean_abund_per_m2
+2007,Acanthaster planci,Backreef,1,120,0.008333333333333333
+2007,Acanthaster planci,Fringing,0,120,0
+2007,Acanthaster planci,Outer 10,1,120,0.008333333333333333
+2007,Acanthaster planci,Outer 17,3,120,0.025
+2007,Culcita novaeguineae,Backreef,1,120,0.008333333333333333
+2007,Culcita novaeguineae,Fringing,1,120,0.008333333333333333
+2007,Culcita novaeguineae,Outer 10,0,120,0
+2007,Culcita novaeguineae,Outer 17,0,120,0
+2007,Diadema savignyi,Backreef,235,120,1.9583333333333333
+2007,Diadema savignyi,Fringing,1,120,0.008333333333333333
+2007,Diadema savignyi,Outer 10,0,120,0
+2007,Diadema savignyi,Outer 17,2,120,0.016666666666666666
+2007,Diadema setosum,Backreef,1,120,0.008333333333333333
+2007,Diadema setosum,Fringing,15,120,0.125
+2007,Diadema setosum,Outer 10,0,120,0
+2007,Diadema setosum,Outer 17,0,120,0
+2007,Echinometra mathaei,Backreef,446,120,3.716666666666667
+2007,Echinometra mathaei,Fringing,593,120,4.941666666666666
+2007,Echinometra mathaei,Outer 10,3,120,0.025
+2007,Echinometra mathaei,Outer 17,11,120,0.09166666666666666
+2007,Echinometra oblonga,Fringing,2,20,0.016666666666666666
+2007,Echinostrephus aciculatus,Backreef,21,120,0.175
+2007,Echinostrephus aciculatus,Fringing,0,120,0
+2007,Echinostrephus aciculatus,Outer 10,78,120,0.65
+2007,Echinostrephus aciculatus,Outer 17,11,120,0.09166666666666666
+2007,Echinothrix calamaris,Backreef,3,120,0.025
+2007,Echinothrix calamaris,Fringing,6,120,0.05
+2007,Echinothrix calamaris,Outer 10,0,120,0
+2007,Echinothrix calamaris,Outer 17,0,120,0
+2007,Echinothrix diadema,Backreef,9,120,0.075
+2007,Echinothrix diadema,Fringing,2,120,0.016666666666666666
+2007,Echinothrix diadema,Outer 10,1,120,0.008333333333333333
+2007,Echinothrix diadema,Outer 17,2,120,0.016666666666666666
+2007,Tectus niloticus,Backreef,0,120,0
+2007,Tectus niloticus,Fringing,0,120,0
+2007,Tectus niloticus,Outer 10,5,120,0.041666666666666664
+2007,Tectus niloticus,Outer 17,0,120,0
+2008,Acanthaster planci,Backreef,1,20,0.008333333333333333
+2008,Acanthaster planci,Outer 10,3,40,0.025
+2008,Acanthaster planci,Outer 17,4,60,0.03333333333333333
+2008,Culcita novaeguineae,Fringing,1,20,0.008333333333333333
+2008,Diadema savignyi,Backreef,241,80,2.0083333333333333
+2008,Diadema savignyi,Fringing,18,40,0.15
+2008,Diadema savignyi,Outer 10,2,60,0.016666666666666666
+2008,Diadema savignyi,Outer 17,2,40,0.016666666666666666
+2008,Echinometra mathaei,Backreef,318,120,2.65
+2008,Echinometra mathaei,Fringing,436,120,3.6333333333333333
+2008,Echinometra mathaei,Outer 10,7,80,0.058333333333333334
+2008,Echinometra mathaei,Outer 17,7,20,0.058333333333333334
+2008,Echinostrephus aciculatus,Backreef,17,60,0.14166666666666666
+2008,Echinostrephus aciculatus,Outer 10,108,100,0.9
+2008,Echinostrephus aciculatus,Outer 17,10,80,0.08333333333333333
+2008,Echinothrix diadema,Backreef,11,60,0.09166666666666666
+2008,Echinothrix diadema,Fringing,17,100,0.14166666666666666
+2008,Tectus niloticus,Outer 17,1,20,0.008333333333333333
+2009,Acanthaster planci,Backreef,2,2,0.016666666666666666
+2009,Acanthaster planci,Outer 10,1,1,0.008333333333333333
+2009,Acanthaster planci,Outer 17,1,1,0.008333333333333333
+2009,Diadema savignyi,Backreef,206,120,1.7166666666666666
+2009,Diadema savignyi,Fringing,38,60,0.31666666666666665
+2009,Diadema savignyi,Outer 10,11,80,0.09166666666666666
+2009,Diadema savignyi,Outer 17,24,100,0.2
+2009,Echinometra mathaei,Backreef,285,120,2.375
+2009,Echinometra mathaei,Fringing,504,120,4.2
+2009,Echinometra mathaei,Outer 10,24,100,0.2
+2009,Echinometra mathaei,Outer 17,47,120,0.39166666666666666
+2009,Echinostrephus aciculatus,Backreef,19,80,0.15833333333333333
+2009,Echinostrephus aciculatus,Outer 10,93,120,0.775
+2009,Echinostrephus aciculatus,Outer 17,36,80,0.3
+2009,Echinothrix diadema,Backreef,11,100,0.09166666666666666
+2009,Echinothrix diadema,Fringing,21,40,0.175
+2009,Echinothrix diadema,Outer 10,5,40,0.041666666666666664
+2009,Echinothrix diadema,Outer 17,0,20,0
+2009,Tectus niloticus,Backreef,1,1,0.008333333333333333
+2009,Tectus niloticus,Fringing,2,21,0.016666666666666666
+2010,Acanthaster planci,Backreef,2,40,0.016666666666666666
+2010,Acanthaster planci,Fringing,1,20,0.008333333333333333
+2010,Acanthaster planci,Outer 10,3,60,0.025
+2010,Culcita novaeguineae,Backreef,1,20,0.008333333333333333
+2010,Culcita novaeguineae,Fringing,1,20,0.008333333333333333
+2010,Diadema savignyi,Backreef,143,100,1.1916666666666667
+2010,Diadema savignyi,Fringing,4,20,0.03333333333333333
+2010,Diadema savignyi,Outer 10,11,80,0.09166666666666666
+2010,Diadema savignyi,Outer 17,12,80,0.1
+2010,Echinometra mathaei,Backreef,365,120,3.0416666666666665
+2010,Echinometra mathaei,Fringing,695,120,5.791666666666667
+2010,Echinometra mathaei,Outer 10,26,100,0.21666666666666667
+2010,Echinometra mathaei,Outer 17,34,120,0.2833333333333333
+2010,Echinostrephus aciculatus,Backreef,25,100,0.20833333333333334
+2010,Echinostrephus aciculatus,Fringing,4,40,0.03333333333333333
+2010,Echinostrephus aciculatus,Outer 10,98,120,0.8166666666666667
+2010,Echinostrephus aciculatus,Outer 17,25,80,0.20833333333333334
+2010,Echinothrix diadema,Backreef,15,100,0.125
+2010,Echinothrix diadema,Fringing,10,60,0.08333333333333333
+2010,Echinothrix diadema,Outer 10,2,40,0.016666666666666666
+2011,Acanthaster planci,Backreef,1,20,0.008333333333333333
+2011,Culcita novaeguineae,Fringing,2,40,0.016666666666666666
+2011,Diadema savignyi,Backreef,138,60,1.15
+2011,Diadema savignyi,Fringing,36,60,0.3
+2011,Diadema savignyi,Outer 10,17,80,0.14166666666666666
+2011,Diadema savignyi,Outer 17,10,100,0.08333333333333333
+2011,Echinometra mathaei,Backreef,500,120,4.166666666666667
+2011,Echinometra mathaei,Fringing,1679,120,13.991666666666667
+2011,Echinometra mathaei,Outer 10,20,120,0.16666666666666666
+2011,Echinometra mathaei,Outer 17,17,120,0.14166666666666666
+2011,Echinostrephus aciculatus,Backreef,13,40,0.10833333333333334
+2011,Echinostrephus aciculatus,Outer 10,209,120,1.7416666666666667
+2011,Echinostrephus aciculatus,Outer 17,39,120,0.325
+2011,Echinothrix calamaris,Backreef,8,60,0.06666666666666667
+2011,Echinothrix calamaris,Fringing,5,40,0.041666666666666664
+2011,Echinothrix diadema,Fringing,15,20,0.125
+2011,Echinothrix diadema,Outer 10,0,20,0
+2011,Echinothrix diadema,Outer 17,0,20,0
+2011,Tectus niloticus,Outer 10,2,40,0.016666666666666666
+2011,Tectus niloticus,Outer 17,3,22,0.025
+2012,Acanthaster planci,Backreef,1,20,0.008333333333333333
+2012,Acanthaster planci,Fringing,2,40,0.016666666666666666
+2012,Culcita novaeguineae,Fringing,8,60,0.06666666666666667
+2012,Diadema savignyi,Backreef,98,100,0.8166666666666667
+2012,Diadema savignyi,Fringing,44,40,0.36666666666666664
+2012,Diadema savignyi,Outer 10,20,80,0.16666666666666666
+2012,Diadema savignyi,Outer 17,26,120,0.21666666666666667
+2012,Diadema setosum,Backreef,0,40,0
+2012,Diadema setosum,Fringing,0,40,0
+2012,Diadema setosum,Outer 10,0,40,0
+2012,Diadema setosum,Outer 17,0,40,0
+2012,Echinometra mathaei,Backreef,518,120,4.316666666666666
+2012,Echinometra mathaei,Fringing,2155,120,17.958333333333332
+2012,Echinometra mathaei,Outer 10,34,80,0.2833333333333333
+2012,Echinometra mathaei,Outer 17,12,120,0.1
+2012,Echinostrephus aciculatus,Backreef,54,100,0.45
+2012,Echinostrephus aciculatus,Fringing,10,80,0.08333333333333333
+2012,Echinostrephus aciculatus,Outer 10,352,120,2.933333333333333
+2012,Echinostrephus aciculatus,Outer 17,54,120,0.45
+2012,Echinothrix calamaris,Backreef,21,120,0.175
+2012,Echinothrix calamaris,Fringing,13,60,0.10833333333333334
+2012,Echinothrix diadema,Backreef,27,120,0.225
+2012,Echinothrix diadema,Fringing,2,40,0.016666666666666666
+2012,Echinothrix diadema,Outer 10,6,40,0.05
+2012,Echinothrix diadema,Outer 17,2,20,0.016666666666666666
+2012,Tectus niloticus,Outer 17,1,20,0.008333333333333333
+2012,Trochus maculatus,Backreef,1,20,0.008333333333333333
+2013,Acanthaster planci,Backreef,1,20,0.008333333333333333
+2013,Culcita novaeguineae,Backreef,1,20,0.008333333333333333
+2013,Culcita novaeguineae,Fringing,9,80,0.075
+2013,Diadema savignyi,Backreef,31,40,0.25833333333333336
+2013,Diadema savignyi,Fringing,21,40,0.175
+2013,Diadema savignyi,Outer 10,3,40,0.025
+2013,Diadema savignyi,Outer 17,4,80,0.03333333333333333
+2013,Diadema setosum,Outer 10,0,20,0
+2013,Diadema setosum,Outer 17,0,40,0
+2013,Echinometra mathaei,Backreef,818,120,6.816666666666666
+2013,Echinometra mathaei,Fringing,2602,120,21.683333333333334
+2013,Echinometra mathaei,Outer 10,2,20,0.016666666666666666
+2013,Echinometra mathaei,Outer 17,6,80,0.05
+2013,Echinostrephus aciculatus,Backreef,32,60,0.26666666666666666
+2013,Echinostrephus aciculatus,Fringing,1,20,0.008333333333333333
+2013,Echinostrephus aciculatus,Outer 10,334,120,2.783333333333333
+2013,Echinostrephus aciculatus,Outer 17,46,100,0.38333333333333336
+2013,Echinothrix calamaris,Backreef,19,100,0.15833333333333333
+2013,Echinothrix calamaris,Outer 10,0,20,0
+2013,Echinothrix calamaris,Outer 17,0,40,0
+2013,Echinothrix diadema,Backreef,2,40,0.016666666666666666
+2013,Echinothrix diadema,Outer 10,1,40,0.008333333333333333
+2013,Echinothrix diadema,Outer 17,3,60,0.025
+2013,Tectus niloticus,Backreef,1,20,0.008333333333333333
+2013,Tectus niloticus,Fringing,1,20,0.008333333333333333
+2013,Tectus niloticus,Outer 10,1,20,0.008333333333333333
+2013,Tectus niloticus,Outer 17,3,40,0.025
+2013,Tripneustes gratilla,Backreef,3,40,0.025
+2014,Culcita novaeguineae,Fringing,1,20,0.008333333333333333
+2014,Diadema savignyi,Backreef,11,60,0.09166666666666666
+2014,Diadema savignyi,Fringing,18,60,0.15
+2014,Diadema savignyi,Outer 10,1,20,0.008333333333333333
+2014,Diadema savignyi,Outer 17,1,20,0.008333333333333333
+2014,Echinometra mathaei,Backreef,733,120,6.108333333333333
+2014,Echinometra mathaei,Fringing,1927,120,16.058333333333334
+2014,Echinometra mathaei,Outer 10,3,40,0.025
+2014,Echinometra mathaei,Outer 17,3,40,0.025
+2014,Echinostrephus aciculatus,Backreef,22,80,0.18333333333333332
+2014,Echinostrephus aciculatus,Outer 10,268,120,2.2333333333333334
+2014,Echinostrephus aciculatus,Outer 17,49,100,0.4083333333333333
+2014,Echinothrix calamaris,Backreef,1,20,0.008333333333333333
+2014,Echinothrix calamaris,Fringing,1,20,0.008333333333333333
+2014,Echinothrix diadema,Fringing,1,20,0.008333333333333333
+2014,Tectus niloticus,Backreef,2,40,0.016666666666666666
+2014,Tectus niloticus,Fringing,3,20,0.025
+2014,Tripneustes gratilla,Backreef,2,20,0.016666666666666666
+2014,Turbo marmoratus,Backreef,1,20,0.008333333333333333
+2014,Turbo marmoratus,Fringing,2,40,0.016666666666666666
+2014,Turbo marmoratus,Outer 10,1,20,0.008333333333333333
+2015,Acanthaster planci,Fringing,2,40,0.016666666666666666
+2015,Diadema savignyi,Backreef,10,60,0.08333333333333333
+2015,Diadema savignyi,Fringing,11,60,0.09166666666666666
+2015,Diadema savignyi,Outer 17,3,20,0.025
+2015,Echinometra mathaei,Backreef,750,120,6.25
+2015,Echinometra mathaei,Fringing,967,120,8.058333333333334
+2015,Echinometra mathaei,Outer 17,5,60,0.041666666666666664
+2015,Echinostrephus aciculatus,Backreef,21,100,0.175
+2015,Echinostrephus aciculatus,Outer 10,217,120,1.8083333333333333
+2015,Echinostrephus aciculatus,Outer 17,33,100,0.275
+2015,Echinothrix calamaris,Backreef,1,20,0.008333333333333333
+2015,Echinothrix calamaris,Fringing,2,40,0.016666666666666666
+2015,Echinothrix calamaris,Outer 17,1,20,0.008333333333333333
+2015,Tectus niloticus,Backreef,1,20,0.008333333333333333
+2015,Tectus niloticus,Fringing,1,20,0.008333333333333333
+2015,Turbo marmoratus,Fringing,1,20,0.008333333333333333
+2016,Diadema savignyi,Backreef,4,40,0.03333333333333333
+2016,Diadema savignyi,Fringing,7,20,0.058333333333333334
+2016,Diadema savignyi,Outer 17,1,20,0.008333333333333333
+2016,Echinometra mathaei,Backreef,400,120,3.3333333333333335
+2016,Echinometra mathaei,Fringing,425,120,3.5416666666666665
+2016,Echinometra mathaei,Outer 10,3,80,0.025
+2016,Echinometra mathaei,Outer 17,4,60,0.03333333333333333
+2016,Echinostrephus aciculatus,Backreef,28,100,0.23333333333333334
+2016,Echinostrephus aciculatus,Outer 10,182,120,1.5166666666666666
+2016,Echinostrephus aciculatus,Outer 17,21,100,0.175
+2016,Echinothrix calamaris,Backreef,1,20,0.008333333333333333
+2016,Lambis truncata,Outer 10,1,20,0.008333333333333333
+2016,Tectus niloticus,Backreef,1,20,0.008333333333333333
+2016,Tectus niloticus,Fringing,3,20,0.025
+2017,Culcita novaeguineae,Backreef,1,20,0.008333333333333333
+2017,Diadema savignyi,Backreef,13,80,0.10833333333333334
+2017,Diadema savignyi,Fringing,35,60,0.2916666666666667
+2017,Diadema savignyi,Outer 17,2,40,0.016666666666666666
+2017,Echinometra mathaei,Backreef,634,120,5.283333333333333
+2017,Echinometra mathaei,Fringing,878,120,7.316666666666666
+2017,Echinometra mathaei,Outer 10,3,40,0.025
+2017,Echinometra mathaei,Outer 17,1,20,0.008333333333333333
+2017,Echinostrephus aciculatus,Backreef,94,80,0.7833333333333333
+2017,Echinostrephus aciculatus,Outer 10,148,120,1.2333333333333334
+2017,Echinostrephus aciculatus,Outer 17,27,120,0.225
+2017,Tectus niloticus,Outer 10,2,20,0.016666666666666666
+2017,Tectus niloticus,Outer 17,1,20,0.008333333333333333
+2018,Echinometra mathaei,Backreef,432,120,3.6
+2018,Echinometra mathaei,Fringing,631,120,5.258333333333334
+2018,Echinometra mathaei,Outer 17,1,40,0.008333333333333333
+2018,Echinostrephus aciculatus,Backreef,128,80,1.0666666666666667
+2018,Echinostrephus aciculatus,Fringing,22,40,0.18333333333333332
+2018,Echinostrephus aciculatus,Outer 10,105,120,0.875
+2018,Echinostrephus aciculatus,Outer 17,25,80,0.20833333333333334
+2018,Echinothrix diadema,Outer 10,1,20,0.008333333333333333
+2019,Acanthaster planci,Outer 17,0,20,0
+2019,Echinometra mathaei,Backreef,324,120,2.7
+2019,Echinometra mathaei,Fringing,205,120,1.7083333333333333
+2019,Echinometra mathaei,Outer 17,0,20,0
+2019,Echinostrephus aciculatus,Backreef,24,80,0.2
+2019,Echinostrephus aciculatus,Fringing,1,20,0.008333333333333333
+2019,Echinostrephus aciculatus,Outer 10,69,120,0.575
+2019,Echinostrephus aciculatus,Outer 17,14,60,0.11666666666666667
+2019,Echinothrix calamaris,Backreef,1,20,0.008333333333333333
+2019,Echinothrix calamaris,Fringing,2,40,0.016666666666666666
+2019,Echinothrix diadema,Backreef,28,40,0.23333333333333334
+2019,Echinothrix diadema,Fringing,2,20,0.016666666666666666
+2019,Tectus niloticus,Outer 10,1,20,0.008333333333333333
+2019,Tectus niloticus,Outer 17,1,20,0.008333333333333333
+2019,Turbo marmoratus,Outer 17,1,20,0.008333333333333333
+2020,Echinometra mathaei,Backreef,177,120,1.475
+2020,Echinometra mathaei,Fringing,65,100,0.5416666666666666
+2020,Echinometra mathaei,Outer 17,2,60,0.016666666666666666
+2020,Echinostrephus aciculatus,Backreef,5,40,0.041666666666666664
+2020,Echinostrephus aciculatus,Fringing,0,40,0
+2020,Echinostrephus aciculatus,Outer 10,45,120,0.375
+2020,Echinostrephus aciculatus,Outer 17,12,60,0.1
+2020,Echinothrix calamaris,Backreef,0,20,0
+2020,Echinothrix calamaris,Fringing,0,40,0
+2020,Echinothrix diadema,Backreef,31,60,0.25833333333333336
+2020,Echinothrix diadema,Fringing,0,20,0

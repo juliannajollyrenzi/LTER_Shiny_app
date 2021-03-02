@@ -218,7 +218,7 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                                   choices = unique(fish_habitat$Fine_Trophic),
                                                   selected = "Benthic Invertebrate Consumer")),
                                               mainPanel(
-                                                  "Fish abundance over time, by habitat (note the two outer sites are distinguished by their depth, in meters)",
+                                                  "Fish abundance over time, by habitat",
                                                   plotOutput("fish_hab_plot")
                                               )
                                           )
@@ -282,7 +282,7 @@ ui <- fluidPage(theme = mcr_theme, # fluid page means it changes when you expand
                                     img(src = "T_ornata_moorea.jpg", width="50%"),
                                     em("A clump of T. ornata. Photo credit: Julianna Renzi"),
                                     h3("Nutrients"),
-                                    p("Nutrients are vital to life, but some forms of nutrients can be harmful to some marine species. Here are plots showing how nutrients have changed at LTER 1 on the north shore in the backreef, fringing reef, and forereef (only LTER site included in the nutrient time series). Nitrate, for instance, can facilitate the growth of macroalgae and harm corals. Phosphorous, on the other hand, has been shown to help corals in some instances and potentially prevent coral bleaching. Do you notice any changes in other time series that might be related to nutrients?"),
+                                    p("Nutrients are vital to life, but some forms of nutrients can be harmful to some marine species. Nitrate, for instance, can facilitate the growth of macroalgae and harm corals. Phosphorous, on the other hand, has been shown to help corals in some instances and potentially prevent coral bleaching. Here are plots showing how nutrients have changed at LTER 1 on the north shore in the backreef, fringing reef, and forereef (only LTER site included in the nutrient time series). Do you notice any changes in other time series that might be related to nutrients?"),
                                     tabsetPanel(type = "tabs",
                                                 tabPanel("Silicate", plotOutput("nutrients_silicate")),
                                                 tabPanel("Phosphate", plotOutput("nutrients_phosphate")),
@@ -791,7 +791,7 @@ server <- function(input, output) {
     
     # now create nutrient plots
     output$nutrients_silicate <- renderPlot({
-        nut_summ %>% 
+        nutrients %>% 
             ggplot(aes(x = Date, y = Silicate, color = Habitat)) +
             geom_line() +
             scale_color_brewer(palette = "Set2") +
@@ -802,7 +802,7 @@ server <- function(input, output) {
                   legend.position = "bottom")
     })
     output$nutrients_phosphate <- renderPlot({
-        nut_summ %>% 
+        nutrients %>% 
             ggplot(aes(x = Date, y = Phosphate, color = Habitat)) +
             geom_line() +
             scale_color_brewer(palette = "Set2") +
@@ -813,7 +813,7 @@ server <- function(input, output) {
                   legend.position = "bottom")
     })
     output$nutrients_nitrite <- renderPlot({
-        nut_summ %>% 
+        nutrients %>% 
             ggplot(aes(x = Date, y = Nitrite, color = Habitat)) +
             geom_line() +
             scale_color_brewer(palette = "Set2") +
@@ -824,7 +824,7 @@ server <- function(input, output) {
                   legend.position = "bottom")
     })
     output$nutrients_nitrate <- renderPlot({
-        nut_summ %>% 
+        nutrients %>% 
             ggplot(aes(x = Date, y = Nitrate, color = Habitat)) +
             geom_line() +
             scale_color_brewer(palette = "Set2") +
